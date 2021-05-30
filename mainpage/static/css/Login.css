@@ -1,0 +1,44 @@
+
+
+.u-section-1 .u-sheet-1 {
+  min-height: 818px;
+}
+
+.u-section-1 .u-text-1 {
+  width: 295px;
+  font-weight: 700;
+  font-family: Roboto-Bold;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 3rem;
+  margin: 60px auto 0;
+}
+
+.u-section-1 .u-image-1 {
+  width: 95px;
+  height: 95px;
+  margin: 30px auto 0;
+}
+
+.u-section-1 .u-icon-1 {
+  height: 110px;
+  width: 110px;
+  background-image: none;
+  margin: 15px auto 60px;
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-text-1 {
+    font-size: 2.25rem;
+  }
+}@font-face {
+  font-family: 'Roboto-Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/Roboto-Bold.ttf);
+}@font-face {
+  font-family: 'Roboto-Light';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/Roboto-Light.ttf);
+}

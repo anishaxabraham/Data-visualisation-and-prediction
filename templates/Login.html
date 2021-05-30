@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+	<style>
+      @font-face {
+        font-family: 'Roboto-Bold';
+        font-style: normal;
+        font-weight: 400;
+        src: url("{% static 'fonts/Roboto-Bold.ttf' %}");
+      }@font-face {
+        font-family: 'Roboto-Light';
+        font-style: normal;
+        font-weight: 400;
+        src: url("{% static 'fonts/Roboto-Light.ttf' %}");
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/nicepage.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'css/Login.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'js/nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 3.15.3, nicepage.com">
+    
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "Site2",
+		"url": "index.html",
+		"logo": "images/images.jpg"
+}</script>
+    <meta property="og:title" content="Login">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="{% url 'index' %}">
+    <meta property="og:url" content="{% url 'index' %}">
+  </head>
+  <body class="u-body"><header class="u-clearfix u-header" id="sec-af53"><div class="u-clearfix u-sheet u-sheet-1">
+        <nav class="u-dropdown-icon u-menu u-menu-dropdown u-offcanvas u-menu-1" data-responsive-from="XL">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-custom-color-3 u-text-hover-palette-2-base u-white" href="#" style="font-size: calc(1em + 32px); background-image: none; color: rgb(237, 20, 90) !important;">
+              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 480.026 480.026" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-36ed"></use></svg>
+              <svg class="u-svg-content" viewBox="0 0 480.026 480.026" x="0px" y="0px" id="svg-36ed" style="enable-background:new 0 0 480.026 480.026;"><g><g><path d="M475.922,229.325l-144-160c-3.072-3.392-7.36-5.312-11.904-5.312h-96c-6.304,0-12.032,3.712-14.624,9.472    c-2.56,5.792-1.504,12.544,2.72,17.216l134.368,149.312l-134.368,149.28c-4.224,4.704-5.312,11.456-2.72,17.216    c2.592,5.792,8.32,9.504,14.624,9.504h96c4.544,0,8.832-1.952,11.904-5.28l144-160    C481.394,244.653,481.394,235.373,475.922,229.325z"></path>
+</g>
+</g><g><g><path d="M267.922,229.325l-144-160c-3.072-3.392-7.36-5.312-11.904-5.312h-96c-6.304,0-12.032,3.712-14.624,9.472    c-2.56,5.792-1.504,12.544,2.72,17.216l134.368,149.312L4.114,389.293c-4.224,4.704-5.312,11.456-2.72,17.216    c2.592,5.792,8.32,9.504,14.624,9.504h96c4.544,0,8.832-1.952,11.904-5.28l144-160    C273.394,244.653,273.394,235.373,267.922,229.325z"></path>
+</g>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Login' %}" style="padding: 10px 20px;">Login</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Login' %}" style="padding: 10px 20px;">File Upload</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Login' %}" style="padding: 10px 20px;">Objectives</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Login' %}" style="padding: 10px 20px;">Demographics Analysis </a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Login' %}" style="padding: 10px 20px;">Pharmaceuticals and Diagnostics</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Login' %}" style="padding: 10px 20px;">IP Analysis and OP Consultation</a>
+            </li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-container-style u-custom-color-2 u-inner-container-layout u-opacity u-opacity-75 u-sidenav">
+              <div class="u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-left u-custom-font u-nav u-popupmenu-items u-spacing-9 u-text-active-white u-text-hover-palette-5-light-1 u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Login' %}" style="padding: 10px 20px;">Login</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Login' %}" style="padding: 10px 20px;">File Upload</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Login' %}" style="padding: 10px 20px;">Objectives</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Login' %}" style="padding: 10px 20px;">Demographics Analysis </a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Login' %}" style="padding: 10px 20px;">Pharmaceuticals and Diagnostics</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Login' %}" style="padding: 10px 20px;">IP Analysis and OP Consultation</a>
+                </li></ul>
+
+              </div>
+            </div>
+            <div class="u-grey-15 u-menu-overlay u-opacity u-opacity-25"></div>
+          </div>
+        </nav>
+        <a href="" data-page-id="216961435" class="u-image u-logo u-image-1" data-image-width="200" data-image-height="97" title="Main Objectives">
+          <img src="{% static 'images/images.jpg' %}" class="u-logo-image u-logo-image-1" data-image-width="170.5386">
+        </a>
+      </div></header>
+    <section class="u-align-center u-clearfix u-section-1" id="carousel_af18">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h2 class="u-custom-font u-text u-text-1">Login</h2>
+        <img class="u-image u-image-circle u-preserve-proportions u-image-1" src="{% static 'images/logo.jpg' %}" alt="" data-image-width="80" data-image-height="80">
+        <form class="login_form" action="{% url 'Login' %}" method="post" name="loginform" >
+          {% csrf_token %}
+          <div class="font">Username</div>
+          <input autocomplete="off" type="text" name="uname" required>
+          <div class="font font2">Password</div>
+          <input type="password" name="password" required><br><br>
+          <button type="submit">Login</button>
+      </form>
+      {% for message in messages %}
+       <p id="messages">{{message}}</p>
+      {% endfor %}
+      </div>
+    </section>
+    
+    
+    <footer class="u-clearfix u-custom-color-2 u-footer u-footer" id="sec-0810"><div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-image u-image-circle u-preserve-proportions u-image-1" style="background-image: url('{% static 'images/download.jpg' %}');" alt="" data-image-width="224" data-image-height="225"></div>
+        <p class="u-align-center u-custom-font u-text u-text-1">Created by RSET Students, 2017-2021 Batch<br>
+        </p>
+        <div class="u-border-1 u-border-white u-expanded-width u-line u-line-horizontal u-opacity u-opacity-50 u-line-1"></div>
+      </div></footer>
+    <span style="height: 64px; width: 64px; margin-left: 0px; margin-right: auto; margin-top: 0px; background-image: none; right: 20px; bottom: 20px" class="u-back-to-top u-custom-color-7 u-icon u-icon-circle u-opacity u-opacity-85 u-spacing-10" data-href="#">
+        <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 551.13 551.13"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d98"></use></svg>
+        <svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98" data-color="rgb(255, 255, 255)"><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
+    </span>
+  </body>
+</html>

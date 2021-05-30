@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <style>
+      @font-face {
+        font-family: 'Roboto-Bold';
+        font-style: normal;
+        font-weight: 400;
+        src: url("{% static 'fonts/Roboto-Bold.ttf' %}");
+      }@font-face {
+        font-family: 'Roboto-Light';
+        font-style: normal;
+        font-weight: 400;
+        src: url("{% static 'fonts/Roboto-Light.ttf' %}");
+      }
+    </style>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>PharmObjectives</title>
+    <link rel="stylesheet" href="{% static 'css/nicepage.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'css/PharmObjectives.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'js/nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 3.15.3, nicepage.com">
+    
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "Site2",
+		"url": "index.html",
+		"logo": "images/images.jpg"
+}</script>
+    <meta property="og:title" content="PharmObjectives">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="{% url 'index' %}">
+    <meta property="og:url" content="{% url 'index' %}">
+  </head>
+  <body class="u-body"><header class="u-clearfix u-header" id="sec-af53"><div class="u-clearfix u-sheet u-sheet-1">
+        <nav class="u-dropdown-icon u-menu u-menu-dropdown u-offcanvas u-menu-1" data-responsive-from="XL">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-custom-color-3 u-text-hover-palette-2-base u-white" href="#" style="font-size: calc(1em + 32px); background-image: none; color: rgb(237, 20, 90) !important;">
+              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 480.026 480.026" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-36ed"></use></svg>
+              <svg class="u-svg-content" viewBox="0 0 480.026 480.026" x="0px" y="0px" id="svg-36ed" style="enable-background:new 0 0 480.026 480.026;"><g><g><path d="M475.922,229.325l-144-160c-3.072-3.392-7.36-5.312-11.904-5.312h-96c-6.304,0-12.032,3.712-14.624,9.472    c-2.56,5.792-1.504,12.544,2.72,17.216l134.368,149.312l-134.368,149.28c-4.224,4.704-5.312,11.456-2.72,17.216    c2.592,5.792,8.32,9.504,14.624,9.504h96c4.544,0,8.832-1.952,11.904-5.28l144-160    C481.394,244.653,481.394,235.373,475.922,229.325z"></path>
+</g>
+</g><g><g><path d="M267.922,229.325l-144-160c-3.072-3.392-7.36-5.312-11.904-5.312h-96c-6.304,0-12.032,3.712-14.624,9.472    c-2.56,5.792-1.504,12.544,2.72,17.216l134.368,149.312L4.114,389.293c-4.224,4.704-5.312,11.456-2.72,17.216    c2.592,5.792,8.32,9.504,14.624,9.504h96c4.544,0,8.832-1.952,11.904-5.28l144-160    C273.394,244.653,273.394,235.373,267.922,229.325z"></path>
+</g>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Logout' %}" style="padding: 10px 20px;">Logout</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'FileUpload' %}" style="padding: 10px 20px;">File Upload</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'MainObjectives' %}" style="padding: 10px 20px;">Objectives</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'DemoObjectives' %}" style="padding: 10px 20px;">Demographics Analysis </a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'PharmObjectives' %}" style="padding: 10px 20px;">Pharmaceuticals and Diagnostics</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'OPObjectives' %}" style="padding: 10px 20px;">IP Analysis and OP Consultation</a>
+            </li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-container-style u-custom-color-2 u-inner-container-layout u-opacity u-opacity-75 u-sidenav">
+              <div class="u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-left u-custom-font u-nav u-popupmenu-items u-spacing-9 u-text-active-white u-text-hover-palette-5-light-1 u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Logout' %}" style="padding: 10px 20px;">Logout</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'FileUpload' %}" style="padding: 10px 20px;">File Upload</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'MainObjectives' %}" style="padding: 10px 20px;">Objectives</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'DemoObjectives' %}" style="padding: 10px 20px;">Demographics Analysis </a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'PharmObjectives' %}" style="padding: 10px 20px;">Pharmaceuticals and Diagnostics</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'TopMovableObjectives' %}" style="padding: 10px 20px;">--100 Top Movable&nbsp;<br>Medicines</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'NursingStationObjectives' %}" style="padding: 10px 20px;">--Pharmacy Orders From&nbsp;<br>Each Nursing Station</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'OrdersPerPatient' %}" style="padding: 10px 20px;">--Pharmacy Orders: Number of Orders/Patient/day</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'DrugStockObjectives' %}" style="padding: 10px 20px;">--Drug Stock Analysis</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'SurgeryObjectives' %}" style="padding: 10px 20px;">--Surgery Analysis&nbsp;<br></a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Radiology' %}" style="padding: 10px 20px;">--Lab/Radiology Analysis</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'OPObjectives' %}" style="padding: 10px 20px;">IP Analysis and OP Consultation</a>
+                </li></ul>
+              </div>
+            </div>
+            <div class="u-grey-15 u-menu-overlay u-opacity u-opacity-25"></div>
+          </div>
+        </nav>
+        <a href="{% url 'MainObjectives' %}" data-page-id="216961435" class="u-image u-logo u-image-1" data-image-width="200" data-image-height="97" title="Main Objectives">
+          <img src="{% static 'images/images.jpg' %}" class="u-logo-image u-logo-image-1" data-image-width="170.5386">
+        </a>
+      </div></header>
+    <section class="u-align-center u-clearfix u-section-1" id="sec-6983">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h2 class="u-custom-font u-text u-text-1">Objectives<span style="font-weight: 700;"></span>
+        </h2>
+        <div class="u-expanded-width u-list u-list-1">
+          <div class="u-repeater u-repeater-1">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-1" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512.001 512.001" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-69e6"></use></svg><svg class="u-svg-content" viewBox="0 0 512.001 512.001" x="0px" y="0px" id="svg-69e6" style="enable-background:new 0 0 512.001 512.001;"><g><g><path d="M407.04,385.22c-4.539-3.148-10.77-2.016-13.915,2.523c-3.048,4.4-6.502,8.678-10.271,12.717    c-2.525,2.709-5.999,5.975-9.779,9.191c-4.206,3.58-4.714,9.891-1.135,14.098c1.978,2.324,4.791,3.518,7.621,3.518    c2.291,0,4.594-0.783,6.477-2.385c4.41-3.754,8.369-7.482,11.443-10.783c4.422-4.738,8.488-9.773,12.084-14.965    C412.71,394.595,411.58,388.365,407.04,385.22z"></path>
+</g>
+</g><g><g><path d="M363.474,430.058c-2.346-5-8.298-7.152-13.3-4.807l-0.313,0.141c-5.053,2.229-7.341,8.133-5.11,13.186    c1.65,3.74,5.312,5.965,9.153,5.965c1.349,0,2.72-0.275,4.032-0.854c0.244-0.107,0.486-0.217,0.729-0.33    C363.665,441.013,365.818,435.06,363.474,430.058z"></path>
+</g>
+</g><g><g><path d="M482.126,26.001H29.875C13.401,26.001,0,39.404,0,55.876v280.252c0,16.471,13.401,29.873,29.875,29.873h210.586    c8.927,37.77,29.114,64.52,46.757,81.658C312.97,472.677,342.49,486,353.899,486c11.408,0,40.928-13.322,66.681-38.34    c17.643-17.139,37.831-43.889,46.757-81.658h14.789c16.473,0,29.875-13.402,29.875-29.873V55.876    C512.001,39.404,498.599,26.001,482.126,26.001z M452,325.019c0.001,52.688-24.32,87.637-44.724,107.678    c-24.203,23.773-49.03,33.02-53.377,33.301c-4.348-0.281-29.176-9.527-53.379-33.301c-20.402-20.041-44.723-54.99-44.723-107.678    v-49.246c34.43-9.957,66.646-23.584,98.105-41.492c30.75,17.453,64.41,31.686,98.098,41.486V325.019z M492.001,336.128    c0,5.444-4.431,9.873-9.875,9.873h-11.311c0.766-6.701,1.186-13.689,1.186-20.982v-56.828c0-4.514-3.024-8.467-7.379-9.65    c-36.313-9.861-72.854-25.227-105.672-44.436c-3.12-1.826-6.982-1.824-10.104,0.002c-33.748,19.754-68.313,34.287-105.67,44.434    c-4.355,1.184-7.379,5.137-7.379,9.65v56.828c0,7.293,0.419,14.281,1.186,20.982H29.875c-5.445,0-9.875-4.43-9.875-9.873V165.999    h472.001V336.128z M492.001,146H20v-39.998h472.001V146z M492.001,86.001H20V55.876c0-5.445,4.43-9.875,9.875-9.875h452.251    c5.444,0,9.875,4.43,9.875,9.875V86.001z"></path>
+</g>
+</g><g><g><path d="M119.997,236.003c-6.029,0-11.982,1.219-17.492,3.543c-5.383-2.281-11.299-3.543-17.503-3.543    c-24.813,0-45.001,20.186-45.001,44.998s20.187,45,45.001,45c6.204,0,12.12-1.262,17.502-3.543    c5.511,2.324,11.464,3.543,17.493,3.543c24.814,0,45.002-20.188,45.002-45S144.811,236.003,119.997,236.003z M85.002,306.001    c-13.786,0-25.001-11.214-25.001-25c0-13.785,11.215-24.998,25.001-24.998c13.784,0,24.999,11.213,24.999,24.998    C110.001,294.786,98.786,306.001,85.002,306.001z M122.476,305.879c4.75-7.131,7.525-15.686,7.525-24.877    c0-9.191-2.775-17.744-7.524-24.875c12.625,1.248,22.521,11.928,22.521,24.875C144.998,293.949,135.102,304.63,122.476,305.879z"></path>
+</g>
+</g><g><g><path d="M101.436,191.001H49.999c-5.523,0-10,4.477-10,10c0,5.522,4.477,10,10,10h51.437c5.523,0,10-4.479,10-10    C111.436,195.478,106.959,191.001,101.436,191.001z"></path>
+</g>
+</g><g><g><path d="M130.996,191.001h-0.474c-5.523,0-10,4.477-10,10c0,5.522,4.477,10,10,10h0.474c5.522,0,10-4.479,10-10    C140.996,195.478,136.518,191.001,130.996,191.001z"></path>
+</g>
+</g><g><g><path d="M408.79,302.026c-3.903-3.903-10.234-3.905-14.141-0.001l-53.477,53.473l-28.023-28.025    c-3.906-3.902-10.238-3.904-14.143,0c-3.905,3.906-3.906,10.238,0,14.143l35.095,35.096c1.953,1.953,4.512,2.93,7.071,2.93    s5.119-0.977,7.07-2.93l60.547-60.543C412.695,312.265,412.695,305.933,408.79,302.026z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-custom-font u-text u-text-palette-5-dark-2 u-text-2">100 Top Movable&nbsp;<br>Medicines
+                </h3>
+                <p class="u-custom-font u-text u-text-3">Visualises the top movable medicines based on station and overall for a chosen time period.&nbsp;</p>
+                <a href="{% url 'TopMovableObjectives' %}" data-page-id="2221319343" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-text-white u-btn-1">VIEW</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-2" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 332 332" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-f0ad"></use></svg><svg class="u-svg-content" viewBox="0 0 332 332" x="0px" y="0px" id="svg-f0ad" style="enable-background:new 0 0 332 332;"><g><g><path d="M166,0C74.4,0,0,74.4,0,166s74.4,166,166,166s166-74.4,166-166S257.6,0,166,0z M166,317.6c-83.6,0-151.6-68-151.6-151.6    S82.4,14.4,166,14.4s151.6,68,151.6,151.6S249.6,317.6,166,317.6z"></path>
+</g>
+</g><g><g><path d="M252.4,130H202V79.6c0-4-3.2-7.2-7.2-7.2h-57.6c-4,0-7.2,3.2-7.2,7.2V130H79.6c-4,0-7.2,3.2-7.2,7.2v57.6    c0,4,3.2,7.2,7.2,7.2H130v50.4c0,4,3.2,7.2,7.2,7.2h57.6c4,0,7.2-3.2,7.2-7.2V202h50.4c4,0,7.2-3.2,7.2-7.2v-57.6    C259.2,133.2,256,130,252.4,130z M245.6,187.6h-0.4h-50.4c-4,0-7.2,3.2-7.2,7.2v50.4h-43.2v-50.4c0-4-3.2-7.2-7.2-7.2H86.8v-43.2    h50.4c4,0,7.2-3.2,7.2-7.2V86.8H188v50.4c0,4,3.2,7.2,7.2,7.2h50.4V187.6z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-custom-font u-text u-text-palette-5-dark-2 u-text-4">Pharmacy Orders From&nbsp;<br>Each Nursing Station
+                </h3>
+                <p class="u-custom-font u-text u-text-5">Plots the number of pharmacy orders from each station based on priority, ordering station.</p>
+                <a href="{% url 'NursingStationObjectives' %}" data-page-id="51725149" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-text-white u-btn-2">VIEW</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-3" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 511 511.99978" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-b8b7"></use></svg><svg class="u-svg-content" viewBox="0 0 511 511.99978" id="svg-b8b7"><path d="m235.792969 347.265625c3.902343-3.910156 3.902343-10.238281 0-14.148437-3.90625-3.898438-10.234375-3.898438-14.144531 0-3.898438 3.910156-3.898438 10.238281 0 14.148437 3.910156 3.898437 10.238281 3.898437 14.144531 0zm0 0"></path><path d="m188.449219 109.96875c0 60.636719 49.332031 109.972656 109.96875 109.972656s109.96875-49.335937 109.96875-109.972656-49.332031-109.96875-109.96875-109.96875-109.96875 49.332031-109.96875 109.96875zm199.945312 0c0 49.613281-40.363281 89.976562-89.976562 89.976562s-89.976563-40.363281-89.976563-89.976562c0-49.609375 40.363282-89.972656 89.976563-89.972656s89.976562 40.363281 89.976562 89.972656zm0 0"></path><path d="m115.652344 509.042969c3.875 3.90625 10.183594 3.949219 14.109375.082031l48.46875-47.75c8.234375-8.234375 10.738281-20.425781 7.117187-31.023438l10.425782-10.054687c5.613281-5.421875 13.003906-8.410156 20.816406-8.410156h132.902344c23.578124 0 45.863281-9.054688 62.757812-25.496094.695312-.675781-5.277344 6.359375 90.667969-108.3125 14.230469-16.835937 12.101562-42.117187-4.75-56.363281-16.746094-14.113282-41.832031-12.085938-56.101563 4.460937l-58.992187 60.632813c-7.449219-9.167969-18.808594-14.882813-31.082031-14.882813h-111.480469c-15.863281-6.636719-32.695313-9.996093-50.0625-9.996093-48.140625 0-90.175781 22.234374-112.734375 63.921874-9.503906-1.800781-19.527344 1.074219-26.738282 8.285157l-47.558593 47.699219c-3.882813 3.894531-3.890625 10.195312-.015625 14.101562zm74.792968-227.121094c15.3125 0 30.117188 3.082031 44.011719 9.160156 1.265625.554688 2.628907.839844 4.007813.839844h113.527344c10.839843 0 19.996093 8.839844 19.996093 19.992187 0 11.027344-8.96875 19.996094-19.996093 19.996094h-81.566407c-5.519531 0-9.996093 4.476563-9.996093 9.996094 0 5.523438 4.476562 9.996094 9.996093 9.996094h81.566407c22.050781 0 39.988281-17.9375 39.988281-39.988282 0-1.757812-.125-3.5-.351563-5.226562 57.066406-58.660156 65.113282-66.902344 65.457032-67.3125 7.125-8.410156 19.773437-9.476562 28.1875-2.382812 8.421874 7.121093 9.488281 19.761718 2.34375 28.21875l-89.667969 107.195312c-13.09375 12.570312-30.285157 19.488281-48.457031 19.488281h-132.902344c-13.023438 0-25.351563 4.980469-34.703125 14.015625l-8.496094 8.199219-78.320313-78.316406c18.304688-34.339844 52.652344-53.871094 95.375-53.871094zm-125.320312 66.34375c3.296875-3.296875 8.359375-3.890625 12.378906-1.40625 1.730469 1.054687-3.238281-3.46875 86.589844 86.234375 3.996094 3.996094 3.78125 10.363281.054688 14.089844l-41.320313 40.707031-98.230469-98.980469zm0 0"></path><path d="m286.421875 49.988281v11.714844c-11.636719 4.125-19.996094 15.238281-19.996094 28.273437 0 16.535157 13.453125 29.992188 29.992188 29.992188 5.511719 0 9.996093 4.484375 9.996093 9.996094 0 5.511718-4.484374 9.996094-9.996093 9.996094-4.269531 0-8.882813-2.683594-12.980469-7.5625-3.554688-4.226563-9.859375-4.769532-14.085938-1.21875-4.226562 3.554687-4.773437 9.859374-1.21875 14.085937 5.34375 6.355469 11.628907 10.785156 18.289063 13.019531v11.667969c0 5.523437 4.476563 9.996094 9.996094 9.996094s9.996093-4.472657 9.996093-9.996094v-11.714844c11.636719-4.128906 19.996094-15.242187 19.996094-28.273437 0-16.539063-13.453125-29.992188-29.992187-29.992188-5.511719 0-9.996094-4.484375-9.996094-9.996094 0-5.511718 4.484375-10 9.996094-10 3.542969 0 7.28125 1.808594 10.8125 5.226563 3.96875 3.839844 10.296875 3.734375 14.136719-.230469 3.839843-3.96875 3.734374-10.296875-.230469-14.136718-5.074219-4.910157-10.152344-7.6875-14.722657-9.203126v-11.644531c0-5.523437-4.476562-10-9.996093-10s-9.996094 4.476563-9.996094 10zm0 0"></path></svg>
+            
+            
+          </span>
+                <h3 class="u-custom-font u-text u-text-palette-5-dark-2 u-text-6">Pharmacy Orders: Number of Orders/Patient/day</h3>
+                <p class="u-custom-font u-text u-text-7">Plots the average number of orders per patient per day across a time period.&nbsp;</p>
+                <a href="{% url 'OrdersPerPatient' %}" data-page-id="335016499" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-text-white u-btn-3">VIEW</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-4" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512.002 512.002" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-30c4"></use></svg><svg class="u-svg-content" viewBox="0 0 512.002 512.002" x="0px" y="0px" id="svg-30c4" style="enable-background:new 0 0 512.002 512.002;"><g><g><path d="M508.14,56.775c-2.438-1.895-5.613-2.558-8.603-1.797l-47.576,12.097c-7.64,1.941-15.509,2.926-23.389,2.926h-69.819    c-22.649,0-41.568,16.251-44.984,38.643c-1.914,12.55-12.519,21.658-25.213,21.658h-2.555v-20.889    c17.247-10.268,28.832-29.093,28.832-50.581C314.834,26.392,288.442,0,256.001,0c-32.441,0-58.832,26.392-58.832,58.832    c0,21.488,11.585,40.313,28.832,50.581v20.889h-2.555c-12.694,0-23.299-9.108-25.213-21.658    c-3.416-22.392-22.335-38.643-44.984-38.643H83.43c-7.88,0-15.749-0.984-23.388-2.926L12.465,54.979    c-2.988-0.76-6.165-0.098-8.603,1.797c-2.436,1.894-3.861,4.808-3.861,7.894c0,21.109,8.144,40.346,21.442,54.758    c0.292,24.269,11.791,45.877,29.554,59.903l9.407,12.572c21.449,28.668,55.632,45.784,91.438,45.784    c27.466,0,53.495-9.655,74.159-27.348v35.663h-8.969c-35.657,0-64.667,29.01-64.667,64.667c0,10.896,2.765,21.672,7.994,31.164    c1.822,3.308,5.241,5.177,8.768,5.177c1.632,0,3.287-0.4,4.816-1.243c4.838-2.665,6.599-8.747,3.934-13.584    c-3.605-6.545-5.512-13.984-5.512-21.514c0-24.63,20.037-44.667,44.667-44.667h8.969v89.333h-23.5    c-26.375,0-47.833,21.458-47.833,47.834c0,26.375,21.458,47.833,47.833,47.833h27.804c3.467,18.778,9.012,37.144,16.631,54.937    c1.575,3.679,5.191,6.063,9.192,6.063h0.018c4.008-0.007,7.625-2.406,9.189-6.097l0.197-0.465    c7.458-17.64,12.884-35.84,16.273-54.438h11.363c11.304,0,20.5,9.196,20.5,20.5c0,11.304-9.196,20.5-20.5,20.5h-0.679    c-5.522,0-10,4.478-10,10c0,5.522,4.478,10,10,10h0.679c22.332,0,40.5-18.168,40.5-40.5c0-22.332-18.168-40.5-40.5-40.5h-8.519    c0.896-8.775,1.352-17.624,1.352-26.533v-29.134h6.667c35.657,0,64.666-29.009,64.666-64.666    c0-35.657-29.009-64.667-64.666-64.667h-6.667v-35.663c20.665,17.694,46.693,27.348,74.159,27.348    c35.805,0,69.986-17.115,91.438-45.784l9.407-12.572c17.764-14.026,29.262-35.635,29.554-59.904    c13.299-14.411,21.442-33.648,21.442-54.757C512.001,61.584,510.576,58.67,508.14,56.775z M218.084,190.46    c-17.751,17.558-41.276,27.227-66.242,27.227c-22.243,0-43.724-8.01-60.533-22.065c2.51,0.246,5.053,0.379,7.627,0.379h16.746    c5.522,0,10-4.478,10-10c0-5.522-4.478-10-10-10H98.936c-25.309,0-46.838-16.442-54.507-39.2    c10.945,5.546,23.303,8.694,36.389,8.696l20.683,0.003h0.001c5.521,0,9.999-4.477,10-9.999c0.001-5.522-4.476-10-9.999-10.001    l-20.683-0.003c-28.993-0.004-53.313-20.401-59.369-47.598l33.665,8.559c9.248,2.352,18.774,3.543,28.314,3.543h69.819    c12.695,0,23.299,9.108,25.213,21.658c3.416,22.392,22.335,38.643,44.984,38.643h2.555v32.328L218.084,190.46z M202.501,431.001    c-15.347,0-27.833-12.486-27.833-27.833c0-15.348,12.486-27.834,27.833-27.834h23.5v28.539c0,9.112,0.479,18.159,1.415,27.128    H202.501z M266.001,404.468c0,23.284-3.327,46.135-9.911,68.213c-6.703-22.261-10.089-45.307-10.089-68.808v-28.539h20V404.468z     M266.001,355.334h-20V116.797c3.252,0.56,6.59,0.868,10,0.868c3.41,0,6.748-0.308,10-0.868V355.334z M292.668,266.001    c24.629,0,44.666,20.037,44.666,44.667c0,24.629-20.037,44.666-44.666,44.666h-6.667v-89.333H292.668z M256.001,97.664    c-21.413,0-38.832-17.42-38.832-38.832c0-21.412,17.42-38.832,38.832-38.832s38.832,17.42,38.832,38.832    C294.833,80.244,277.414,97.664,256.001,97.664z M431.182,125.497l-20.681,0.003c-5.523,0.001-10,4.479-9.999,10.001    c0.001,5.523,4.479,10,10.001,9.999l20.683-0.003c13.086-0.002,25.444-3.149,36.389-8.696c-7.669,22.758-29.199,39.2-54.507,39.2    h-16.747c-5.522,0-10,4.478-10,10c0,5.522,4.478,10,10,10h16.746c2.574,0,5.116-0.133,7.626-0.379    c-16.81,14.055-38.29,22.065-60.532,22.065c-24.966,0-48.491-9.669-66.242-27.226l-7.918-7.831v-32.328h2.555    c22.649,0,41.568-16.251,44.984-38.643c1.914-12.55,12.518-21.658,25.213-21.658h69.819c9.54,0,19.066-1.191,28.315-3.543    l33.664-8.559C484.495,105.095,460.175,125.493,431.182,125.497z"></path>
+</g>
+</g><g><g><path d="M223.07,494.931c-1.859-1.861-4.439-2.93-7.069-2.93s-5.21,1.069-7.07,2.93c-1.86,1.861-2.93,4.44-2.93,7.07    s1.069,5.21,2.93,7.069c1.86,1.86,4.44,2.931,7.07,2.931s5.21-1.07,7.069-2.931c1.86-1.859,2.931-4.439,2.931-7.069    S224.931,496.791,223.07,494.931z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-custom-font u-text u-text-palette-5-dark-2 u-text-8">Drug Stock Analysis</h3>
+                <p class="u-custom-font u-text u-text-9">Plots the quantity of medicines available based on item category and overall for a given time duration.&nbsp; </p>
+                <a href="{% url 'DrugStockObjectives' %}" data-page-id="75202990" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-text-white u-btn-4">VIEW</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-5"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-5" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3257"></use></svg><svg class="u-svg-content" viewBox="0 0 512 512" id="svg-3257"><g><circle cx="437" cy="256" r="7.5"></circle><path d="m495.353 208.894c-9.295-11.493-21.864-20.019-35.853-24.429v-98.215c0-47.559-38.691-86.25-86.25-86.25s-86.25 38.691-86.25 86.25v312.75c0 37.495-30.505 68-68 68s-68-30.505-68-68v-16.468c60.879-10.742 106-64.005 106-126.532v-45c0-4.142-3.357-7.5-7.5-7.5h-22.5v-128.5c0-18.953-14.136-34.657-32.417-37.146.914-2.447 1.417-5.092 1.417-7.854 0-2.53-.426-4.961-1.2-7.233 26.469 2.666 47.2 25.073 47.2 52.233v106c0 4.142 3.357 7.5 7.5 7.5s7.5-3.358 7.5-7.5v-106c0-37.22-30.28-67.5-67.5-67.5h-18.664c-5.449-4.802-12.506-7.5-19.836-7.5-8.954 0-16.999 3.948-22.5 10.189-5.501-6.241-13.546-10.189-22.5-10.189-7.33 0-14.387 2.699-19.837 7.5h-18.663c-37.22 0-67.5 30.28-67.5 67.5v181c0 62.527 45.121 115.79 106 126.532v16.468c0 62.309 50.691 113 113 113s113-50.691 113-113v-312.75c0-22.745 18.505-41.25 41.25-41.25s41.25 18.505 41.25 41.25v98.215c-13.989 4.41-26.558 12.936-35.853 24.429-10.735 13.274-16.647 30.003-16.647 47.106 0 41.355 33.645 75 75 75s75-33.645 75-75c0-17.103-5.912-33.832-16.647-47.106zm-344.353-193.894c4.258 0 8.332 1.823 11.178 5.002 1.423 1.589 3.455 2.498 5.588 2.498h5.734c4.136 0 7.5 3.364 7.5 7.5s-3.364 7.5-7.5 7.5h-5.734c-2.133 0-4.166.909-5.589 2.498-2.845 3.179-6.919 5.002-11.177 5.002-8.271 0-15-6.729-15-15s6.729-15 15-15zm-67.5 7.5h5.733c2.133 0 4.165-.908 5.588-2.497 2.847-3.179 6.921-5.003 11.179-5.003 8.271 0 15 6.729 15 15s-6.729 15-15 15c-4.258 0-8.332-1.824-11.179-5.003-1.423-1.589-3.455-2.497-5.588-2.497h-5.733c-4.136 0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5zm2.663 30c5.45 4.801 12.507 7.5 19.837 7.5 8.954 0 16.999-3.948 22.5-10.189 5.501 6.241 13.546 10.189 22.5 10.189 7.331 0 14.387-2.698 19.836-7.5h18.664c12.406 0 22.5 10.093 22.5 22.5v151c0 46.042-37.458 83.5-83.5 83.5s-83.5-37.458-83.5-83.5v-151c0-12.407 10.094-22.5 22.5-22.5zm120.075 233.919c-12.188 31.039-42.428 53.081-77.738 53.081s-65.55-22.042-77.738-53.081c18.039 23.158 46.177 38.081 77.738 38.081s59.699-14.923 77.738-38.081zm-191.238-211.419c0-27.16 20.731-49.567 47.2-52.233-.774 2.272-1.2 4.703-1.2 7.233 0 2.762.503 5.407 1.417 7.854-18.281 2.489-32.417 18.193-32.417 37.146v128.5h-15zm358.25-45c-31.017 0-56.25 25.234-56.25 56.25v312.75c0 54.038-43.963 98-98 98s-98-43.962-98-98v-22.925c0-3.786-2.822-6.979-6.579-7.443-56.68-7.009-99.421-55.43-99.421-112.632v-37.5h15v37.5c0 54.313 44.187 98.5 98.5 98.5s98.5-44.187 98.5-98.5v-37.5h15v37.5c0 57.202-42.741 105.623-99.42 112.631-3.758.465-6.58 3.657-6.58 7.443v22.926c0 45.767 37.233 83 83 83s83-37.233 83-83v-312.75c0-39.288 31.963-71.25 71.25-71.25s71.25 31.962 71.25 71.25v34.75h-15v-34.75c0-31.016-25.233-56.25-56.25-56.25zm56.25 121v-15h15v15zm15 15v45.637c-2.441-.411-4.944-.637-7.5-.637s-5.059.226-7.5.637v-45.637zm-7.5 60c16.542 0 30 13.458 30 30s-13.458 30-30 30-30-13.458-30-30 13.458-30 30-30zm0 90c-33.084 0-60-26.916-60-60 0-24.947 15.019-46.637 37.5-55.631v16.685c-13.437 7.793-22.5 22.326-22.5 38.946 0 24.813 20.187 45 45 45s45-20.187 45-45c0-16.62-9.063-31.153-22.5-38.946v-16.685c22.481 8.994 37.5 30.684 37.5 55.631 0 33.084-26.916 60-60 60z"></path>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-custom-font u-text u-text-palette-5-dark-2 u-text-10">Surgery Analysis&nbsp;<br>
+                </h3>
+                <p class="u-custom-font u-text u-text-11">Plots the number of surgeries conducted for a certain age group and gender for a specific chosen surgery name and department.&nbsp;&nbsp;</p>
+                <a href="{% url 'SurgeryObjectives' %}" data-page-id="4898359" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-text-white u-btn-5">VIEW</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-6"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-6" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 443.294 443.294" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-c68b"></use></svg><svg class="u-svg-content" viewBox="0 0 443.294 443.294" id="svg-c68b"><path d="m221.647 0c-122.214 0-221.647 99.433-221.647 221.647s99.433 221.647 221.647 221.647 221.647-99.433 221.647-221.647-99.433-221.647-221.647-221.647zm0 415.588c-106.941 0-193.941-87-193.941-193.941s87-193.941 193.941-193.941 193.941 87 193.941 193.941-87 193.941-193.941 193.941z"></path><path d="m235.5 83.118h-27.706v144.265l87.176 87.176 19.589-19.589-79.059-79.059z"></path></svg>
+            
+            
+          </span>
+                <h3 class="u-custom-font u-text u-text-palette-5-dark-2 u-text-12">Lab/Radiology Analysis</h3>
+                <p class="u-custom-font u-text u-text-13">Plots the number of tests conducted for a certain age group and gender for a specific chosen test. </p>
+                <a href="{% url 'Radiology' %}" data-page-id="335016499" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-text-white u-btn-6">VIEW</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-clearfix u-custom-color-2 u-footer u-footer" id="sec-0810"><div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-image u-image-circle u-preserve-proportions u-image-1" style="background-image: url('{% static 'images/download.jpg' %}');" alt="" data-image-width="224" data-image-height="225"></div>
+        <p class="u-align-center u-custom-font u-text u-text-1">Created by RSET Students, 2017-2021 Batch<br>
+        </p>
+        <div class="u-border-1 u-border-white u-expanded-width u-line u-line-horizontal u-opacity u-opacity-50 u-line-1"></div>
+      </div></footer>
+    <span style="height: 64px; width: 64px; margin-left: 0px; margin-right: auto; margin-top: 0px; background-image: none; right: 20px; bottom: 20px" class="u-back-to-top u-custom-color-7 u-icon u-icon-circle u-opacity u-opacity-85 u-spacing-10" data-href="#">
+        <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 551.13 551.13"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d98"></use></svg>
+        <svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98" data-color="rgb(255, 255, 255)"><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
+    </span>
+  </body>
+</html>

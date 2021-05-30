@@ -1,0 +1,217 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <style>
+      @font-face {
+        font-family: 'Roboto-Bold';
+        font-style: normal;
+        font-weight: 400;
+        src: url("{% static 'fonts/Roboto-Bold.ttf' %}");
+      }@font-face {
+        font-family: 'Roboto-Light';
+        font-style: normal;
+        font-weight: 400;
+        src: url("{% static 'fonts/Roboto-Light.ttf' %}");
+      }
+    </style>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>WardObjectives</title>
+    <link rel="stylesheet" href="{% static 'css/nicepage.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'css/WardObjectives.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'js/nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 3.15.3, nicepage.com">
+    
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "Site2",
+		"url": "index.html",
+		"logo": "images/images.jpg"
+}</script>
+    <meta property="og:title" content="WardObjectives">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="{% url 'index' %}">
+    <meta property="og:url" content="{% url 'index' %}">
+  </head>
+  <body class="u-body"><header class="u-clearfix u-header" id="sec-af53"><div class="u-clearfix u-sheet u-sheet-1">
+        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1" data-responsive-from="XL">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-custom-color-3 u-text-hover-palette-2-base u-white" href="#" style="font-size: calc(1em + 32px); background-image: none; color: rgb(237, 20, 90) !important;">
+              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 480.026 480.026" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-36ed"></use></svg>
+              <svg class="u-svg-content" viewBox="0 0 480.026 480.026" x="0px" y="0px" id="svg-36ed" style="enable-background:new 0 0 480.026 480.026;"><g><g><path d="M475.922,229.325l-144-160c-3.072-3.392-7.36-5.312-11.904-5.312h-96c-6.304,0-12.032,3.712-14.624,9.472    c-2.56,5.792-1.504,12.544,2.72,17.216l134.368,149.312l-134.368,149.28c-4.224,4.704-5.312,11.456-2.72,17.216    c2.592,5.792,8.32,9.504,14.624,9.504h96c4.544,0,8.832-1.952,11.904-5.28l144-160    C481.394,244.653,481.394,235.373,475.922,229.325z"></path>
+</g>
+</g><g><g><path d="M267.922,229.325l-144-160c-3.072-3.392-7.36-5.312-11.904-5.312h-96c-6.304,0-12.032,3.712-14.624,9.472    c-2.56,5.792-1.504,12.544,2.72,17.216l134.368,149.312L4.114,389.293c-4.224,4.704-5.312,11.456-2.72,17.216    c2.592,5.792,8.32,9.504,14.624,9.504h96c4.544,0,8.832-1.952,11.904-5.28l144-160    C273.394,244.653,273.394,235.373,267.922,229.325z"></path>
+</g>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Logout' %}" style="padding: 10px 20px;">Logout</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'FileUpload' %}" style="padding: 10px 20px;">File Upload</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'MainObjectives' %}" style="padding: 10px 20px;">Objectives</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'DemoObjectives' %}" style="padding: 10px 20px;">Demographics Analysis </a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'PharmObjectives' %}" style="padding: 10px 20px;">Pharmaceuticals and Diagnostics</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'OPObjectives' %}" style="padding: 10px 20px;">IP Analysis and OP Consultation</a>
+            </li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-container-style u-custom-color-2 u-inner-container-layout u-opacity u-opacity-75 u-sidenav">
+              <div class="u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-left u-custom-font u-nav u-popupmenu-items u-spacing-9 u-text-active-white u-text-hover-palette-5-light-1 u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Logout' %}" style="padding: 10px 20px;">Logout</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'FileUpload' %}" style="padding: 10px 20px;">File Upload</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'MainObjectives' %}" style="padding: 10px 20px;">Objectives</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'DemoObjectives' %}" style="padding: 10px 20px;">Demographics Analysis </a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'PharmObjectives' %}" style="padding: 10px 20px;">Pharmaceuticals and Diagnostics</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'OPObjectives' %}" style="padding: 10px 20px;">IP Analysis and OP Consultation</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'DischargeObjectives' %}" style="padding: 10px 20px;">--Discharge</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'BedObjectives' %}" style="padding: 10px 20px;">----Bed</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'DocObjectives' %}" style="padding: 10px 20px;">----Doctor</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'SpecObjectives' %}" style="padding: 10px 20px;">----Speciality</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'WardObjectives' %}" style="padding: 10px 20px;">----Ward</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'MLCObjectives' %}" style="padding: 10px 20px;">--MLC</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'PaymentsFilter' %}" style="padding: 10px 20px;">--Payment</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'WaitObjectives' %}" style="padding: 10px 20px;">--Waiting Time</a>                
+                </li></ul>
+              </div>
+            </div>
+            <div class="u-grey-15 u-menu-overlay u-opacity u-opacity-25"></div>
+          </div>
+        </nav>
+        <a href="{% url 'MainObjectives' %}" data-page-id="216961435" class="u-image u-logo u-image-1" data-image-width="200" data-image-height="97" title="Main Objectives">
+          <img src="{% static 'images/images.jpg' %}" class="u-logo-image u-logo-image-1" data-image-width="170.5386">
+        </a>
+      </div></header>
+    <section class="u-align-center u-clearfix u-section-1" id="sec-6983">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h2 class="u-custom-font u-text u-text-1">Objectives<span style="font-weight: 700;"></span>
+        </h2>
+        <div class="u-expanded-width u-list u-list-1">
+          <div class="u-repeater u-repeater-1">
+            <div class="u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-1" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 332 332" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-f0ad"></use></svg><svg class="u-svg-content" viewBox="0 0 332 332" x="0px" y="0px" id="svg-f0ad" style="enable-background:new 0 0 332 332;"><g><g><path d="M166,0C74.4,0,0,74.4,0,166s74.4,166,166,166s166-74.4,166-166S257.6,0,166,0z M166,317.6c-83.6,0-151.6-68-151.6-151.6    S82.4,14.4,166,14.4s151.6,68,151.6,151.6S249.6,317.6,166,317.6z"></path>
+</g>
+</g><g><g><path d="M252.4,130H202V79.6c0-4-3.2-7.2-7.2-7.2h-57.6c-4,0-7.2,3.2-7.2,7.2V130H79.6c-4,0-7.2,3.2-7.2,7.2v57.6    c0,4,3.2,7.2,7.2,7.2H130v50.4c0,4,3.2,7.2,7.2,7.2h57.6c4,0,7.2-3.2,7.2-7.2V202h50.4c4,0,7.2-3.2,7.2-7.2v-57.6    C259.2,133.2,256,130,252.4,130z M245.6,187.6h-0.4h-50.4c-4,0-7.2,3.2-7.2,7.2v50.4h-43.2v-50.4c0-4-3.2-7.2-7.2-7.2H86.8v-43.2    h50.4c4,0,7.2-3.2,7.2-7.2V86.8H188v50.4c0,4,3.2,7.2,7.2,7.2h50.4V187.6z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-2">All Patients</h3>
+                <a href="{% url 'EachWard' %}" data-page-id="24047208" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-btn-2">VIEW</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-2" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512.002 512.002" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-d2cc"></use></svg><svg class="u-svg-content" viewBox="0 0 512.002 512.002" x="0px" y="0px" id="svg-d2cc" style="enable-background:new 0 0 512.002 512.002;"><g><g><path d="M508.14,56.775c-2.438-1.895-5.613-2.558-8.603-1.797l-47.576,12.097c-7.64,1.941-15.509,2.926-23.389,2.926h-69.819    c-22.649,0-41.568,16.251-44.984,38.643c-1.914,12.55-12.519,21.658-25.213,21.658h-2.555v-20.889    c17.247-10.268,28.832-29.093,28.832-50.581C314.834,26.392,288.442,0,256.001,0c-32.441,0-58.832,26.392-58.832,58.832    c0,21.488,11.585,40.313,28.832,50.581v20.889h-2.555c-12.694,0-23.299-9.108-25.213-21.658    c-3.416-22.392-22.335-38.643-44.984-38.643H83.43c-7.88,0-15.749-0.984-23.388-2.926L12.465,54.979    c-2.988-0.76-6.165-0.098-8.603,1.797c-2.436,1.894-3.861,4.808-3.861,7.894c0,21.109,8.144,40.346,21.442,54.758    c0.292,24.269,11.791,45.877,29.554,59.903l9.407,12.572c21.449,28.668,55.632,45.784,91.438,45.784    c27.466,0,53.495-9.655,74.159-27.348v35.663h-8.969c-35.657,0-64.667,29.01-64.667,64.667c0,10.896,2.765,21.672,7.994,31.164    c1.822,3.308,5.241,5.177,8.768,5.177c1.632,0,3.287-0.4,4.816-1.243c4.838-2.665,6.599-8.747,3.934-13.584    c-3.605-6.545-5.512-13.984-5.512-21.514c0-24.63,20.037-44.667,44.667-44.667h8.969v89.333h-23.5    c-26.375,0-47.833,21.458-47.833,47.834c0,26.375,21.458,47.833,47.833,47.833h27.804c3.467,18.778,9.012,37.144,16.631,54.937    c1.575,3.679,5.191,6.063,9.192,6.063h0.018c4.008-0.007,7.625-2.406,9.189-6.097l0.197-0.465    c7.458-17.64,12.884-35.84,16.273-54.438h11.363c11.304,0,20.5,9.196,20.5,20.5c0,11.304-9.196,20.5-20.5,20.5h-0.679    c-5.522,0-10,4.478-10,10c0,5.522,4.478,10,10,10h0.679c22.332,0,40.5-18.168,40.5-40.5c0-22.332-18.168-40.5-40.5-40.5h-8.519    c0.896-8.775,1.352-17.624,1.352-26.533v-29.134h6.667c35.657,0,64.666-29.009,64.666-64.666    c0-35.657-29.009-64.667-64.666-64.667h-6.667v-35.663c20.665,17.694,46.693,27.348,74.159,27.348    c35.805,0,69.986-17.115,91.438-45.784l9.407-12.572c17.764-14.026,29.262-35.635,29.554-59.904    c13.299-14.411,21.442-33.648,21.442-54.757C512.001,61.584,510.576,58.67,508.14,56.775z M218.084,190.46    c-17.751,17.558-41.276,27.227-66.242,27.227c-22.243,0-43.724-8.01-60.533-22.065c2.51,0.246,5.053,0.379,7.627,0.379h16.746    c5.522,0,10-4.478,10-10c0-5.522-4.478-10-10-10H98.936c-25.309,0-46.838-16.442-54.507-39.2    c10.945,5.546,23.303,8.694,36.389,8.696l20.683,0.003h0.001c5.521,0,9.999-4.477,10-9.999c0.001-5.522-4.476-10-9.999-10.001    l-20.683-0.003c-28.993-0.004-53.313-20.401-59.369-47.598l33.665,8.559c9.248,2.352,18.774,3.543,28.314,3.543h69.819    c12.695,0,23.299,9.108,25.213,21.658c3.416,22.392,22.335,38.643,44.984,38.643h2.555v32.328L218.084,190.46z M202.501,431.001    c-15.347,0-27.833-12.486-27.833-27.833c0-15.348,12.486-27.834,27.833-27.834h23.5v28.539c0,9.112,0.479,18.159,1.415,27.128    H202.501z M266.001,404.468c0,23.284-3.327,46.135-9.911,68.213c-6.703-22.261-10.089-45.307-10.089-68.808v-28.539h20V404.468z     M266.001,355.334h-20V116.797c3.252,0.56,6.59,0.868,10,0.868c3.41,0,6.748-0.308,10-0.868V355.334z M292.668,266.001    c24.629,0,44.666,20.037,44.666,44.667c0,24.629-20.037,44.666-44.666,44.666h-6.667v-89.333H292.668z M256.001,97.664    c-21.413,0-38.832-17.42-38.832-38.832c0-21.412,17.42-38.832,38.832-38.832s38.832,17.42,38.832,38.832    C294.833,80.244,277.414,97.664,256.001,97.664z M431.182,125.497l-20.681,0.003c-5.523,0.001-10,4.479-9.999,10.001    c0.001,5.523,4.479,10,10.001,9.999l20.683-0.003c13.086-0.002,25.444-3.149,36.389-8.696c-7.669,22.758-29.199,39.2-54.507,39.2    h-16.747c-5.522,0-10,4.478-10,10c0,5.522,4.478,10,10,10h16.746c2.574,0,5.116-0.133,7.626-0.379    c-16.81,14.055-38.29,22.065-60.532,22.065c-24.966,0-48.491-9.669-66.242-27.226l-7.918-7.831v-32.328h2.555    c22.649,0,41.568-16.251,44.984-38.643c1.914-12.55,12.518-21.658,25.213-21.658h69.819c9.54,0,19.066-1.191,28.315-3.543    l33.664-8.559C484.495,105.095,460.175,125.493,431.182,125.497z"></path>
+</g>
+</g><g><g><path d="M223.07,494.931c-1.859-1.861-4.439-2.93-7.069-2.93s-5.21,1.069-7.07,2.93c-1.86,1.861-2.93,4.44-2.93,7.07    s1.069,5.21,2.93,7.069c1.86,1.86,4.44,2.931,7.07,2.931s5.21-1.07,7.069-2.931c1.86-1.859,2.931-4.439,2.931-7.069    S224.931,496.791,223.07,494.931z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-3">All wards (Bed-wise)</h3>
+                <a href="{% url 'AllWardBed' %}" data-page-id="24047208" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-btn-3">VIEW</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-3" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 511 511.99978" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-b8b7"></use></svg><svg class="u-svg-content" viewBox="0 0 511 511.99978" id="svg-b8b7"><path d="m235.792969 347.265625c3.902343-3.910156 3.902343-10.238281 0-14.148437-3.90625-3.898438-10.234375-3.898438-14.144531 0-3.898438 3.910156-3.898438 10.238281 0 14.148437 3.910156 3.898437 10.238281 3.898437 14.144531 0zm0 0"></path><path d="m188.449219 109.96875c0 60.636719 49.332031 109.972656 109.96875 109.972656s109.96875-49.335937 109.96875-109.972656-49.332031-109.96875-109.96875-109.96875-109.96875 49.332031-109.96875 109.96875zm199.945312 0c0 49.613281-40.363281 89.976562-89.976562 89.976562s-89.976563-40.363281-89.976563-89.976562c0-49.609375 40.363282-89.972656 89.976563-89.972656s89.976562 40.363281 89.976562 89.972656zm0 0"></path><path d="m115.652344 509.042969c3.875 3.90625 10.183594 3.949219 14.109375.082031l48.46875-47.75c8.234375-8.234375 10.738281-20.425781 7.117187-31.023438l10.425782-10.054687c5.613281-5.421875 13.003906-8.410156 20.816406-8.410156h132.902344c23.578124 0 45.863281-9.054688 62.757812-25.496094.695312-.675781-5.277344 6.359375 90.667969-108.3125 14.230469-16.835937 12.101562-42.117187-4.75-56.363281-16.746094-14.113282-41.832031-12.085938-56.101563 4.460937l-58.992187 60.632813c-7.449219-9.167969-18.808594-14.882813-31.082031-14.882813h-111.480469c-15.863281-6.636719-32.695313-9.996093-50.0625-9.996093-48.140625 0-90.175781 22.234374-112.734375 63.921874-9.503906-1.800781-19.527344 1.074219-26.738282 8.285157l-47.558593 47.699219c-3.882813 3.894531-3.890625 10.195312-.015625 14.101562zm74.792968-227.121094c15.3125 0 30.117188 3.082031 44.011719 9.160156 1.265625.554688 2.628907.839844 4.007813.839844h113.527344c10.839843 0 19.996093 8.839844 19.996093 19.992187 0 11.027344-8.96875 19.996094-19.996093 19.996094h-81.566407c-5.519531 0-9.996093 4.476563-9.996093 9.996094 0 5.523438 4.476562 9.996094 9.996093 9.996094h81.566407c22.050781 0 39.988281-17.9375 39.988281-39.988282 0-1.757812-.125-3.5-.351563-5.226562 57.066406-58.660156 65.113282-66.902344 65.457032-67.3125 7.125-8.410156 19.773437-9.476562 28.1875-2.382812 8.421874 7.121093 9.488281 19.761718 2.34375 28.21875l-89.667969 107.195312c-13.09375 12.570312-30.285157 19.488281-48.457031 19.488281h-132.902344c-13.023438 0-25.351563 4.980469-34.703125 14.015625l-8.496094 8.199219-78.320313-78.316406c18.304688-34.339844 52.652344-53.871094 95.375-53.871094zm-125.320312 66.34375c3.296875-3.296875 8.359375-3.890625 12.378906-1.40625 1.730469 1.054687-3.238281-3.46875 86.589844 86.234375 3.996094 3.996094 3.78125 10.363281.054688 14.089844l-41.320313 40.707031-98.230469-98.980469zm0 0"></path><path d="m286.421875 49.988281v11.714844c-11.636719 4.125-19.996094 15.238281-19.996094 28.273437 0 16.535157 13.453125 29.992188 29.992188 29.992188 5.511719 0 9.996093 4.484375 9.996093 9.996094 0 5.511718-4.484374 9.996094-9.996093 9.996094-4.269531 0-8.882813-2.683594-12.980469-7.5625-3.554688-4.226563-9.859375-4.769532-14.085938-1.21875-4.226562 3.554687-4.773437 9.859374-1.21875 14.085937 5.34375 6.355469 11.628907 10.785156 18.289063 13.019531v11.667969c0 5.523437 4.476563 9.996094 9.996094 9.996094s9.996093-4.472657 9.996093-9.996094v-11.714844c11.636719-4.128906 19.996094-15.242187 19.996094-28.273437 0-16.539063-13.453125-29.992188-29.992187-29.992188-5.511719 0-9.996094-4.484375-9.996094-9.996094 0-5.511718 4.484375-10 9.996094-10 3.542969 0 7.28125 1.808594 10.8125 5.226563 3.96875 3.839844 10.296875 3.734375 14.136719-.230469 3.839843-3.96875 3.734374-10.296875-.230469-14.136718-5.074219-4.910157-10.152344-7.6875-14.722657-9.203126v-11.644531c0-5.523437-4.476562-10-9.996093-10s-9.996094 4.476563-9.996094 10zm0 0"></path></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-4">Each ward (Bed-wise)</h3>
+                <a href="{% url 'EachWardBed' %}" data-page-id="24047208" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-btn-4">VIEW</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-section-2" id="sec-ed1e">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-list u-list-1">
+          <div class="u-repeater u-repeater-1">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-1" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512.001 512.001" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-7fd5"></use></svg><svg class="u-svg-content" viewBox="0 0 512.001 512.001" x="0px" y="0px" id="svg-7fd5" style="enable-background:new 0 0 512.001 512.001;"><g><g><path d="M407.04,385.22c-4.539-3.148-10.77-2.016-13.915,2.523c-3.048,4.4-6.502,8.678-10.271,12.717    c-2.525,2.709-5.999,5.975-9.779,9.191c-4.206,3.58-4.714,9.891-1.135,14.098c1.978,2.324,4.791,3.518,7.621,3.518    c2.291,0,4.594-0.783,6.477-2.385c4.41-3.754,8.369-7.482,11.443-10.783c4.422-4.738,8.488-9.773,12.084-14.965    C412.71,394.595,411.58,388.365,407.04,385.22z"></path>
+</g>
+</g><g><g><path d="M363.474,430.058c-2.346-5-8.298-7.152-13.3-4.807l-0.313,0.141c-5.053,2.229-7.341,8.133-5.11,13.186    c1.65,3.74,5.312,5.965,9.153,5.965c1.349,0,2.72-0.275,4.032-0.854c0.244-0.107,0.486-0.217,0.729-0.33    C363.665,441.013,365.818,435.06,363.474,430.058z"></path>
+</g>
+</g><g><g><path d="M482.126,26.001H29.875C13.401,26.001,0,39.404,0,55.876v280.252c0,16.471,13.401,29.873,29.875,29.873h210.586    c8.927,37.77,29.114,64.52,46.757,81.658C312.97,472.677,342.49,486,353.899,486c11.408,0,40.928-13.322,66.681-38.34    c17.643-17.139,37.831-43.889,46.757-81.658h14.789c16.473,0,29.875-13.402,29.875-29.873V55.876    C512.001,39.404,498.599,26.001,482.126,26.001z M452,325.019c0.001,52.688-24.32,87.637-44.724,107.678    c-24.203,23.773-49.03,33.02-53.377,33.301c-4.348-0.281-29.176-9.527-53.379-33.301c-20.402-20.041-44.723-54.99-44.723-107.678    v-49.246c34.43-9.957,66.646-23.584,98.105-41.492c30.75,17.453,64.41,31.686,98.098,41.486V325.019z M492.001,336.128    c0,5.444-4.431,9.873-9.875,9.873h-11.311c0.766-6.701,1.186-13.689,1.186-20.982v-56.828c0-4.514-3.024-8.467-7.379-9.65    c-36.313-9.861-72.854-25.227-105.672-44.436c-3.12-1.826-6.982-1.824-10.104,0.002c-33.748,19.754-68.313,34.287-105.67,44.434    c-4.355,1.184-7.379,5.137-7.379,9.65v56.828c0,7.293,0.419,14.281,1.186,20.982H29.875c-5.445,0-9.875-4.43-9.875-9.873V165.999    h472.001V336.128z M492.001,146H20v-39.998h472.001V146z M492.001,86.001H20V55.876c0-5.445,4.43-9.875,9.875-9.875h452.251    c5.444,0,9.875,4.43,9.875,9.875V86.001z"></path>
+</g>
+</g><g><g><path d="M119.997,236.003c-6.029,0-11.982,1.219-17.492,3.543c-5.383-2.281-11.299-3.543-17.503-3.543    c-24.813,0-45.001,20.186-45.001,44.998s20.187,45,45.001,45c6.204,0,12.12-1.262,17.502-3.543    c5.511,2.324,11.464,3.543,17.493,3.543c24.814,0,45.002-20.188,45.002-45S144.811,236.003,119.997,236.003z M85.002,306.001    c-13.786,0-25.001-11.214-25.001-25c0-13.785,11.215-24.998,25.001-24.998c13.784,0,24.999,11.213,24.999,24.998    C110.001,294.786,98.786,306.001,85.002,306.001z M122.476,305.879c4.75-7.131,7.525-15.686,7.525-24.877    c0-9.191-2.775-17.744-7.524-24.875c12.625,1.248,22.521,11.928,22.521,24.875C144.998,293.949,135.102,304.63,122.476,305.879z"></path>
+</g>
+</g><g><g><path d="M101.436,191.001H49.999c-5.523,0-10,4.477-10,10c0,5.522,4.477,10,10,10h51.437c5.523,0,10-4.479,10-10    C111.436,195.478,106.959,191.001,101.436,191.001z"></path>
+</g>
+</g><g><g><path d="M130.996,191.001h-0.474c-5.523,0-10,4.477-10,10c0,5.522,4.477,10,10,10h0.474c5.522,0,10-4.479,10-10    C140.996,195.478,136.518,191.001,130.996,191.001z"></path>
+</g>
+</g><g><g><path d="M408.79,302.026c-3.903-3.903-10.234-3.905-14.141-0.001l-53.477,53.473l-28.023-28.025    c-3.906-3.902-10.238-3.904-14.143,0c-3.905,3.906-3.906,10.238,0,14.143l35.095,35.096c1.953,1.953,4.512,2.93,7.071,2.93    s5.119-0.977,7.07-2.93l60.547-60.543C412.695,312.265,412.695,305.933,408.79,302.026z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-1">Bed-wise</h3>
+                <a href="{% url 'SpecificWardBed' %}" data-page-id="24047208" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-btn-1">VIEW</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-2" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-a5da"></use></svg><svg class="u-svg-content" viewBox="0 0 512 512" id="svg-a5da"><g><path d="m507.514 249.429-217.665-213.93c-18.665-18.347-49.034-18.346-67.698-.001l-217.665 213.931c-5.909 5.808-5.991 15.305-.184 21.213 5.807 5.907 15.304 5.991 21.212.184l16.939-16.649v170.797c0 35.999 29.288 65.287 65.287 65.287h296.52c35.999 0 65.287-29.288 65.287-65.287v-170.797l16.939 16.649c2.921 2.87 6.718 4.302 10.513 4.302 3.882 0 7.763-1.498 10.699-4.485 5.807-5.909 5.725-15.406-.184-21.214zm-67.968 175.545c0 19.457-15.83 35.287-35.287 35.287h-296.519c-19.457 0-35.287-15.83-35.287-35.287v-200.282l170.727-167.798c1.767-1.737 3.812-3.04 5.995-3.909 6.003-2.388 13.053-1.493 18.27 2.687.474.38.933.787 1.375 1.222l170.727 167.797v200.283z"></path><path d="m210.929 196.98v48.271h-48.274c-8.284 0-15 6.716-15 15v59.866c0 8.284 6.716 15 15 15h48.274v48.27c0 8.284 6.716 15 15 15h59.866c8.284 0 15-6.716 15-15v-48.27h48.266c8.284 0 15-6.716 15-15v-59.866c0-8.284-6.716-15-15-15h-48.266v-48.271c0-8.284-6.716-15-15-15h-59.866c-8.284 0-15 6.716-15 15zm30 63.271v-48.271h29.866v48.271c0 8.284 6.716 15 15 15h48.266v29.866h-48.266c-8.284 0-15 6.716-15 15v48.27h-29.866v-48.27c0-8.284-6.716-15-15-15h-48.274v-29.866h48.274c8.284 0 15-6.716 15-15z"></path>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-2">Day-wise</h3>
+                <a href="{% url 'SpecificWardDay' %}" data-page-id="24047208" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-btn-2">VIEW</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-3" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3171"></use></svg><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" id="svg-3171" style="enable-background:new 0 0 512 512;"><g><g><path d="M482.726,485.783l-22.65-132.603c-2.441-14.287-12.576-25.764-26.453-29.95l-61.092-18.433    c-1.265-14.934-7.388-29.023-17.578-40.175c-8.151-8.92-18.403-15.415-29.704-18.999c1.934-2.146,3.727-4.285,5.372-6.377    c14.528-18.477,22.306-38.833,24.286-52.724h4.713c12.258,0,22.231-9.972,22.231-22.231v-11.396    c0-8.181-4.602-15.594-11.523-19.441V106.05c0-4.141-3.357-7.498-7.498-7.498s-7.497,3.356-7.497,7.498v30.764    c-2.92,0.507-6.404,1.383-9.968,2.884c-0.365,0.133-0.72,0.287-1.056,0.472c-0.805,0.367-1.611,0.754-2.414,1.19V80.938    c0-16.693-13.58-30.273-30.273-30.273h-20.695c-7.138,0-14.111,2.487-19.637,7.005l-2.031,1.66c-3.73,3.05-8.438,4.73-13.257,4.73    c-4.819,0-9.528-1.68-13.258-4.73l-2.03-1.66c-5.526-4.517-12.499-7.005-19.637-7.005H200.38    c-16.693,0-30.273,13.58-30.273,30.273v60.422c-0.803-0.436-1.609-0.823-2.414-1.19c-0.336-0.185-0.69-0.339-1.055-0.472    c-3.564-1.501-7.049-2.377-9.968-2.884V59.025c0-24.278,19.752-44.03,44.03-44.03h110.601c24.279,0,44.03,19.752,44.03,44.03    v11.786c0,4.141,3.357,7.498,7.497,7.498s7.498-3.356,7.498-7.498V59.025C370.326,26.479,343.847,0,311.301,0H200.7    c-32.547,0-59.025,26.479-59.025,59.025v74.43c-6.921,3.847-11.523,11.259-11.523,19.441v11.396    c0,12.259,9.973,22.231,22.231,22.231h4.713c1.979,13.891,9.758,34.247,24.286,52.724c1.643,2.09,3.435,4.227,5.367,6.371    c-25.98,8.252-44.926,31.61-47.277,59.179L78.378,323.23c-13.877,4.186-24.013,15.663-26.453,29.95l-9.198,53.849    c-0.697,4.082,2.047,7.955,6.128,8.652c4.08,0.699,7.955-2.046,8.653-6.128l9.198-53.849c1.476-8.644,7.608-15.586,16.003-18.118    l56.505-17.049v14.831c-12.952,2.384-23.973,11.281-28.512,23.608c-1.205,3.272-1.954,6.698-2.226,10.182l-5.461,70.095    c-0.412,5.28,1.415,10.538,5.01,14.423c3.595,3.886,8.694,6.116,13.989,6.116h9.348c4.141,0,7.498-3.356,7.498-7.498    c0-4.142-3.357-7.497-7.498-7.497h-9.348c-1.129,0-2.215-0.474-2.982-1.304c-0.766-0.828-1.155-1.948-1.067-3.073l5.461-70.096    c0.165-2.111,0.618-4.186,1.348-6.167c3.158-8.575,11.686-14.382,21.223-14.449l1.235-0.009c0.058-0.001,0.115-0.001,0.172-0.001    c9.269,0,17.474,5.256,20.935,13.427c0.971,2.291,1.561,4.713,1.755,7.199l5.463,70.097c0.087,1.124-0.302,2.244-1.068,3.073    c-0.766,0.828-1.853,1.303-2.982,1.303h-9.348c-4.141,0-7.498,3.356-7.498,7.497c0,4.141,3.357,7.498,7.498,7.498h9.348    c5.295,0,10.395-2.229,13.989-6.116c3.596-3.887,5.423-9.144,5.011-14.422l-5.463-70.096c-0.32-4.102-1.295-8.101-2.898-11.884    c-4.939-11.657-15.5-19.762-27.938-21.955v-19.306l25.774-7.777c2.345,4.939,6.992,15.612,16.197,38.619    c9.277,23.214,20.808,52.969,31.867,81.895c0.079,0.243,0.17,0.48,0.272,0.712c7.38,19.311,14.539,38.225,20.662,54.541    c1.098,2.926,3.895,4.864,7.02,4.864c3.125,0,5.922-1.938,7.02-4.864c6.122-16.316,13.281-35.23,20.662-54.541    c0.103-0.232,0.193-0.47,0.272-0.712c11.051-28.909,22.576-58.645,31.849-81.852c9.217-23.037,13.868-33.719,16.214-38.662    l25.774,7.777v44.285c-17.858,3.469-31.385,19.219-31.385,38.077c0,21.391,17.403,38.795,38.795,38.795    c21.392,0,38.795-17.403,38.795-38.795c0-18.796-13.438-34.508-31.21-38.045v-39.792l56.506,17.049    c8.395,2.532,14.526,9.474,16.003,18.118l22.65,132.603c0.376,2.199-0.209,4.349-1.648,6.054c-1.438,1.704-3.459,2.644-5.69,2.644    H51.393c-2.231,0-4.251-0.939-5.69-2.644c-1.438-1.705-2.024-3.854-1.648-6.054l7.475-43.762c0.697-4.082-2.047-7.955-6.128-8.652    c-4.08-0.7-7.955,2.047-8.653,6.128l-7.475,43.762c-1.115,6.532,0.696,13.183,4.968,18.248C38.516,509.096,44.767,512,51.393,512    h409.214c6.626,0,12.878-2.904,17.151-7.969C482.03,498.966,483.841,492.315,482.726,485.783z M355.421,152.089    c3.995-0.996,7.202-0.978,7.238-0.977c1.292,0.017,2.548-0.285,3.664-0.87c0.334,0.831,0.531,1.724,0.531,2.654v11.396    c0,3.99-3.246,7.236-7.236,7.236h-4.197V152.089z M156.579,171.528L156.579,171.528h-4.197c-3.99,0-7.236-3.246-7.236-7.236    v-11.396c0-0.93,0.198-1.823,0.531-2.653c1.115,0.585,2.371,0.887,3.664,0.869c0.057,0.01,3.255-0.008,7.238,0.981V171.528z     M171.574,179.935v-19.698c2.272,0.681,4.757,0.588,7.051-0.369c3.935-1.642,6.477-5.455,6.477-9.716V80.938    c0-8.424,6.854-15.278,15.278-15.278h20.695c3.688,0,7.291,1.285,10.146,3.619l2.03,1.66c6.401,5.234,14.48,8.115,22.749,8.115    c8.269,0,16.348-2.882,22.749-8.115l2.03-1.66c2.854-2.334,6.458-3.619,10.146-3.619h20.695c8.424,0,15.278,6.854,15.278,15.278    v69.215c0,4.26,2.542,8.074,6.477,9.716c1.314,0.548,2.69,0.814,4.054,0.814c1.017,0,2.026-0.149,2.997-0.439v19.691    c0,10.947-7.568,32.205-21.594,50.043c-4.646,5.909-10.618,12.257-17.971,17.805c-0.233,0.156-0.456,0.325-0.669,0.505    c-11.391,8.422-26.038,14.874-44.192,14.874s-32.801-6.452-44.193-14.875c-0.213-0.179-0.435-0.348-0.667-0.503    c-7.353-5.549-13.325-11.897-17.972-17.806C179.143,212.141,171.574,190.882,171.574,179.935z M305.12,301.07L256,337.784    l-49.12-36.714c4.871-6.191,7.6-14.138,7.6-21.23v-12.086c11.551,6.212,25.334,10.404,41.52,10.404s29.97-4.192,41.52-10.404    v12.086C297.52,286.932,300.249,294.879,305.12,301.07z M194.367,292.701c-4.004-1.525-8.443-1.775-12.642-0.636    c-0.184,0.043-0.364,0.092-0.539,0.144l-25.903,7.816c4.381-21.542,21.873-38.688,44.202-42.009v21.824    C199.485,284.544,197.385,289.407,194.367,292.701z M214.716,352.889c-0.014-0.035-0.028-0.07-0.041-0.104    c-0.38-0.961-0.755-1.909-1.127-2.846c-0.067-0.17-0.134-0.339-0.201-0.507c-0.364-0.917-0.725-1.827-1.081-2.722    c-0.025-0.063-0.05-0.125-0.075-0.189c-1.111-2.793-2.182-5.472-3.212-8.039c-0.075-0.186-0.15-0.375-0.225-0.56    c-0.296-0.736-0.587-1.461-0.876-2.177c-0.106-0.263-0.211-0.523-0.316-0.783c-0.28-0.694-0.558-1.384-0.832-2.059    c-0.082-0.202-0.162-0.398-0.243-0.599c-0.497-1.226-0.983-2.421-1.457-3.586c-0.128-0.315-0.259-0.636-0.386-0.947    c-0.186-0.454-0.367-0.896-0.549-1.341c-0.196-0.48-0.392-0.956-0.584-1.424c-0.072-0.175-0.147-0.36-0.219-0.534    c-0.058-0.14-0.111-0.269-0.168-0.408c-0.866-2.104-1.689-4.087-2.47-5.952c-0.006-0.015-0.013-0.03-0.019-0.045    c-0.416-0.993-0.823-1.963-1.214-2.887c-0.203-0.479-0.403-0.95-0.599-1.412l42.245,31.574l-17.652,7.499    c-0.031,0.013-0.063,0.026-0.094,0.04l-7.37,3.131C215.533,354.955,215.124,353.919,214.716,352.889z M232.606,398.797    c-1.481-3.843-2.973-7.708-4.468-11.569c-2.338-6.039-4.571-11.781-6.708-17.251l2.798-1.189l11.432,13.289L232.606,398.797z     M256.145,459.735c-0.215-0.446-0.471-0.867-0.767-1.259c-3.388-8.955-7.688-20.286-12.447-32.753l7-38.325h12.138l7,38.325    C264.082,438.784,259.603,450.594,256.145,459.735z M264.881,372.404h-17.762l-8.405-9.77L256,355.291l17.286,7.343    L264.881,372.404z M283.862,387.228c-1.495,3.861-2.987,7.726-4.468,11.569l-3.054-16.721l11.432-13.289l2.798,1.189    C288.433,375.446,286.2,381.189,283.862,387.228z M312.58,315.18c-0.371,0.876-0.757,1.795-1.15,2.733    c-0.051,0.122-0.103,0.245-0.154,0.368c-0.389,0.93-0.785,1.88-1.195,2.869c-0.027,0.065-0.055,0.134-0.082,0.2    c-0.354,0.853-0.717,1.733-1.086,2.63c-0.069,0.168-0.134,0.323-0.203,0.492c-0.082,0.201-0.17,0.414-0.253,0.617    c-0.164,0.4-0.331,0.808-0.499,1.216c-0.206,0.503-0.411,1.004-0.622,1.519c-0.067,0.164-0.136,0.335-0.204,0.5    c-0.522,1.279-1.058,2.597-1.606,3.951c-0.086,0.212-0.171,0.42-0.257,0.635c-0.271,0.669-0.547,1.352-0.824,2.039    c-0.108,0.269-0.217,0.537-0.326,0.809c-0.286,0.709-0.575,1.427-0.867,2.155c-0.082,0.203-0.165,0.411-0.247,0.615    c-1.017,2.532-2.072,5.173-3.167,7.925c-0.036,0.091-0.072,0.18-0.108,0.272c-0.354,0.889-0.712,1.793-1.074,2.704    c-0.067,0.17-0.135,0.34-0.203,0.511c-0.374,0.942-0.751,1.894-1.133,2.861c-0.007,0.018-0.014,0.036-0.021,0.053    c-0.412,1.042-0.826,2.09-1.248,3.16l-7.377-3.134c-0.026-0.011-0.052-0.022-0.077-0.033l-17.662-7.503l42.245-31.574    C312.982,314.23,312.782,314.7,312.58,315.18z M330.814,292.21c-0.001,0-0.003-0.001-0.004-0.001    c-0.006-0.002-0.013-0.003-0.019-0.006c-4.35-1.305-8.99-1.089-13.157,0.498c-3.019-3.294-5.118-8.157-5.118-12.861v-21.835    c22.469,3.312,39.908,20.297,44.232,42.029L330.814,292.21z M389.001,398.375c0,13.124-10.677,23.8-23.8,23.8    s-23.8-10.676-23.8-23.8c0-13.124,10.677-23.8,23.8-23.8S389.001,385.251,389.001,398.375z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-3">Specific Specialty</h3>
+                <a href="{% url 'SpecificWardSpecificSpec' %}" data-page-id="24047208" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-btn-3">VIEW</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-20 u-icon-4" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 443.294 443.294" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-35e9"></use></svg><svg class="u-svg-content" viewBox="0 0 443.294 443.294" id="svg-35e9"><path d="m221.647 0c-122.214 0-221.647 99.433-221.647 221.647s99.433 221.647 221.647 221.647 221.647-99.433 221.647-221.647-99.433-221.647-221.647-221.647zm0 415.588c-106.941 0-193.941-87-193.941-193.941s87-193.941 193.941-193.941 193.941 87 193.941 193.941-87 193.941-193.941 193.941z"></path><path d="m235.5 83.118h-27.706v144.265l87.176 87.176 19.589-19.589-79.059-79.059z"></path></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-4">Specific Specialty<br>Specific Doctor
+                </h3>
+                <a href="{% url 'SpecWardSpecSpecSpecDoc' %}" data-page-id="24047208" class="u-btn u-btn-round u-button-style u-custom-color-3 u-radius-22 u-text-hover-white u-btn-4">VIEW</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-clearfix u-custom-color-2 u-footer u-footer" id="sec-0810"><div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-image u-image-circle u-preserve-proportions u-image-1" style="background-image: url('{% static 'images/download.jpg' %}');" alt="" data-image-width="224" data-image-height="225"></div>
+        <p class="u-align-center u-custom-font u-text u-text-1">Created by RSET Students, 2017-2021 Batch<br>
+        </p>
+        <div class="u-border-1 u-border-white u-expanded-width u-line u-line-horizontal u-opacity u-opacity-50 u-line-1"></div>
+      </div></footer>
+    <span style="height: 64px; width: 64px; margin-left: 0px; margin-right: auto; margin-top: 0px; background-image: none; right: 20px; bottom: 20px" class="u-back-to-top u-custom-color-7 u-icon u-icon-circle u-opacity u-opacity-85 u-spacing-10" data-href="#">
+        <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 551.13 551.13"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d98"></use></svg>
+        <svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98" data-color="rgb(255, 255, 255)"><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
+    </span>
+  </body>
+</html>

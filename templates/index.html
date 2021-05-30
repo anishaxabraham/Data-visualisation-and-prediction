@@ -1,0 +1,253 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <style>
+      @font-face {
+        font-family: 'Roboto-Bold';
+        font-style: normal;
+        font-weight: 400;
+        src: url({% static 'fonts/Roboto-Bold.ttf' %});
+      }@font-face {
+        font-family: 'Roboto-Light';
+        font-style: normal;
+        font-weight: 400;
+        src: url({% static 'fonts/Roboto-Light.ttf' %});
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="File Upload">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="{% static 'css/nicepage.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'css/FileUpload.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'js/nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 3.15.3, nicepage.com">
+    
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "Site2",
+		"url": "index.html",
+		"logo": "images/images.jpg"
+}</script>
+    <meta property="og:title" content="File Upload">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="{% url 'index' %}">
+    <meta property="og:url" content="{% url 'index' %}">
+  </head>
+  <body data-home-page="{% url 'FileUpload' %}" data-home-page-title="File Upload" class="u-body"><header class="u-clearfix u-header" id="sec-af53"><div class="u-clearfix u-sheet u-sheet-1">
+        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1" data-responsive-from="XL">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-custom-color-3 u-text-hover-palette-2-base u-white" href="#" style="font-size: calc(1em + 32px); background-image: none; color: rgb(237, 20, 90) !important;">
+              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 480.026 480.026" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-36ed"></use></svg>
+              <svg class="u-svg-content" viewBox="0 0 480.026 480.026" x="0px" y="0px" id="svg-36ed" style="enable-background:new 0 0 480.026 480.026;"><g><g><path d="M475.922,229.325l-144-160c-3.072-3.392-7.36-5.312-11.904-5.312h-96c-6.304,0-12.032,3.712-14.624,9.472    c-2.56,5.792-1.504,12.544,2.72,17.216l134.368,149.312l-134.368,149.28c-4.224,4.704-5.312,11.456-2.72,17.216    c2.592,5.792,8.32,9.504,14.624,9.504h96c4.544,0,8.832-1.952,11.904-5.28l144-160    C481.394,244.653,481.394,235.373,475.922,229.325z"></path>
+</g>
+</g><g><g><path d="M267.922,229.325l-144-160c-3.072-3.392-7.36-5.312-11.904-5.312h-96c-6.304,0-12.032,3.712-14.624,9.472    c-2.56,5.792-1.504,12.544,2.72,17.216l134.368,149.312L4.114,389.293c-4.224,4.704-5.312,11.456-2.72,17.216    c2.592,5.792,8.32,9.504,14.624,9.504h96c4.544,0,8.832-1.952,11.904-5.28l144-160    C273.394,244.653,273.394,235.373,267.922,229.325z"></path>
+</g>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Logout' %}" style="padding: 10px 20px;">Logout</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'FileUpload' %}" style="padding: 10px 20px;">File Upload</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'MainObjectives' %}" style="padding: 10px 20px;">Objectives</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'DemoObjectives' %}" style="padding: 10px 20px;">Demographics Analysis </a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'PharmObjectives' %}" style="padding: 10px 20px;">Pharmacy Diagnostics</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'OPObjectives' %}" style="padding: 10px 20px;">IP Analysis and OP Consultation</a>
+            </li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-container-style u-custom-color-2 u-inner-container-layout u-opacity u-opacity-75 u-sidenav">
+              <div class="u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-left u-custom-font u-nav u-popupmenu-items u-spacing-9 u-text-active-white u-text-hover-palette-5-light-1 u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Logout' %}" style="padding: 10px 20px;">Logout</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'FileUpload' %}" style="padding: 10px 20px;">File Upload</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'MainObjectives' %}" style="padding: 10px 20px;">Objectives</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'DemoObjectives' %}" style="padding: 10px 20px;">Demographics Analysis </a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'PharmObjectives' %}" style="padding: 10px 20px;">Pharmacy Diagnostics</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'OPObjectives' %}" style="padding: 10px 20px;">IP Analysis and OP Consultation</a>
+                </li></ul>
+              </div>
+            </div>
+            <div class="u-grey-15 u-menu-overlay u-opacity u-opacity-25"></div>
+          </div>
+        </nav>
+        <a href="{% url 'MainObjectives' %}" data-page-id="216961435" class="u-image u-logo u-image-1" data-image-width="200" data-image-height="97" title="Main Objectives">
+          <img src="{% static 'images/images.jpg' %}" class="u-logo-image u-logo-image-1" data-image-width="170.5386">
+        </a>
+      </div></header>
+    <section class="u-align-center u-clearfix u-section-1" id="sec-b307">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h2 class="u-align-center u-custom-font u-text u-text-1">File Upload</h2>
+        <div class="u-expanded-width u-list u-list-1">
+          <div class="u-repeater u-repeater-1">
+            <div class="u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-1"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-21 u-icon-1" data-animation-name="bounceIn" data-animation-duration="1500" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-2a2a"></use></svg><svg class="u-svg-content" viewBox="0 0 512 512" id="svg-2a2a"><g><path d="m346 332h30v30h-30z"></path><path d="m286 512c49.626 0 90-40.374 90-90v-1.509c34.192-6.968 60-37.271 60-73.491 0-41.355-33.645-75-75-75s-75 33.645-75 75c0 36.219 25.808 66.522 60 73.491v1.509c0 33.084-26.916 60-60 60s-60-26.916-60-60v-150.838c67.406-7.486 120-64.793 120-134.162v-92c0-24.813-20.187-45-45-45h-45v30h45c8.271 0 15 6.729 15 15v92c0 57.897-47.103 105-105 105s-105-47.103-105-105v-92c0-8.271 6.729-15 15-15h45v-30h-45c-24.813 0-45 20.187-45 45v92c0 69.369 52.594 126.676 120 134.162v150.838c0 49.626 40.374 90 90 90zm30-165c0-24.813 20.187-45 45-45s45 20.187 45 45-20.187 45-45 45-45-20.187-45-45z"></path>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-2">OP Consultation</h3>
+                <p class="u-align-center u-custom-font u-text u-text-3">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                <a href="{% url 'FileUpload' %}" data-page-id="468116689" class="u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-3 u-radius-50 u-btn-1">UPLOAD<br>
+                </a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-2"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-21 u-icon-2" data-animation-name="bounceIn" data-animation-duration="1500" data-animation-delay="0" data-animation-direction="">
+            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 128 128" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-2323"></use></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 128 128" id="svg-2323"><path d="m44.1 63.9h39.8c4.6 0 8.4-3.9 8.4-8.8v-1.8c0-5.6-2.8-10.7-7.3-13.3-2.4-1.4-5.4-2.9-8.8-4.1 2.8-3 4.6-6.9 4.6-11.3-0.1-9.2-7.6-16.6-16.8-16.6s-16.7 7.4-16.7 16.5c0 4.4 1.7 8.4 4.6 11.3-3.4 1.2-6.5 2.7-8.8 4.1-4.5 2.7-7.3 7.7-7.3 13.3v1.8c-0.1 4.9 3.7 8.9 8.3 8.9zm19.9-48c4.8 0 8.7 3.9 8.7 8.6 0 4.8-3.9 8.6-8.7 8.6s-8.7-3.9-8.7-8.6 3.9-8.6 8.7-8.6zm-20.3 37.3c0-2.7 1.3-5.3 3.4-6.5 4-2.3 10.2-5.1 16.9-5.1s12.9 2.8 16.9 5.1c2.1 1.2 3.4 3.8 3.4 6.5v1.8c0 0.6-0.3 0.9-0.4 0.9h-39.8c-0.1 0-0.4-0.3-0.4-0.9v-1.8zm5.5 40.9c-2.4-1.4-5.4-2.9-8.8-4.1 2.8-3 4.6-7 4.6-11.3 0-9.1-7.5-16.5-16.7-16.5s-16.7 7.4-16.7 16.5c0 4.4 1.7 8.4 4.6 11.3-3.4 1.2-6.5 2.7-8.8 4.1-4.6 2.6-7.4 7.7-7.4 13.3v1.8c0 4.9 3.8 8.8 8.4 8.8h39.8c4.6 0 8.4-3.9 8.4-8.8v-1.8c0-5.6-2.8-10.7-7.4-13.3zm-20.9-24.1c4.8 0 8.7 3.9 8.7 8.6 0 4.8-3.9 8.6-8.7 8.6s-8.7-3.9-8.7-8.6 3.9-8.6 8.7-8.6zm20.3 39.2c0 0.6-0.3 0.9-0.4 0.9h-39.8c-0.1 0-0.4-0.3-0.4-0.9v-1.8c0-2.7 1.3-5.3 3.4-6.5 4-2.3 10.2-5.1 16.9-5.1s12.9 2.8 16.9 5.1c2.1 1.2 3.4 3.8 3.4 6.5v1.8zm72.1-15.1c-2.4-1.4-5.4-2.9-8.8-4.1 2.8-3 4.6-6.9 4.6-11.3 0-9.1-7.5-16.5-16.7-16.5s-16.7 7.4-16.7 16.5c-0.1 4.3 1.7 8.3 4.5 11.3-3.4 1.2-6.5 2.7-8.8 4.1-4.5 2.7-7.3 7.7-7.3 13.3v1.8c0 4.9 3.8 8.8 8.4 8.8h39.8c4.6 0 8.4-3.9 8.4-8.8v-1.8c-0.1-5.6-2.9-10.7-7.4-13.3zm-21-24.1c4.8 0 8.7 3.9 8.7 8.6 0 4.8-3.9 8.6-8.7 8.6s-8.7-3.9-8.7-8.6 3.9-8.6 8.7-8.6zm20.3 39.2c0 0.6-0.3 0.9-0.4 0.9h-39.8c-0.1 0-0.4-0.3-0.4-0.9v-1.8c0-2.7 1.3-5.3 3.4-6.5 4-2.3 10.2-5.1 16.9-5.1s12.9 2.8 16.9 5.1c2.1 1.2 3.4 3.8 3.4 6.5v1.8z"></path></svg>
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-4">Discharge TAT</h3>
+                <p class="u-align-center u-custom-font u-text u-text-5">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                <a href="{% url 'FileUpload' %}" data-page-id="468116689" class="u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-3 u-radius-50 u-btn-2">UPLOAD<br>
+                </a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-3"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-21 u-icon-3" data-animation-name="bounceIn" data-animation-duration="1500" data-animation-delay="0" data-animation-direction="">
+            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 128 128" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-54aa"></use></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 128 128" id="svg-54aa"><polygon points="128 3 17 3 17 24 25 24 25 11 120 11 120 24 111 24 111 32 120 32 120 95 111 95 111 103 128 103"></polygon><path d="m25 24h-25v100h111v-100h-86zm78 92h-95v-63h95v63zm0-71h-95v-13h95v13z"></path><path d="m46 74v21h-21v-21h21m8-8h-37v37h37v-37z"></path><rect x="62" y="66" width="32" height="8"></rect><rect x="62" y="81" width="32" height="8"></rect><rect x="62" y="95" width="32" height="8"></rect></svg>
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-6">Discharge Analysis</h3>
+                <p class="u-align-center u-custom-font u-text u-text-7">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                <a href="{% url 'FileUpload' %}" data-page-id="468116689" class="u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-3 u-radius-50 u-btn-3">UPLOAD<br>
+                </a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-4"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-21 u-icon-4" data-animation-name="bounceIn" data-animation-duration="1500" data-animation-delay="0" data-animation-direction="">
+            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 128 128" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-4fee"></use></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 128 128" id="svg-4fee"><path d="m119.4 104.8-17.8-30.8c1.6-1.3 2.5-3.4 2.4-5.6l-1.3-10.7 7.4-7.6c2.3-2.3 2.4-6.1 0.2-8.8l-7.4-7.9 1.5-10.8c0.3-3.2-2-6.4-5.2-7l-10.7-2.1-5.2-9.4c-1.1-2.2-3.3-3.5-5.8-3.5-0.8 0-1.5 0.1-2.3 0.4l-10.4 4.4-9.6-4.6c-0.9-0.5-1.9-0.7-3-0.7-0.6 0-1.3 0.1-1.9 0.3-1.6 0.5-2.9 1.5-3.8 3l-5.3 9.4-10.7 1.9c-3.4 0.6-5.7 3.7-5.4 7.1l1.3 10.7-7.4 7.6c-2.3 2.3-2.4 6.1-0.2 8.8l7.4 7.9-1.5 10.8c-0.3 2.3 0.8 4.6 2.7 5.9l-17.9 31.3c-0.7 1.1-0.7 2.6-0.1 3.9v0.1l0.1 0.1c0.8 1.2 2 1.9 3.4 1.9h19.2l8.7 14.9c0.8 1.2 2 1.9 3.4 1.9s2.8-0.8 3.5-2l16.6-27.9 16.8 28.3c0.8 1.2 2 1.9 3.4 1.9s2.8-0.8 3.5-2l8.7-15.3h19.2c1.4 0 2.7-0.8 3.4-1.9 0.9-1.1 0.9-2.7 0.1-3.9zm-34.9 11.3-17.9-30.5 7.4 3.6c0.9 0.4 1.8 0.6 2.9 0.6 2.4 0 4.6-1.2 5.7-3.2l5.3-9.4 5.8-1 15.4 26.6h-14.7c-1.4 0-2.8 0.8-3.5 2l-6.4 11.3zm-40-0.3-6.5-11c-0.8-1.2-2-1.9-3.4-1.9h-14.8l15.5-27 5.4 0.9 5.2 9.3c1.1 2.2 3.3 3.5 5.8 3.5 0.8 0 1.5-0.1 2.3-0.4l0.5-0.1 3.9-1.8 1.4 2.4-15.3 26.1zm-11.9-78.1c1.4-1.4 2.1-3.4 1.8-5.3l-1.2-10 10.2-1.8c1.9-0.3 3.6-1.6 4.6-3.2l4.9-8.8 9 4.3c0.9 0.5 1.9 0.7 2.9 0.7s2-0.2 2.9-0.7l9.2-4.1 4.9 9.1c1.1 1.7 2.7 2.9 4.5 3.1l10 1.9-1.4 10c-0.3 1.9 0.3 4 1.7 5.3l6.9 7.3-7 7.1c-1.5 1.4-2.1 3.4-1.8 5.3l1.2 9.9-9.9 1.6c-2 0.3-3.7 1.6-4.6 3.2l-4.9 8.8-9-4.3c-0.9-0.5-1.9-0.7-2.9-0.7s-2 0.2-2.9 0.7l-9.2 4.2-4.9-9c-1.1-1.7-2.8-2.9-4.6-3.1l-10.1-1.8 1.4-10c0.3-1.9-0.3-4-1.7-5.3l-6.8-7.4 6.8-7z"></path><path d="m64.5 71c14.7 0 26.6-11.7 26.6-26.2 0-14.4-11.9-26.2-26.6-26.2s-26.6 11.7-26.6 26.2 11.9 26.2 26.6 26.2zm0-44.4c10.2 0 18.6 8.2 18.6 18.3s-8.3 18.3-18.6 18.3c-10.2 0-18.6-8.2-18.6-18.3s8.4-18.3 18.6-18.3z"></path></svg>
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-8">Doctor-wise</h3>
+                <p class="u-align-center u-custom-font u-text u-text-9">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                <a href="{% url 'FileUpload' %}" data-page-id="468116689" class="u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-3 u-radius-50 u-btn-4">UPLOAD<br>
+                </a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-5"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-21 u-icon-5" data-animation-name="bounceIn" data-animation-duration="1500" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-b33f"></use></svg><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" id="svg-b33f" style="enable-background:new 0 0 512 512;"><g><g><path d="M498.791,161.127c-17.545-17.546-46.094-17.545-63.645,0.004c-5.398,5.403-39.863,39.896-45.128,45.166V87.426    c0-12.02-4.681-23.32-13.181-31.819L334.412,13.18C325.913,4.68,314.612,0,302.592,0H45.018c-24.813,0-45,20.187-45,45v422    c0,24.813,20.187,45,45,45h300c24.813,0,45-20.187,45-45V333.631L498.79,224.767C516.377,207.181,516.381,178.715,498.791,161.127    z M300.019,30c2.834,0,8.295-0.491,13.18,4.393l42.426,42.427c4.76,4.761,4.394,9.978,4.394,13.18h-60V30z M360.018,467    c0,8.271-6.728,15-15,15h-300c-8.271,0-15-6.729-15-15V45c0-8.271,6.729-15,15-15h225v75c0,8.284,6.716,15,15,15h75v116.323    c0,0-44.254,44.292-44.256,44.293l-21.203,21.204c-1.646,1.646-2.888,3.654-3.624,5.863l-21.214,63.64    c-1.797,5.39-0.394,11.333,3.624,15.35c4.023,4.023,9.968,5.419,15.35,3.624l63.64-21.213c2.209-0.736,4.217-1.977,5.863-3.624    l1.82-1.82V467z M326.378,312.427l21.213,21.213l-8.103,8.103l-31.819,10.606l10.606-31.82L326.378,312.427z M368.8,312.422    l-21.213-21.213c11.296-11.305,61.465-61.517,72.105-72.166l21.213,21.213L368.8,312.422z M477.573,203.558l-15.463,15.476    l-21.213-21.213l15.468-15.481c5.852-5.849,15.366-5.848,21.214,0C483.426,188.19,483.457,197.673,477.573,203.558z"></path>
+</g>
+</g><g><g><path d="M285.018,150h-210c-8.284,0-15,6.716-15,15s6.716,15,15,15h210c8.284,0,15-6.716,15-15S293.302,150,285.018,150z"></path>
+</g>
+</g><g><g><path d="M225.018,210h-150c-8.284,0-15,6.716-15,15s6.716,15,15,15h150c8.284,0,15-6.716,15-15S233.302,210,225.018,210z"></path>
+</g>
+</g><g><g><path d="M225.018,270h-150c-8.284,0-15,6.716-15,15s6.716,15,15,15h150c8.284,0,15-6.716,15-15S233.302,270,225.018,270z"></path>
+</g>
+</g><g><g><path d="M225.018,330h-150c-8.284,0-15,6.716-15,15s6.716,15,15,15h150c8.284,0,15-6.716,15-15S233.302,330,225.018,330z"></path>
+</g>
+</g><g><g><path d="M285.018,422h-90c-8.284,0-15,6.716-15,15s6.716,15,15,15h90c8.284,0,15-6.716,15-15S293.302,422,285.018,422z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-10">Admission Analysis</h3>
+                <p class="u-align-center u-custom-font u-text u-text-11">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                <a href="{% url 'FileUpload' %}" data-page-id="468116689" class="u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-3 u-radius-50 u-btn-5">UPLOAD<br>
+                </a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+              <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-6"><span class="u-custom-color-2 u-icon u-icon-circle u-spacing-21 u-icon-6" data-animation-name="bounceIn" data-animation-duration="1500" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 480 480" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-e261"></use></svg><svg class="u-svg-content" viewBox="0 0 480 480" id="svg-e261"><path d="m472 144h-8v-88c0-4.417969-3.582031-8-8-8h-136v-40c0-4.417969-3.582031-8-8-8h-144c-4.417969 0-8 3.582031-8 8v40h-136c-4.417969 0-8 3.582031-8 8v88h-8c-4.417969 0-8 3.582031-8 8v32c0 4.417969 3.582031 8 8 8h8v280c0 4.417969 3.582031 8 8 8h432c4.417969 0 8-3.582031 8-8v-280h8c4.417969 0 8-3.582031 8-8v-32c0-4.417969-3.582031-8-8-8zm-152-80h128v80h-128zm-144-48h128v128h-128zm-144 48h128v80h-128zm360 400h-104v-64h104zm0-80h-104v-80h104zm0-96h-104v-40h104zm56 176h-40v-224c0-4.417969-3.582031-8-8-8h-120c-4.417969 0-8 3.582031-8 8v224h-240v-272h416zm16-288h-448v-16h448zm0 0"></path><path d="m80 408h144c4.417969 0 8-3.582031 8-8v-40c0-4.417969-3.582031-8-8-8h-8v-112c0-4.417969-3.582031-8-8-8h-112c-4.417969 0-8 3.582031-8 8v112h-8c-4.417969 0-8 3.582031-8 8v40c0 4.417969 3.582031 8 8 8zm24-160h96v104h-96zm-16 120h128v24h-128zm0 0"></path><path d="m368 352c4.417969 0 8-3.582031 8-8v-8c0-4.417969-3.582031-8-8-8s-8 3.582031-8 8v8c0 4.417969 3.582031 8 8 8zm0 0"></path><path d="m280 56h-16v-16c0-4.417969-3.582031-8-8-8h-32c-4.417969 0-8 3.582031-8 8v16h-16c-4.417969 0-8 3.582031-8 8v32c0 4.417969 3.582031 8 8 8h16v16c0 4.417969 3.582031 8 8 8h32c4.417969 0 8-3.582031 8-8v-16h16c4.417969 0 8-3.582031 8-8v-32c0-4.417969-3.582031-8-8-8zm-8 32h-16c-4.417969 0-8 3.582031-8 8v16h-16v-16c0-4.417969-3.582031-8-8-8h-16v-16h16c4.417969 0 8-3.582031 8-8v-16h16v16c0 4.417969 3.582031 8 8 8h16zm0 0"></path><path d="m133.65625 301.65625 24-24c3.03125-3.140625 2.988281-8.128906-.097656-11.214844-3.085938-3.085937-8.074219-3.128906-11.214844-.097656l-24 24c-2.078125 2.007812-2.914062 4.984375-2.179688 7.78125.730469 2.796875 2.914063 4.980469 5.710938 5.710938 2.796875.734374 5.773438-.101563 7.78125-2.179688zm0 0"></path><path d="m170.34375 282.34375-40 40c-2.078125 2.007812-2.914062 4.984375-2.179688 7.78125.730469 2.796875 2.914063 4.980469 5.710938 5.710938 2.796875.734374 5.773438-.101563 7.78125-2.179688l40-40c3.03125-3.140625 2.988281-8.128906-.097656-11.214844-3.085938-3.085937-8.074219-3.128906-11.214844-.097656zm0 0"></path></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-12">Pharmacy</h3>
+                <p class="u-align-center u-custom-font u-text u-text-13">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                <a href="{% url 'FileUpload' %}" data-page-id="468116689" class="u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-3 u-radius-50 u-btn-6">UPLOAD<br>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-center u-clearfix u-section-2" id="sec-cd66">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-layout-grid u-list u-list-1">
+          <div class="u-align-center u-repeater u-repeater-1">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item u-list-item-1">
+              <div class="u-container-layout u-similar-container u-container-layout-1"><span class="u-custom-color-1 u-icon u-icon-circle u-spacing-21 u-icon-1" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 24 24" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-97a0"></use></svg><svg class="u-svg-content" viewBox="0 0 24 24" id="svg-97a0"><path d="m21 19c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zm0-3c-.552 0-1 .448-1 1s.448 1 1 1 1-.448 1-1-.448-1-1-1z"></path><path d="m17.5 19h-15c-.827 0-1.5-.673-1.5-1.5v-1c0-.276.224-.5.5-.5s.5.224.5.5v1c0 .275.225.5.5.5h4.535c.244-1.694 1.705-3 3.465-3h4c1.93 0 3.5 1.57 3.5 3.5 0 .276-.224.5-.5.5zm-9.45-1h8.9c-.232-1.14-1.243-2-2.45-2h-4c-1.207 0-2.218.86-2.45 2z"></path><path d="m22.5 24h-21c-.827 0-1.5-.673-1.5-1.5v-1c0-.827.673-1.5 1.5-1.5h21c.827 0 1.5.673 1.5 1.5v1c0 .827-.673 1.5-1.5 1.5zm-21-3c-.275 0-.5.225-.5.5v1c0 .275.225.5.5.5h21c.275 0 .5-.225.5-.5v-1c0-.275-.225-.5-.5-.5z"></path><path d="m17 7h-2.5c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2.391l5.82-2.685c.172-.084.289-.263.289-.455v-1.36c0-.275-.225-.5-.5-.5h-21c-.275 0-.5.225-.5.5v1.41c0 .178.1.347.255.429l4.873 2.661h3.372c.276 0 .5.224.5.5s-.224.5-.5.5h-3.5c-.084 0-.166-.021-.239-.062l-4.98-2.72c-.473-.25-.781-.765-.781-1.308v-1.41c0-.827.673-1.5 1.5-1.5h21c.827 0 1.5.673 1.5 1.5v1.36c0 .571-.338 1.104-.861 1.358l-5.93 2.735c-.065.031-.137.047-.209.047z"></path><path d="m12 9c-1.654 0-3-1.346-3-3v-1c0-1.654 1.346-3 3-3s3 1.346 3 3v1c0 1.654-1.346 3-3 3zm0-6c-1.103 0-2 .897-2 2v1c0 1.103.897 2 2 2s2-.897 2-2v-1c0-1.103-.897-2-2-2z"></path><path d="m12 11c-.276 0-.5-.224-.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276-.224.5-.5.5z"></path><path d="m13.542 12.5c-.276 0-.5-.224-.5-.5 0-.552-.448-1-1-1s-1 .448-1 1c0 .276-.224.5-.5.5s-.5-.224-.5-.5c0-1.103.897-2 2-2s2 .897 2 2c0 .276-.224.5-.5.5z"></path></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-1">Surgery Analysis</h3>
+                <p class="u-align-center u-custom-font u-text u-text-2">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                <a href="{% url 'FileUpload' %}" data-page-id="468116689" class="u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-3 u-radius-50 u-btn-1">UPLOAD</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item u-list-item-2">
+              <div class="u-container-layout u-similar-container u-container-layout-2"><span class="u-custom-color-1 u-icon u-icon-circle u-spacing-21 u-icon-2" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-50fa"></use></svg><svg class="u-svg-content" viewBox="0 0 512 512" id="svg-50fa"><g id="XMLID_1020_"><g id="XMLID_4_"><path id="XMLID_768_" d="m455.072 416.952c36.795-45.465 56.928-102.128 56.928-160.952 0-24.06-3.336-47.876-9.916-70.789-1.523-5.309-7.066-8.375-12.371-6.852-5.309 1.524-8.376 7.063-6.852 12.371 6.064 21.119 9.139 43.079 9.139 65.27 0 39.208-9.711 77.369-27.902 111.345-4.015-20.684-22.256-36.352-44.096-36.352h-.003c-14.349 0-27.138 6.77-35.369 17.274-1.268-.749-2.546-1.474-3.843-2.158-.831-2.565-1.259-5.24-1.259-7.984 0-12.203 5.854-23.825 15.66-31.088 14.765-10.934 23.579-28.431 23.579-46.804 0-19.885-9.979-38.187-26.693-48.958l-26.017-16.767c-18.661-12.026-29.802-32.46-29.802-54.66 0-35.856 29.171-65.027 65.027-65.027h6.091c13.498 11.341 25.866 24.296 36.833 38.766 3.336 4.402 9.608 5.266 14.01 1.93 4.401-3.336 5.265-9.608 1.929-14.01-23.377-30.845-53.923-56.39-88.335-73.874-36.089-18.335-75.053-27.633-115.81-27.633-68.38 0-132.667 26.629-181.019 74.98-48.353 48.353-74.981 112.64-74.981 181.02 0 58.888 20.128 115.48 56.934 160.949-33.384 13.815-56.934 46.731-56.934 85.051 0 5.522 4.477 10 10 10h492c5.523 0 10-4.481 10-10.004 0-38.314-23.547-71.228-56.928-85.044zm-338.144-41.032v8.335c0 13.745-11.182 24.927-24.93 24.927-13.745 0-24.927-11.182-24.927-24.927v-8.335c0-13.745 11.182-24.927 24.927-24.927h.003c13.745 0 24.927 11.182 24.927 24.927zm20 8.335v-8.335c0-3.24-.353-6.398-1.008-9.446 11.393-7.135 24.424-10.888 38.083-10.888 13.653 0 26.682 3.752 38.076 10.888-.655 3.047-1.008 6.206-1.008 9.446v8.335c0 12.256 4.938 23.376 12.923 31.49-21.703 8.079-39.56 24.124-49.994 44.566-10.435-20.442-28.292-36.488-49.995-44.566 7.985-8.114 12.923-19.234 12.923-31.49zm62-74.414c0 13.745-11.182 24.927-24.93 24.927-13.745 0-24.927-11.182-24.927-24.927v-8.335c0-13.745 11.182-24.927 24.927-24.927h.003c13.745 0 24.927 11.182 24.927 24.927zm82 66.079v8.335c0 13.745-11.182 24.927-24.93 24.927-13.745 0-24.927-11.182-24.927-24.927v-8.335c0-13.745 11.182-24.927 24.927-24.927h.003c13.745 0 24.927 11.182 24.927 24.927zm20 8.335v-8.335c0-3.24-.353-6.397-1.007-9.444 11.394-7.137 24.426-10.89 38.086-10.89 13.633 0 26.677 3.747 38.074 10.88-.656 3.05-1.01 6.211-1.01 9.454v8.335c0 12.256 4.938 23.376 12.923 31.49-21.703 8.079-39.56 24.124-49.994 44.566-10.435-20.442-28.292-36.488-49.995-44.566 7.985-8.114 12.923-19.234 12.923-31.49zm62.003-74.414c0 13.745-11.182 24.927-24.93 24.927-13.745 0-24.926-11.182-24.926-24.927v-8.335c0-13.745 11.182-24.927 24.926-24.927h.003c13.745 0 24.926 11.182 24.926 24.927v8.335zm57.068 41.152h.003c13.745 0 24.927 11.182 24.927 24.927v8.335c0 13.745-11.182 24.927-24.93 24.927-13.745 0-24.927-11.182-24.927-24.927v-8.335c0-13.745 11.182-24.927 24.927-24.927zm-163.999-330.993c45.934 0 89.606 12.975 126.917 36.842-38.082 8.421-66.662 42.43-66.662 83.008 0 29.028 14.567 55.747 38.968 71.471l26.017 16.767c10.975 7.073 17.527 19.091 17.527 32.147 0 12.063-5.788 23.552-15.482 30.731-.467.346-.91.717-1.365 1.076-4.359-20.242-22.389-35.463-43.914-35.463h-.003c-24.772 0-44.926 20.154-44.926 44.927v8.335c0 12.243 4.928 23.352 12.898 31.464-5.045 1.874-9.931 4.189-14.609 6.955-8.231-10.5-21.018-17.266-35.363-17.266h-.003c-14.345 0-27.131 6.766-35.362 17.265-4.677-2.764-9.562-5.079-14.606-6.953 7.97-8.111 12.898-19.221 12.898-31.464v-8.335c0-24.772-20.154-44.927-44.927-44.927h-.003c-24.773 0-44.927 20.154-44.927 44.927v8.335c0 12.243 4.928 23.352 12.898 31.463-5.044 1.874-9.929 4.189-14.606 6.954-8.231-10.499-21.017-17.265-35.362-17.265h-.003c-21.845 0-40.09 15.676-44.099 36.367-11.378-21.241-19.445-44.113-23.882-67.874 17.192-1.876 33.466-8.194 47.58-18.577 17.056-12.547 29.403-29.862 35.708-50.075 4.999-16.026 14.771-29.778 28.263-39.771l1.563-1.158c13.532-10.022 21.611-26.06 21.611-42.899 0-29.437-23.948-53.385-53.385-53.385h-20.458c43.031-45.32 103.821-73.622 171.099-73.622zm-188.083 93.621h37.441c18.408 0 33.385 14.977 33.385 33.385 0 10.531-5.052 20.56-13.517 26.829l-1.563 1.158c-16.921 12.532-29.18 29.782-35.45 49.886-9.493 30.436-35.863 51.652-67.018 54.792-.784-7.829-1.195-15.726-1.195-23.671 0-53.437 17.863-102.775 47.917-142.379zm-47.226 378.379c4.882-34.983 34.998-62 71.305-62h.008c36.307 0 66.422 27.014 71.304 62zm164 0c4.882-34.983 34.998-62 71.305-62h.008c36.307 0 66.422 27.014 71.304 62zm164 0c4.882-34.983 34.998-62 71.305-62h.008c36.307 0 66.422 27.014 71.304 62z"></path><path id="XMLID_1169_" d="m202.349 222.524c9.332 8.893 21.428 13.602 33.811 13.602 5.56 0 11.178-.949 16.629-2.896 21.71-7.753 36.296-28.452 36.296-51.505v-19.085c0-24.614-20.025-44.64-44.64-44.64-16.3 0-31.296 8.878-39.137 23.169l-12.143 22.134c-10.706 19.513-6.929 43.866 9.184 59.221zm8.35-49.602 12.143-22.134c4.327-7.888 12.605-12.788 21.603-12.788 13.586 0 24.64 11.054 24.64 24.64v19.085c0 14.623-9.252 27.752-23.023 32.671-10.432 3.723-21.896 1.292-29.916-6.35-9.556-9.108-11.796-23.551-5.447-35.124z"></path><path id="XMLID_1178_" d="m476.12 156.05c2.63 0 5.21-1.07 7.07-2.93s2.93-4.44 2.93-7.07c0-2.64-1.07-5.21-2.93-7.07-1.86-1.859-4.44-2.93-7.07-2.93s-5.21 1.07-7.07 2.93-2.93 4.44-2.93 7.07 1.07 5.21 2.93 7.07c1.86 1.859 4.44 2.93 7.07 2.93z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-3">Demographic Analysis</h3>
+                <p class="u-align-center u-custom-font u-text u-text-4">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                <a href="{% url 'FileUpload' %}" data-page-id="468116689" class="u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-3 u-radius-50 u-btn-2">UPLOAD</a>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-list-item u-repeater-item u-list-item-3">
+              <div class="u-container-layout u-similar-container u-container-layout-3"><span class="u-custom-color-1 u-icon u-icon-circle u-spacing-21 u-icon-3" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 511.999 511.999" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-112a"></use></svg><svg class="u-svg-content" viewBox="0 0 511.999 511.999" x="0px" y="0px" id="svg-112a" style="enable-background:new 0 0 511.999 511.999;"><g><g><path d="M447.234,147.093c-0.109,0-0.22,0-0.328,0c-6.564,0.033-12.946,1.025-19.079,2.957    C407.263,85.725,358.95,32.912,302.481,13.936c-15.581-5.234-31.563-7.852-47.51-7.769c-39.79,0.199-78.165,16.696-110.98,47.709    c-27.69,26.17-48.902,60.624-60.431,97.892c-6.153-1.873-12.592-2.819-19.109-2.768c-17.301,0.086-33.533,6.904-45.705,19.2    C6.572,180.493-0.086,196.792,0.001,214.094c0.086,17.301,6.905,33.532,19.2,45.705c12.294,12.172,28.555,18.795,45.894,18.742    c6.774-0.033,13.527-1.146,19.947-3.258c12.088,33.117,33.538,61.925,61.747,83.092c-4.322,3.471-8.499,7.119-12.458,10.958    c-18.665,18.1-33.369,40.478-42.519,64.714c-1.805,4.781,0.607,10.12,5.389,11.925c1.077,0.407,2.18,0.598,3.266,0.598    c3.738,0,7.259-2.282,8.658-5.987c8.195-21.704,21.365-41.748,38.089-57.965c4.933-4.783,10.222-9.262,15.759-13.385    c2.275,1.35,4.677,2.704,7.304,4.111c1.39,0.744,2.885,1.097,4.359,1.097c3.303,0,6.498-1.773,8.166-4.888    c2.412-4.506,0.714-10.113-3.791-12.525c-2.988-1.6-5.646-3.113-8.122-4.627c-34.41-21.034-59.758-53.777-71.373-92.197    c-0.799-2.646-2.741-4.796-5.292-5.86c-2.551-1.063-5.443-0.934-7.889,0.357c-6.633,3.503-13.809,5.298-21.334,5.336    c-0.079,0-0.154,0-0.234,0c-25.402,0-46.135-20.604-46.261-46.035c-0.062-12.358,4.693-24,13.389-32.782    c8.694-8.782,20.289-13.651,32.646-13.713c7.341-0.031,14.408,1.616,20.963,4.909c2.498,1.257,5.431,1.315,7.977,0.159    c2.546-1.155,4.434-3.399,5.135-6.107c17.73-68.449,78.587-141.407,156.447-141.794c13.914-0.086,27.876,2.221,41.523,6.807    c53.673,18.036,99.334,70.407,116.328,133.421c0.728,2.699,2.638,4.926,5.195,6.055c2.556,1.129,5.489,1.044,7.975-0.238    c6.523-3.359,13.559-5.082,20.914-5.118c0.079,0,0.154,0,0.234,0c25.402,0,46.135,20.604,46.261,46.035    c0.127,25.51-20.525,46.368-46.035,46.496c-7.574,0.033-14.719-1.687-21.386-5.122c-2.458-1.268-5.351-1.368-7.891-0.278    s-4.459,3.26-5.232,5.912c-12.204,41.866-41.332,77.726-79.914,98.386c-4.504,2.413-6.201,8.021-3.789,12.525    c2.412,4.506,8.019,6.202,12.525,3.789c2.454-1.314,4.873-2.686,7.258-4.108c5.536,4.123,10.824,8.6,15.756,13.384    c16.723,16.218,29.894,36.261,38.089,57.965c1.399,3.705,4.919,5.987,8.658,5.987c1.086,0,2.19-0.193,3.267-0.598    c4.781-1.805,7.193-7.145,5.388-11.925c-9.151-24.236-23.853-46.612-42.52-64.714c-3.966-3.847-8.151-7.5-12.482-10.975    c28.505-21.478,50.417-51.105,62.378-84.782c6.443,2.05,13.189,3.129,19.985,3.061c35.715-0.179,64.625-29.379,64.448-65.094    C511.822,175.935,482.799,147.093,447.234,147.093z"></path>
+</g>
+</g><g><g><circle cx="256.002" cy="259.677" r="9.253"></circle>
+</g>
+</g><g><g><path d="M302.882,282.184h-2.122c-0.984-4.052-4.627-7.063-8.982-7.063c-5.11,0-9.253,4.143-9.253,9.253v0.164l-0.357,0.357    c-4.751,4.752-10.571,8.048-16.916,9.674v-10.196c0-5.11-4.143-9.253-9.253-9.253s-9.253,4.143-9.253,9.253v10.194    c-5.961-1.527-11.454-4.538-16.039-8.839v-1.357c0-5.11-4.143-9.253-9.253-9.253c-4.353,0-7.993,3.01-8.98,7.06h-2.123    c-5.11,0-9.253,4.143-9.253,9.253s4.143,9.253,9.253,9.253h1.851v2.194c0,5.11,4.143,9.253,9.253,9.253    c3.424,0,6.404-1.864,8.006-4.627c5.384,2.939,11.225,4.951,17.323,5.965c0.369,4.773,4.349,8.534,9.216,8.534    s8.848-3.76,9.216-8.533c6.46-1.073,12.626-3.273,18.272-6.501c1.511,3.056,4.651,5.163,8.291,5.163    c5.11,0,9.253-4.143,9.253-9.253v-2.19h1.851c5.11,0,9.253-4.143,9.253-9.253C312.135,286.327,307.992,282.184,302.882,282.184z"></path>
+</g>
+</g><g><g><path d="M399.969,195.466c-3.953-35.029-19.678-71.232-43.143-99.328c-28.524-34.154-64.332-52.962-100.829-52.962    s-72.304,18.81-100.829,52.962c-23.467,28.099-39.192,64.304-43.143,99.335c-1.134,10.054-0.581,20.209,1.645,30.184l8.195,36.726    c2.16,9.682,10.593,16.438,20.605,16.438c0.007,0,0.016,0,0.025,0c23.47,0,42.564,19.095,42.564,42.663    c-0.027,11.592,6.802,21.815,17.398,26.043c12.803,5.108,26.144,8.325,39.813,9.612c0.484,2.73,2.16,5.044,4.476,6.386v7.963    c-13.586,0.396-26.188,1.659-36.181,3.659c-7.217,1.444-15.078,3.553-20.138,7.51c-3.045-3.536-8.328-4.282-12.257-1.573    c-6.417,4.425-12.498,9.411-18.076,14.82c-12.753,12.367-23.16,27.251-30.427,43.417c-4.09,2.008-6.913,6.203-6.913,11.068    c0,6.814,5.523,12.337,12.337,12.337s12.337-5.523,12.337-12.337c0-1.388-0.239-2.718-0.663-3.964    c6.298-13.852,15.255-26.612,26.211-37.234c4.116-3.992,8.563-7.699,13.225-11.088c4.102,8.602,18.559,11.932,31.41,13.862    c5.061,0.76,9.766-2.723,10.525-7.776c0.759-5.053-2.723-9.766-7.776-10.525c-1.567-0.234-3.008-0.475-4.332-0.717    c7.536-1.372,17.871-2.554,30.717-2.947v3.575c-2.764,1.6-4.627,4.582-4.627,8.006c0,3.424,1.863,6.404,4.627,8.006v2.617    c-13.586,0.396-26.188,1.659-36.181,3.659c-11.875,2.375-25.506,6.544-25.506,17.797c0,12.524,17.397,16.743,32.554,19.021    c5.061,0.762,9.766-2.723,10.525-7.776c0.759-5.053-2.723-9.766-7.776-10.525c-1.567-0.234-3.008-0.475-4.332-0.717    c7.536-1.372,17.871-2.554,30.717-2.947v3.575c-2.764,1.6-4.627,4.582-4.627,8.006c0,3.424,1.863,6.404,4.627,8.006v2.617    c-13.586,0.396-26.188,1.659-36.181,3.659c-11.875,2.375-25.507,6.544-25.507,17.797c0,12.524,17.397,16.743,32.554,19.021    c5.061,0.759,9.766-2.723,10.525-7.776c0.759-5.053-2.723-9.766-7.776-10.525c-1.567-0.234-3.008-0.475-4.332-0.717    c7.536-1.372,17.871-2.554,30.717-2.947v3.575c-2.764,1.6-4.627,4.582-4.627,8.006c0,3.424,1.863,6.404,4.627,8.006v5.565    c0,5.11,4.143,9.253,9.253,9.253s9.253-4.143,9.253-9.253v-5.565c2.764-1.6,4.627-4.582,4.627-8.006    c0-3.424-1.863-6.404-4.627-8.006v-3.575c12.846,0.394,23.181,1.576,30.717,2.947c-1.324,0.242-2.765,0.482-4.332,0.717    c-5.053,0.76-8.535,5.472-7.776,10.525c0.69,4.588,4.636,7.88,9.14,7.88c0.458,0,0.92-0.033,1.387-0.104    c15.157-2.278,32.554-6.497,32.554-19.021c0-11.253-13.63-15.422-25.506-17.797c-9.993-1.999-22.595-3.263-36.181-3.659v-2.617    c2.764-1.6,4.627-4.582,4.627-8.006c0-3.424-1.863-6.404-4.627-8.006v-3.575c12.846,0.394,23.181,1.576,30.717,2.947    c-1.324,0.242-2.765,0.482-4.332,0.717c-5.053,0.76-8.535,5.472-7.776,10.525c0.69,4.588,4.636,7.88,9.14,7.88    c0.458,0,0.92-0.033,1.387-0.104c15.157-2.277,32.554-6.497,32.554-19.021c0-11.253-13.63-15.422-25.506-17.797    c-9.993-1.999-22.595-3.263-36.181-3.659v-2.617c2.764-1.6,4.627-4.582,4.627-8.006c0-3.424-1.863-6.404-4.627-8.006v-3.575    c12.846,0.394,23.181,1.576,30.717,2.947c-1.324,0.242-2.765,0.482-4.332,0.717c-5.053,0.76-8.535,5.472-7.776,10.525    c0.69,4.588,4.636,7.88,9.14,7.88c0.458,0,0.92-0.033,1.387-0.104c12.851-1.931,27.308-5.261,31.41-13.862    c4.66,3.389,9.109,7.095,13.224,11.088c10.954,10.624,19.911,23.382,26.21,37.234c-0.423,1.246-0.662,2.576-0.662,3.964    c0,6.814,5.523,12.337,12.337,12.337c6.814,0,12.337-5.523,12.337-12.337c-0.001-4.865-2.824-9.059-6.914-11.068    c-7.267-16.166-17.672-31.05-30.427-43.417c-5.578-5.409-11.66-10.396-18.076-14.82c-3.93-2.709-9.212-1.963-12.257,1.573    c-5.06-3.957-12.921-6.066-20.138-7.51c-9.993-1.999-22.595-3.263-36.181-3.659v-7.963c2.316-1.342,3.992-3.654,4.476-6.386    c13.669-1.287,27.01-4.504,39.814-9.613c10.595-4.228,17.424-14.45,17.397-26.141c0-23.47,19.095-42.564,42.651-42.564    c0.007,0,0.014,0,0.021,0c9.917,0,18.349-6.756,20.511-16.436l8.199-36.719C400.55,215.685,401.106,205.524,399.969,195.466z     M380.263,221.635l-8.199,36.718c-0.258,1.157-1.266,1.964-2.555,1.964c-0.001,0-0.002,0-0.002,0    c-33.675,0-61.07,27.397-61.07,61.07v0.142c0.01,3.955-2.248,7.414-5.749,8.81c-14.867,5.931-30.573,8.938-46.685,8.938    c-16.111,0-31.818-3.008-46.684-8.937c-3.504-1.398-5.762-4.857-5.752-8.811v-0.142c0-33.674-27.397-61.07-61.185-61.07    c0,0-0.001,0-0.002,0c-1.183,0-2.191-0.807-2.449-1.963l-8.193-36.725c-0.19-0.85-0.357-1.703-0.516-2.555    c1.673,2.386,4.44,3.949,7.575,3.949c5.11,0,9.253-4.143,9.253-9.253c0-25.511,20.754-46.266,46.266-46.266    s46.266,20.754,46.266,46.266s-20.754,46.266-46.266,46.266c-5.11,0-9.253,4.143-9.253,9.253c0,5.11,4.143,9.253,9.253,9.253    c28.835,0,53.32-18.944,61.687-45.038c8.367,26.093,32.852,45.038,61.687,45.038c5.11,0,9.253-4.143,9.253-9.253    c0-5.11-4.143-9.253-9.253-9.253c-25.511,0-46.266-20.754-46.266-46.266s20.754-46.266,46.266-46.266    c25.511,0,46.266,20.754,46.266,46.266c0,5.11,4.143,9.253,9.253,9.253c3.134,0,5.899-1.562,7.573-3.945    C380.62,219.931,380.453,220.783,380.263,221.635z M317.687,148.998c-28.835,0-53.32,18.944-61.687,45.038    c-8.367-26.093-32.852-45.038-61.687-45.038c-33.23,0-60.682,25.157-64.344,57.424c-0.032-2.962,0.116-5.923,0.448-8.872    c3.557-31.521,17.756-64.159,38.958-89.547c24.946-29.869,55.71-46.319,86.625-46.319s61.679,16.45,86.625,46.319    c21.201,25.386,35.4,58.021,38.957,89.54c0.333,2.949,0.48,5.911,0.448,8.873C378.365,174.153,350.915,148.998,317.687,148.998z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-5">Radiology</h3>
+                <p class="u-align-center u-custom-font u-text u-text-6">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                <a href="{% url 'FileUpload' %}" data-page-id="468116689" class="u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-3 u-radius-50 u-btn-3">UPLOAD</a>
+              </div>
+            </div>
+            <div class="u-container-style u-list-item u-repeater-item u-list-item-4">
+              <div class="u-container-layout u-similar-container u-container-layout-4"><span class="u-custom-color-1 u-icon u-icon-circle u-spacing-21 u-icon-4" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction=""><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-62ba"></use></svg><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" id="svg-62ba" style="enable-background:new 0 0 512 512;"><g><g><path d="M257.761,55.137c-1.367-5.35-6.805-8.581-12.163-7.215c-21.566,5.508-39.506,19.041-50.512,38.106    c-2.762,4.783-1.123,10.898,3.66,13.659c1.575,0.909,3.294,1.342,4.99,1.342c3.456,0,6.818-1.794,8.669-5.002    c8.291-14.362,21.837-24.565,38.142-28.728C255.897,65.934,259.127,60.489,257.761,55.137z"></path>
+</g>
+</g><g><g><path d="M279.573,46.479c-0.15-0.027-0.301-0.052-0.461-0.076c-5.452-0.836-10.519,2.903-11.365,8.353    c-0.844,5.44,2.9,10.54,8.327,11.413c0.578,0.101,1.153,0.149,1.722,0.149c4.739,0,8.948-3.385,9.826-8.212    C288.609,52.672,285.006,47.467,279.573,46.479z"></path>
+</g>
+</g><g><g><path d="M460.964,302.797c-7.361-2.103-15.322-3.966-23.761-5.578c-0.477-0.124-0.964-0.212-1.457-0.265    c-24.6-4.586-53.165-7.054-82.946-7.054c-16.499,0-32.614,0.767-47.904,2.22l61.789-107.018    c15.51-26.865,19.602-58.267,11.521-88.424c-8.081-30.155-27.327-55.304-54.191-70.813c-55.667-32.138-127.1-13-159.237,42.665    L90.195,197.708c-0.007,0.011-0.015,0.02-0.021,0.031c-0.006,0.011-0.011,0.022-0.017,0.033L15.573,326.955    C0.062,353.82-4.029,385.222,4.051,415.379c8.08,30.155,27.326,55.305,54.191,70.813c17.775,10.262,37.736,15.538,57.982,15.538    c8.53,0,17.112-0.936,25.6-2.832c22.589-5.043,42.897-16.489,58.644-32.805c7.914,9.019,22.642,16.642,44.08,22.766    c29.049,8.299,67.491,12.87,108.248,12.87c40.756,0,79.199-4.571,108.247-12.87c33.809-9.659,50.952-23.036,50.952-39.759v-106.51    c0.002-0.021,0.004-0.04,0.004-0.061C512,325.84,494.829,312.472,460.964,302.797z M352.801,309.898    c15.741,0.001,31.076,0.72,45.589,2.082l-127.03,56.066c-7.536-1.463-14.651-3.134-21.229-5.013    c-29.969-8.563-36.531-17.705-36.531-20.505s6.563-11.942,36.532-20.506C277.497,314.205,313.959,309.898,352.801,309.898z     M182.096,78.53c26.624-46.115,85.803-61.97,131.919-35.346c22.238,12.839,38.175,33.676,44.874,58.671    c6.698,24.996,3.316,51.009-9.522,73.248L280.021,295.21c-0.271,0.042-0.536,0.089-0.807,0.132L112.494,199.08L182.096,78.53z     M193.6,342.477c0,0.019-0.003,0.035-0.003,0.054V443.38c-29.004,38.408-83.428,49.701-125.354,25.493    c-22.239-12.839-38.176-33.676-44.874-58.671c-6.698-24.996-3.315-51.009,9.523-73.248l69.603-120.556l147.233,85.011    c-1.725,0.451-3.429,0.911-5.094,1.387C210.806,312.462,193.637,325.813,193.6,342.477z M492,449.101    c0,2.814-6.548,11.988-36.447,20.53c-27.312,7.803-63.804,12.101-102.754,12.101c-38.95,0-75.443-4.298-102.755-12.101    c-29.9-8.542-36.447-17.716-36.447-20.53v-79.266c7.979,4.649,18.335,8.798,31.039,12.428c7.846,2.242,16.388,4.202,25.448,5.884    c0.44,0.111,0.886,0.194,1.339,0.244c24.243,4.4,52.225,6.768,81.377,6.768c40.647,0,79.061-4.58,108.164-12.895    c12.702-3.629,23.056-7.777,31.036-12.426V449.101z M492,342.531v0.027c-0.041,2.831-6.654,11.94-36.529,20.478    c-27.366,7.817-63.829,12.124-102.671,12.124c-15.063,0-29.757-0.655-43.713-1.904l126.717-55.928    c6.953,1.388,13.548,2.95,19.666,4.698c29.916,8.546,36.506,17.671,36.531,20.489C492.001,342.52,492,342.525,492,342.531z"></path>
+</g>
+</g></svg>
+            
+            
+          </span>
+                <h3 class="u-align-center u-custom-font u-text u-text-palette-5-dark-2 u-text-7">Top 100 Medicines</h3>
+                <p class="u-align-center u-custom-font u-text u-text-8">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                <a href="{% url 'FileUpload' %}" data-page-id="468116689" class="u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-3 u-radius-50 u-btn-4">UPLOAD</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-clearfix u-custom-color-2 u-footer u-footer" id="sec-0810"><div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-image u-image-circle u-preserve-proportions u-image-1" style="background-image: url({% static 'images/download.jpg' %});" alt="" data-image-width="224" data-image-height="225"></div>
+        <p class="u-align-center u-custom-font u-text u-text-1">Created by RSET Students, 2017-2021 Batch<br>
+        </p>
+        <div class="u-border-1 u-border-white u-expanded-width u-line u-line-horizontal u-opacity u-opacity-50 u-line-1"></div>
+      </div></footer>
+    <span style="height: 64px; width: 64px; margin-left: 0px; margin-right: auto; margin-top: 0px; background-image: none; right: 20px; bottom: 20px" class="u-back-to-top u-custom-color-7 u-icon u-icon-circle u-opacity u-opacity-85 u-spacing-10" data-href="#">
+        <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 551.13 551.13"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d98"></use></svg>
+        <svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98" data-color="rgb(255, 255, 255)"><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
+    </span>
+  </body>
+</html>
