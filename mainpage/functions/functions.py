@@ -1046,13 +1046,8 @@ def payments_analysis():
 
 def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
     alt.data_transformers.disable_max_rows()
-    df=pd.read_excel("mainpage/static/fileupload/Pharmacy.xlsx",engine='openpyxl')    #create dataframe
-
-    dip=pd.DataFrame()   #create dataframe
-    dip['OrderId']=df['OrderId']
-    dip['OrderingStation']=df['OrderingStation']
-    dip['PriorityName']=df['PriorityName']
-    dip["OrderDate"] = pd.to_datetime(df["OrderDateTime"]).dt.strftime("%Y-%m-%d") #string to date format
+    dip=pd.read_excel("mainpage/static/fileupload/Pharmacy.xlsx",usecols=['OrderId','OrderDateTime','UHId','OrderingStation','PriorityName'],engine='openpyxl')    #create dataframe
+    dip["OrderDate"] = pd.to_datetime(dip["OrderDateTime"]).dt.strftime("%Y-%m-%d") #string to date format
 
     dip=dip.dropna()
     dip=dip.loc[(dip["OrderDate"]>=start_date) & (dip["OrderDate"]<=end_date)]
@@ -1065,30 +1060,34 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
         if category=='Priority':
             #Pharmacy Orders From Each Nursing Stations- PRIORITY FILTER
             pharmacy1_chart=alt.Chart(dip2).mark_bar().transform_filter(selection
-                ).encode(alt.X('Counts',title='Number of Orders'),
-                alt.Y('PriorityName:N',axis=alt.Axis(title=None)),
-                alt.Color('PriorityName', legend=alt.Legend(title="Priority Name")),
-                tooltip = [
-                        alt.Tooltip('Counts'),
-                        alt.Tooltip('OrderingStation'),
-                        alt.Tooltip('PriorityName')
-                        ]
-            ).facet(row=alt.Row('OrderingStation:N', header=alt.Header(title='Ordering Station',labelOrient='top',labelAngle=0,labelFontSize=15,titleFontSize=20,labelFontStyle='Arial'))
-            ).add_selection(selection
-            ).configure_title(fontSize=25, font='Arial',dy=-25, anchor='middle', color='black'
-            ).configure_axis(domainWidth=2,
-            domainColor='black',#domain is axis...axis width and color
-            labelFontSize=10, titleFontSize=15,
-            ).configure_legend(titleFontSize=15,labelFontSize=15
-            ).properties(title='Pharmacy orders from each Nursing Station: Priority-wise',width=500,height=500).interactive()
+            ).encode(alt.X('Counts',title='Number of Orders'),
+            alt.Y('PriorityName:N',title=None,axis=alt.Axis(labels=False)),
+            alt.Color('PriorityName', legend=alt.Legend(title="Priority Name")),
+            tooltip = [
+                    alt.Tooltip('Counts'),
+                    alt.Tooltip('OrderingStation'),
+                    alt.Tooltip('PriorityName')
+                    ]
+        ).facet(row=alt.Row('OrderingStation:N', header=alt.Header(title='Ordering Station',labelOrient='top',labelAngle=0,labelFontSize=15,titleFontSize=20,labelFontStyle='Arial'))
+        ).add_selection(selection
+        ).configure_title(fontSize=20, font='Arial',dy=-25, anchor='middle', color='black'
+        ).configure_axis(domainWidth=2,
+        domainColor='black',#domain is axis...axis width and color
+        labelFontSize=15, titleFontSize=20,
+        ).configure_legend(titleFontSize=15,labelFontSize=15
+        ).properties(title='Pharmacy Orders From Each Nursing Station: Priority-wise'
+        ).interactive()
             g_json=pharmacy1_chart.to_json()
             return g_json
 
         elif category=='OrderingStation':
-            #Pharmacy Orders From Each Nursing Stations- ORDERING STATION
-            data=pd.DataFrame()
-            data=dip
+            #Pharmacy Orders From Each Nursing Stations- ORDERING STATION              
+            data = pd.read_excel('mainpage/static/fileupload/Pharmacy.xlsx',usecols=['OrderDateTime','OrderId','OrderingStation','PriorityName'])
+            data["OrderDate"] = pd.to_datetime(data["OrderDateTime"]).dt.strftime("%Y-%m-%d") #convert to desired date format
+            data.drop("OrderDateTime",axis=1,inplace=True)
+
             df_stationwise= data.groupby('OrderingStation')
+
             df=df_stationwise.count() #df has stations and their order counts
             df=df.rename(columns={'OrderId':'OrderCount'})  #No. of orders from each station
             df['Station']=df.index #converting station to column from being index
@@ -1096,6 +1095,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
             df1=data.groupby(['OrderingStation', 'PriorityName']).size().reset_index(name='Counts')  #df1 has stations and their order counts for each priority
             df1=df1.rename(columns={'OrderingStation':'Station'}) #so that matches with station in df 
             df1=df1.dropna()
+
             select_station = alt.selection(type="single", encodings=['y'])
 
             station_chart = alt.Chart(df).mark_bar().encode(
@@ -1106,25 +1106,28 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
                             alt.Tooltip('OrderCount',title='Number of Orders'),
                             alt.Tooltip('Station',title='Ordering Station'),
                             ]
-            ).add_selection(select_station)  #so that we can select a station
+            ).add_selection(select_station).interactive()    #so that we can select a station
 
 
             priority_chart = alt.Chart(df1).mark_bar(size=30).encode(
                     alt.Y('Counts',title='Number of Orders'),
                     alt.X("PriorityName",title='Priority'),
-                    color=alt.Color('PriorityName',title='Priority'),
+                    color=alt.Color('PriorityName',title='Priority', scale=alt.Scale(scheme='tableau10')),
                     tooltip = [
                         alt.Tooltip('PriorityName',title='Priority Name'),
                         alt.Tooltip('Counts',title='Number of Orders'),
                         ]
-                ).transform_filter(select_station).properties(width=100)  #apply filter
-            pharmacy2_chart = alt.hconcat(station_chart, priority_chart).configure_title(fontSize=25, font='Calibri',dy=-25, anchor='middle', color='black'
+                ).transform_filter(select_station).properties(width=100).interactive()   #apply filter
+
+
+
+            pharmacy2_chart = alt.hconcat(station_chart, priority_chart).configure_title(fontSize=20, font='Calibri',dy=-25, anchor='middle', color='black'
                     ).configure_axis(domainWidth=2,
                     domainColor='black',#domain is axis...axis width and color
-                    labelFontSize=10, titleFontSize=15,
+                    labelFontSize=15, titleFontSize=20,
                     ).configure_legend(titleFontSize=15,labelFontSize=15
                     ).properties(
-                title="Pharmacy orders from each Nursing Station and Priority-wise",width=800,height=500
+                title="Pharmacy Orders From Each Nursing Station and Priority-wise"
             )
             g_json=pharmacy2_chart.to_json()
             return g_json
@@ -1141,12 +1144,12 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
                         alt.Tooltip('PriorityName')
                         ]
             ).facet(row=alt.Row('OrderingStation:N', header=alt.Header(title='Ordering Station',labelFontSize=15,titleFontSize=20,labelFontStyle='Arial',labelOrient='top',labelAngle=0)) #categorize orders based on ordering station
-            ).configure_title(fontSize=25, font='Arial',dy=-25, anchor='middle', color='black'
+            ).configure_title(fontSize=20, font='Arial',dy=-25, anchor='middle', color='black'
             ).configure_axis(domainWidth=2,
             domainColor='black',#domain is axis...axis width and color
-            labelFontSize=10, titleFontSize=15,
+            labelFontSize=15, titleFontSize=20,
             ).configure_legend(titleFontSize=15,labelFontSize=15
-            ).properties(title='Pharmacy orders from each Nursing Station (All Priorities)',width=600,height=500
+            ).properties(title='Pharmacy Orders From Each Nursing Station: All Priorities'
             ).interactive()
             g_json=pharmacy3_chart.to_json()
             return g_json
@@ -1215,10 +1218,10 @@ def topmedicines_analysis(category,start_date,end_date):
                         ]
                     ).interactive()
 
-            topmedicines_chart1 = alt.hconcat()
+            topmedicines_chart1 = alt.vconcat()
 
             for station in stations:
-                topmedicines_chart1 |= base.transform_filter(datum.Station == station).properties(title=station)
+                topmedicines_chart1 &= base.transform_filter(datum.Station == station).properties(title=station)
             topmedicines_chart1.properties(title='Top Movable Medicines in Each Station',width=2000,height=500)
             g_json=topmedicines_chart1.to_json()
             return g_json
