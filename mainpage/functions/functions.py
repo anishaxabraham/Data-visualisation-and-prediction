@@ -1042,10 +1042,10 @@ def payments_analysis():
     print (a)
     print(b)
 
-################################## amala's team  ########################
+################################## amala's team  ##################################################################################################
 
 def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
-    
+    alt.data_transformers.disable_max_rows()
     df=pd.read_excel("mainpage/static/fileupload/Pharmacy.xlsx",engine='openpyxl')    #create dataframe
 
     dip=pd.DataFrame()   #create dataframe
@@ -1152,7 +1152,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
             return g_json
 
 def pharmacyorders_per_patient_analysis(start_date,end_date):
-   
+    alt.data_transformers.disable_max_rows()
     df=pd.read_excel("mainpage/static/fileupload/Pharmacy.xlsx",usecols=['OrderDateTime','UHId'],engine='openpyxl')    #create dataframe
     df["date2"] = pd.to_datetime(df["OrderDateTime"]).dt.strftime("%Y-%m-%d") #string to date format
     #------------creating a dataframe with columns- date, patientcount, ordercount---------
@@ -1191,6 +1191,7 @@ def pharmacyorders_per_patient_analysis(start_date,end_date):
         return g_json
 
 def topmedicines_analysis(category,start_date,end_date):
+    alt.data_transformers.disable_max_rows()
     df=pd.read_excel("mainpage/static/fileupload/Top100Medicines.xlsx",usecols=['ItemName', 'Quantity','Unit', 'ItemCatagory','Station','BillDateTime'],engine='openpyxl')    #create dataframe
     df["Date"] = pd.to_datetime(df["BillDateTime"]).dt.strftime("%Y-%m-%d") # to desired date format
     df=df.dropna()
@@ -1246,6 +1247,7 @@ def topmedicines_analysis(category,start_date,end_date):
             
 
 def drugstock_analysis(category,start_date,end_date):
+    alt.data_transformers.disable_max_rows()
     df=pd.read_excel("mainpage/static/fileupload/Top100Medicines.xlsx",usecols=['ItemName', 'Quantity','Unit', 'ItemCatagory','Station','BillDateTime'],engine='openpyxl')    #create dataframe
     df["Date"] = pd.to_datetime(df["BillDateTime"]).dt.strftime("%Y-%m-%d") # to desired date format
     df=df.dropna()
@@ -1297,6 +1299,7 @@ def drugstock_analysis(category,start_date,end_date):
 
 
 def radiology_analysis(test,start_date,end_date):
+    alt.data_transformers.disable_max_rows()
     df=pd.read_excel("mainpage/static/fileupload/Radiology.xlsx",usecols=['RegistrationNo','sex', 'Age','Item Name',"Bill Datetime"],engine='openpyxl')
     df=df.loc[df['Item Name'] == test]
 
@@ -1414,3 +1417,5 @@ def surgery_analysis(category,start_date,end_date):
             g_json=surgery_chart2.to_json()
             return g_json
 
+
+################################## varsha's team  ##################################################################################################
