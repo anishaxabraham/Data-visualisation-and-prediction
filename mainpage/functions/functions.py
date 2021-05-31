@@ -1068,15 +1068,15 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
                     alt.Tooltip('OrderingStation'),
                     alt.Tooltip('PriorityName')
                     ]
-        ).facet(row=alt.Row('OrderingStation:N', header=alt.Header(title='Ordering Station',labelOrient='top',labelAngle=0,labelFontSize=15,titleFontSize=20,labelFontStyle='Arial'))
-        ).add_selection(selection
-        ).configure_title(fontSize=20, font='Arial',dy=-25, anchor='middle', color='black'
-        ).configure_axis(domainWidth=2,
-        domainColor='black',#domain is axis...axis width and color
-        labelFontSize=15, titleFontSize=20,
-        ).configure_legend(titleFontSize=15,labelFontSize=15
-        ).properties(title='Pharmacy Orders From Each Nursing Station: Priority-wise'
-        ).interactive()
+            ).facet(row=alt.Row('OrderingStation:N', header=alt.Header(title='Ordering Station',labelOrient='top',labelAngle=0,labelFontSize=15,titleFontSize=20,labelFontStyle='Arial'))
+            ).add_selection(selection
+            ).configure_title(fontSize=20, font='Arial',dy=-25, anchor='middle', color='black'
+            ).configure_axis(domainWidth=2,
+            domainColor='black',#domain is axis...axis width and color
+            labelFontSize=15, titleFontSize=20,
+            ).configure_legend(titleFontSize=15,labelFontSize=15
+            ).properties(title='Pharmacy Orders From Each Nursing Station: Priority-wise'
+            ).interactive()
             g_json=pharmacy1_chart.to_json()
             return g_json
 
