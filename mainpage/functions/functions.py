@@ -1084,6 +1084,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
             #Pharmacy Orders From Each Nursing Stations- ORDERING STATION              
             data = pd.read_excel('mainpage/static/fileupload/Pharmacy.xlsx',usecols=['OrderDateTime','OrderId','OrderingStation','PriorityName'])
             data["OrderDate"] = pd.to_datetime(data["OrderDateTime"]).dt.strftime("%Y-%m-%d") #convert to desired date format
+            data=data.loc[(data["OrderDate"]>=start_date) & (data["OrderDate"]<=end_date)]
             data.drop("OrderDateTime",axis=1,inplace=True)
 
             df_stationwise= data.groupby('OrderingStation')
