@@ -83,7 +83,7 @@ urlpatterns=[
     path('DrugStock_overall', views.drugstock_overall,name='DrugStock_overall'),
 
     path('Surgery_surgeryname', views.surgeryname,name='Surgery_surgeryname'), 
-    path('Surgery_surgerydept', views.surgerydept,name='Surgery_surgerydept')
+    path('Surgery_surgerydept', views.surgerydept,name='Surgery_surgerydept'),
 
 
     #all urls for varsha team
