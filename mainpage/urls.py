@@ -30,6 +30,17 @@ urlpatterns=[
     path('Radiology',views.Radiology,name='Radiology'),
     path('SurgeryObjectives',views.SurgeryObjectives,name='SurgeryObjectives'),
 
+
+    path('InsuranceObjectives',views.InsuranceObjectives,name='InsuranceObjectives'),
+    path('GenderObjectives',views.GenderObjectives,name='GenderObjectives'),
+    path('AgeObjectives',views.AgeObjectives,name='AgeObjectives'),
+    path('ApptDemoObjectives',views.ApptDemoObjectives,name='ApptDemoObjectives'),
+    path('WalkinDemoObjectives',views.WalkinDemoObjectives,name='WalkinDemoObjectives'), 
+    path('AreaObjectives',views.AreaObjectives,name='AreaObjectives'),
+
+
+
+
     path('Login',views.Login,name='Login'),
     path('Logout',views.Logout,name='Logout'),
 
@@ -74,5 +85,28 @@ urlpatterns=[
     path('Surgery_surgeryname', views.surgeryname,name='Surgery_surgeryname'), 
     path('Surgery_surgerydept', views.surgerydept,name='Surgery_surgerydept')
 
+
+    #all urls for varsha team
+
+    path('insurancedepartment',views.insurancedepartment,name='insurancedepartment'),
+    path('insuranceward',views.insuranceward,name='insuranceward'),
+    path('insurancearea',views.insurancearea,name='insurancearea'),
+
+
+    path('genderdepartment',views.genderdepartment,name='genderdepartment'),
+    path('genderward',views.genderward,name='genderward'),
+    path('genderarea',views.genderarea,name='genderarea'),
     
+    path('agedepartment',views.agedepartment,name='agedepartment'),
+    path('ageward',views.ageward,name='ageward'),
+    path('agearea',views.agearea,name='agearea'),
+
+    path('appointmentdepartment',views.appointmentdepartment,name='appointmentdepartment'),
+    path('appointmentarea',views.appointmentarea,name='appointmentarea'),
+
+    path('walkindepartment',views.walkindepartment,name='walkindepartment'),
+    path('walkinarea',views.walkinarea,name='walkinarea'),
+
+
+
 ]

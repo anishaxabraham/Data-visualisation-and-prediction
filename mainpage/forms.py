@@ -74,3 +74,25 @@ class Form6(forms.Form):
     Choice6.sort()
     selected_test= forms.ChoiceField(choices = Choice6)
 
+
+
+class datefilter(forms.Form):
+    start_date = forms.DateField(widget=DateInput(),label='From Date', input_formats=['%Y-%m-%d'])
+    end_date = forms.DateField(widget=DateInput(),label='To Date', input_formats=['%Y-%m-%d'])
+
+        
+class areaform(forms.Form):
+    df=pd.read_excel("mainpage/media/fileupload/DemographicAnalysis.xlsx",engine='openpyxl')
+    df=df.drop_duplicates(subset=["Department"])
+    df1=pd.DataFrame()
+    df1['Department']=df['Department']
+    Choice3=[]
+    for i,row in df1.iterrows():
+        s=df1.loc[i,'Department']
+        Choice3.append((s,s))
+    Choice3.sort()
+    Choice3.insert(0,("OVERALL","OVERALL"))
+    department = forms.ChoiceField(choices = Choice3)
+    start_date = forms.DateField(widget=DateInput(),label='From Date', input_formats=['%Y-%m-%d'])
+    end_date = forms.DateField(widget=DateInput(),label='To Date', input_formats=['%Y-%m-%d'])
+    

@@ -560,13 +560,12 @@ def surgerydept(request):
 
 ##########################################################################################
 
-def demographic(request):
-   
-    return render(request,'demographic.html')
+#def demographic(request):   
+#    return render(request,'demographic.html')
 
 
-def insuranceFilter(request):
-    return render(request,"insurancefilter.html")
+def InsuranceObjectives(request):
+    return render(request,"InsuranceObjectives.html")
 
 def insurancedepartment(request):
     category='Department'
@@ -579,7 +578,7 @@ def insurancedepartment(request):
             g_json=insurance_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 def insuranceward(request):
     category='Ward'
@@ -592,7 +591,7 @@ def insuranceward(request):
             g_json=insurance_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 def insurancearea(request):
     category='Area'
@@ -605,13 +604,13 @@ def insurancearea(request):
             g_json=insurance_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 
 
 
-def genderFilter(request):
-    return render(request,"genderfilter.html")
+def GenderObjectives(request):
+    return render(request,"GenderObjectives.html")
 
 
 def genderdepartment(request):
@@ -625,7 +624,7 @@ def genderdepartment(request):
             g_json=gender_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 def genderward(request):
     category='Ward'
@@ -638,7 +637,7 @@ def genderward(request):
             g_json=gender_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 def genderarea(request):
     category='Area'
@@ -651,15 +650,15 @@ def genderarea(request):
             g_json=gender_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
     
 
 
 
 
     
-def ageFilter(request):
-    return render(request,"agefilter.html")
+def AgeObjectives(request):
+    return render(request,"AgeObjectives.html")
 
 def agedepartment(request):
     category='Department'
@@ -672,7 +671,7 @@ def agedepartment(request):
             g_json=age_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 def ageward(request):
     category='Ward'
@@ -685,7 +684,7 @@ def ageward(request):
             g_json=age_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 def agearea(request):
     category='Area'
@@ -698,11 +697,11 @@ def agearea(request):
             g_json=age_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
     
-def appointmentFilter(request):
-    return render(request,"appointmentfilter.html")
+def ApptDemoObjectives(request):
+    return render(request,"ApptDemoObjectives.html")
 
 def appointmentdepartment(request):
     category='Department'
@@ -715,7 +714,7 @@ def appointmentdepartment(request):
             g_json=appointment_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 
 
@@ -730,11 +729,11 @@ def appointmentarea(request):
             g_json=appointment_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
     
-def walkinFilter(request):
-    return render(request,"walkinfilter.html")
+def WalkinDemoObjectives(request):
+    return render(request,"WalkinDemoObjectives.html")
 
 def walkindepartment(request):
     category='Department'
@@ -747,7 +746,7 @@ def walkindepartment(request):
             g_json=walkin_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 
 
@@ -762,12 +761,12 @@ def walkinarea(request):
             g_json=walkin_analysis(category,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 
     
 
-def areaFilter(request): 
+def AreaObjectives(request): 
     form=areaform()
     if request.method=="POST":
         form=areaform(request.POST)
@@ -778,7 +777,7 @@ def areaFilter(request):
             g_json=area_analysis(department,start_date,end_date)
             return render(request,'embed.html',{'g':g_json})
     else:
-        return render(request,'FilterForm.html', {'form':form})
+        return render(request,'FilterFormOpt.html', {'form':form})
 
 
 
