@@ -1423,3 +1423,728 @@ def surgery_analysis(category,start_date,end_date):
 
 
 ################################## varsha's team  ##################################################################################################
+#function2.py gender code commented
+###################################################
+
+
+
+def insurance_analysis(category,start_date,end_date): 
+    alt.data_transformers.disable_max_rows()
+    count=pd.DataFrame()  
+    count=count[0:0]
+    if category=='Department':
+        h=500
+        di=pd.read_excel("mainpage/media/fileupload/AdmissionAnalysis.xlsx",engine='openpyxl')
+        dip=pd.DataFrame()
+        dip['UHID']=di['UHID']
+        dip['Department']=di['Primary doctor Specialty']
+        dip['Insurance']=di['InsuranceCompany']
+
+        dip["Date"] = pd.to_datetime(di["Admission Date & Time"]).dt.strftime("%Y-%m-%d") #string to date format
+
+        dip=dip.dropna()
+        dip=dip.loc[(dip["Date"]>=start_date) & (dip["Date"]<=end_date)]
+        #print(dip)
+        #print("end",end_date)
+        '''
+        dip['Date'] = pd.to_datetime(di['Admission Date & Time']).dt.date
+        dip["Date2"] = pd.to_datetime(dip["Date"]).dt.strftime("%Y-%m-%d") 
+        dip=dip.dropna()
+        
+        after_start_date =dip["Date2"] >= start_date
+        before_end_date = dip["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dip = dip.loc[between_two_dates]
+        '''
+        #if (len(dip)!=0):
+        s=start_date
+        print(s)
+        print(len(dip))
+        count=dip.groupby(['Department']).size().to_frame(name='Percentage inflow').reset_index()
+        sum1=sum(count['Percentage inflow'])
+
+        for i,row in count.iterrows():
+                count.loc[i,'Percentage inflow']=count.at[i,'Percentage inflow']/sum1*100        
+
+        #print(df)
+    
+    elif category=='Ward':
+        #read ward file
+        h=500
+        di=pd.read_excel("mainpage/media/fileupload/AdmissionAnalysis.xlsx",engine='openpyxl')
+        dip=pd.DataFrame()
+        dip['UHID']=di['UHID']
+        dip['Ward']=di['Ward Name']
+        dip['Insurance']=di['InsuranceCompany']
+        dip=dip.dropna()        
+
+        dip['Date'] = pd.to_datetime(di['Admission Date & Time']).dt.date
+        dip["Date2"] = pd.to_datetime(dip["Date"]).dt.strftime("%Y-%m-%d") 
+        
+        after_start_date =dip["Date2"] >= start_date
+        before_end_date = dip["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dip = dip.loc[between_two_dates]
+
+        count=dip.groupby(['Ward']).size().to_frame(name='Percentage inflow').reset_index()
+        sum1=sum(count['Percentage inflow'])
+
+        for i,row in count.iterrows():
+                count.loc[i,'Percentage inflow']=count.at[i,'Percentage inflow']/sum1*100    
+        #print(df)
+
+    elif category=='Area': 
+        h=500
+        category="District"  
+        da=pd.read_excel("mainpage/media/fileupload/kerala pin codes.xlsx",engine='openpyxl')
+        df2=pd.DataFrame()
+        df2['pincode']=da['pincode']
+        df2['District']=da['Districtname']
+        df2=df2.drop_duplicates(subset=['pincode'])
+        di=pd.read_excel("mainpage/media/fileupload/AdmissionAnalysis.xlsx",engine='openpyxl')
+        dip=pd.DataFrame()
+        dip['UHID']=di['UHID']
+        dip['Insurance']=di['InsuranceCompany']
+        dip['City']=di['City']
+
+        dip['Date']= pd.to_datetime(di['Admission Date & Time']).dt.date  
+        dip["Date2"] = pd.to_datetime(dip["Date"]).dt.strftime("%Y-%m-%d")  #ymd format date stored in date column of df
+        dip=dip.dropna()
+        after_start_date =dip["Date2"] >= start_date
+        before_end_date = dip["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dip = dip.loc[between_two_dates]
+
+        dip= pd.merge(df2, dip, how='outer',left_on = 'District', right_on = 'City')
+        dip['District']=dip['District'].replace(np.NaN,"Other")
+        
+        count=dip.groupby(['District']).size().to_frame(name='Percentage inflow').reset_index()
+        sum1=sum(count['Percentage inflow'])
+        for i,row in count.iterrows():
+            count.loc[i,'Percentage inflow']=count.at[i,'Percentage inflow']/sum1*100            
+
+    insu_title="Insurance Analysis ("+category+")"
+
+    insu_chart=alt.Chart(count).mark_bar().encode(  
+
+        alt.X('Percentage inflow:Q',axis=alt.Axis(title='Percentage inflow(%)')),                                          
+        alt.Y(category),
+        tooltip = [alt.Tooltip(category), #hover info
+                   alt.Tooltip('Percentage inflow:Q',title='Percentage inflow(%)')]
+
+    ).configure_title(
+        fontSize=35,
+        font='Arial',
+        anchor='middle',#center title
+        color='black'
+    ).configure_axis(
+        domainWidth=2,
+        domainColor='black',#domain is axis...axis width and color
+        labelFontSize=15,
+        titleFontSize=20,
+
+    ).properties(
+        title=insu_title,
+        width = 500, #width and height of bars
+        height = h
+    ).interactive()
+    g_json=insu_chart.to_json()
+    return g_json
+    
+###########################################gender####################################################
+
+def gender_analysis(category,start_date,end_date):
+    alt.data_transformers.disable_max_rows()
+    if category=='Department':    
+        df=pd.read_excel("mainpage/media/fileupload/DemographicAnalysis.xlsx",engine='openpyxl')
+               
+        df['Date'] = pd.to_datetime(df['visitdate']).dt.date
+        df["Date2"] = pd.to_datetime(df["Date"]).dt.strftime("%Y-%m-%d") 
+        df=df.dropna()
+        
+        after_start_date =df["Date2"] >= start_date
+        before_end_date = df["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        df = df.loc[between_two_dates]
+
+        count=df.groupby(['Department', 'Sex']).size().to_frame(name='Percentage').reset_index()
+        tot=df.groupby(['Sex']).size()
+        
+        for i,row in count.iterrows():
+            if count.loc[i,'Sex']=='Female':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/tot[0]*100
+            else:
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/tot[1]*100
+    
+        count=count.rename(columns={'Sex':'Gender',"Percentage": "Percentage inflow"})
+    
+    
+    elif category=='Ward':
+        
+        df1=pd.read_excel("mainpage/media/fileupload/AdmissionAnalysis.xlsx",engine='openpyxl')
+        gward=pd.DataFrame()
+        gward['Ward']=df1['Ward Name']
+        gward['Gender']=df1['Gender']  
+
+        gward['Date'] = pd.to_datetime(df1['Admission Date & Time']).dt.date
+        gward["Date2"] = pd.to_datetime(gward["Date"]).dt.strftime("%Y-%m-%d") 
+        gward=gward.dropna()
+        after_start_date =gward["Date2"] >= start_date
+        before_end_date = gward["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        gward = gward.loc[between_two_dates]
+
+            
+        count=gward.groupby(['Ward','Gender']).size().to_frame(name='Percentage').reset_index()
+        totw=gward.groupby(['Gender']).size()
+        for i,row in count.iterrows():
+            if count.loc[i,'Gender']=='Female':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/totw[0]*100
+            else:
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/totw[1]*100
+        count=count.rename(columns={"Gender": "Gender","Percentage":"Percentage inflow"})    
+        
+    elif category=='Area':
+        category='District'
+        df=pd.read_excel("mainpage/media/fileupload/DemographicAnalysis.xlsx",engine='openpyxl')
+        da=pd.read_excel("mainpage/media/fileupload/kerala pin codes.xlsx",engine='openpyxl')
+    
+        df2=pd.DataFrame()
+        df2['pincode']=da['pincode']
+        df2['District']=da['Districtname']
+        df2=df2.drop_duplicates(subset=['pincode'])    
+    
+        dsa=pd.DataFrame()
+        dsa['UHID']=df['UHID']
+        dsa['pincode']=df['pincode']
+        dsa['Gender']=df['Sex']
+        dssa=pd.DataFrame()
+        dssa = df2.drop_duplicates("pincode")
+
+        dsa['Date'] = pd.to_datetime(df['visitdate']).dt.date
+        dsa["Date2"] = pd.to_datetime(dsa["Date"]).dt.strftime("%Y-%m-%d") 
+        dsa=dsa.dropna()
+        
+        after_start_date =dsa["Date2"] >= start_date
+        before_end_date = dsa["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dsa = dsa.loc[between_two_dates]
+
+        dsa = pd.merge(dsa, dssa, how='inner',left_on = 'pincode', right_on = 'pincode')
+        dsa=dsa.drop_duplicates("UHID")         
+        
+        count=dsa.groupby(['District', 'Gender']).size().to_frame(name='Percentage').reset_index()
+        tot=dsa.groupby(['Gender']).size()
+        for i,row in count.iterrows():
+            if count.loc[i,'Gender']=='Female':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/tot[0]*100
+            else:
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/tot[1]*100
+        count=count.rename(columns={"Gender": "Gender","Percentage":"Percentage inflow"})    
+        
+    gender_title="Gender-wise Analysis ("+category+")"
+    gender_chart=alt.Chart(count).mark_bar().encode(
+        alt.Column(category,header=alt.Header(titleFontSize=20,labelFontSize=13,labelAngle=-90,labelLimit=100,labelAlign='left')),#header for gouped chart -col and row title, label
+
+        alt.Y('Percentage inflow',axis=alt.Axis(title='Percentage inflow(%)')),                                          
+        alt.X('Gender',axis=alt.Axis(labels=False,title='')),
+        alt.Color('Gender',scale=alt.Scale(range=['#800000', '#020645'])), # maroon, blue
+        tooltip = [alt.Tooltip(category), #hover info
+                    alt.Tooltip('Gender:O'),
+                    alt.Tooltip('Percentage inflow:Q',title='Percentage inflow(%)')]
+
+    ).configure_title(
+        fontSize=35,
+        font='Arial',
+        anchor='middle',#center title
+        color='black'
+    ).configure_axis(
+        domainWidth=2,
+        domainColor='black',#domain is axis...axis width and color
+        labelFontSize=15,
+        titleFontSize=20
+    ).properties(
+        title=gender_title, 
+        width = 30, #width and height of bars
+        height = 400
+    ).interactive()
+    g_json=gender_chart.to_json()
+    return g_json
+
+
+######################################################### AGE #######################################################################
+
+def age_analysis(category,start_date,end_date):
+    alt.data_transformers.disable_max_rows()
+    if category=='Department':
+        category='Department'
+        dag=pd.read_excel("mainpage/media/fileupload/DemographicAnalysis.xlsx",engine='openpyxl')
+        dag=dag.rename(columns={'AgeYears':'Age'})
+        dag=dag.drop_duplicates(subset=['UHID','Department'])
+
+        dag['Date'] = pd.to_datetime(dag['visitdate']).dt.date
+        dag["Date2"] = pd.to_datetime(dag["Date"]).dt.strftime("%Y-%m-%d") 
+        dag=dag.dropna()
+        
+        after_start_date =dag["Date2"] >= start_date
+        before_end_date = dag["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dag = dag.loc[between_two_dates]
+
+        bins= [0,11,21,31,41,51,61,71,81,91,111]
+        labels = ['0-10','11-20','21-30','31-40','41-50','51-60','61-70','71-80','81-90','91 above']
+        dag['AgeGroup'] = pd.cut(dag['Age'], bins=bins, labels=labels, right=False)
+        count=dag.groupby(['Department','AgeGroup']).size().to_frame(name='Percentage').reset_index()
+        sum1=dag.groupby(['AgeGroup']).size()
+        
+        for i,row in count.iterrows():
+
+            if count.loc[i,'AgeGroup']=='0-10':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[0]*100
+
+            elif count.loc[i,'AgeGroup']=='11-20':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[1]*100
+
+            elif count.loc[i,'AgeGroup']=='21-30':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[2]*100
+
+            elif count.loc[i,'AgeGroup']=='31-40':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[3]*100
+
+            elif count.loc[i,'AgeGroup']=='41-50':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[4]*100
+
+            elif count.loc[i,'AgeGroup']=='51-60':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[5]*100
+
+            elif count.loc[i,'AgeGroup']=='61-70':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[6]*100
+
+            elif count.loc[i,'AgeGroup']=='71-80':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[7]*100
+
+            elif count.loc[i,'AgeGroup']=='81-90':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[8]*100
+            elif count.loc[i,'AgeGroup']=='91-110':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[9]*100
+
+            
+    elif category=='Ward':
+        dd=pd.read_excel("mainpage/media/fileupload/AdmissionAnalysis.xlsx",engine='openpyxl')
+        dagw=pd.DataFrame()
+        dagw['UHID']=dd['UHID']
+        dagw['Age']=dd['Age']
+        dagw['Ward']=dd['Ward Name']
+        for i,row in dagw.iterrows():
+            x=dagw.at[i,'Age']
+            dagw.loc[i,'Age']=re.sub('[0-9]* Day','0',x)
+        dagw['Age'] = dagw['Age'].str.extract(r'(\d+)', expand=False).astype(int)
+        
+        dagw['Date'] = pd.to_datetime(dd['Admission Date & Time']).dt.date
+        dagw["Date2"] = pd.to_datetime(dagw["Date"]).dt.strftime("%Y-%m-%d") 
+        dagw=dagw.dropna()
+        after_start_date =dagw["Date2"] >= start_date
+        before_end_date = dagw["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dagw = dagw.loc[between_two_dates]
+
+
+        bins= [0,11,21,31,41,51,61,71,81,91,111]
+        labels = ['0-10','11-20','21-30','31-40','41-50','51-60','61-70','71-80','81-90','91 above']
+        dagw['AgeGroup'] = pd.cut(dagw['Age'], bins=bins, labels=labels, right=False)
+        count=dagw.groupby(['Ward','AgeGroup']).size().to_frame(name='Percentage').reset_index()
+        sum1=dagw.groupby(['AgeGroup']).size()
+
+        
+        for i,row in count.iterrows():
+            if count.loc[i,'AgeGroup']=='0-10':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[0]*100
+
+            elif count.loc[i,'AgeGroup']=='11-20':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[1]*100
+
+            elif count.loc[i,'AgeGroup']=='21-30':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[2]*100
+
+            elif count.loc[i,'AgeGroup']=='31-40':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[3]*100
+
+            elif count.loc[i,'AgeGroup']=='41-50':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[4]*100
+
+            elif count.loc[i,'AgeGroup']=='51-60':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[5]*100
+
+            elif count.loc[i,'AgeGroup']=='61-70':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[6]*100
+
+            elif count.loc[i,'AgeGroup']=='71-80':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[7]*100
+
+            elif count.loc[i,'AgeGroup']=='81-90':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[8]*100
+            else:
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[9]*100
+
+       
+    elif category=="Area":
+        category="District"
+        da=pd.read_excel("mainpage/media/fileupload/kerala pin codes.xlsx",engine='openpyxl')
+        df2=pd.DataFrame()
+        df2['pincode']=da['pincode']
+        df2['district']=da['Districtname']
+        dag=pd.read_excel("mainpage/media/fileupload/DemographicAnalysis.xlsx",engine='openpyxl')
+        dag = dag.drop_duplicates(['UHID','Department'])
+        dag=dag.rename(columns={'AgeYears':'Age'})
+        dssa=pd.DataFrame()
+        dssa = df2.drop_duplicates("pincode")
+
+        dag['Date'] = pd.to_datetime(dag['visitdate']).dt.date
+        dag["Date2"] = pd.to_datetime(dag["Date"]).dt.strftime("%Y-%m-%d") 
+        dag=dag.dropna()
+        
+        after_start_date =dag["Date2"] >= start_date
+        before_end_date = dag["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dag = dag.loc[between_two_dates]
+
+        dag = pd.merge(dag, dssa, how='inner',left_on = 'pincode', right_on = 'pincode')
+        bins= [0,11,21,31,41,51,61,71,81,91,111]
+        labels = ['0-10','11-20','21-30','31-40','41-50','51-60','61-70','71-80','81-90','91 above']
+        dag['AgeGroup'] = pd.cut(dag['Age'], bins=bins, labels=labels, right=False)
+        count=dag.groupby(['district','AgeGroup']).size().to_frame(name='Percentage').reset_index()
+        sum1=dag.groupby(['AgeGroup']).size()
+        for i,row in count.iterrows():
+            if count.loc[i,'AgeGroup']=='0-10':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[0]*100
+            elif count.loc[i,'AgeGroup']=='11-20':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[1]*100
+            elif count.loc[i,'AgeGroup']=='21-30':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[2]*100
+            elif count.loc[i,'AgeGroup']=='31-40':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[3]*100
+            elif count.loc[i,'AgeGroup']=='41-50':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[4]*100
+            elif count.loc[i,'AgeGroup']=='51-60':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[5]*100
+            elif count.loc[i,'AgeGroup']=='61-70':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[6]*100
+            elif count.loc[i,'AgeGroup']=='71-80':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[7]*100
+            elif count.loc[i,'AgeGroup']=='81-90':
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[8]*100
+            else:
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1[9]*100
+        count=count.rename(columns={"district":"District"})
+            
+    
+    age_title="Age-wise anaysis("+category+")"
+
+    age_chart=alt.Chart(count).mark_bar().encode(
+        alt.Y(category,title=category), #y-axis
+        alt.X('Percentage'),color='AgeGroup', #x-axis
+    
+        tooltip = [ alt.Tooltip(category), #hover info
+                    alt.Tooltip('AgeGroup:O',title='Age Group'),
+                    alt.Tooltip('Percentage:Q',title='Percentage inflow(%)')]
+    ).configure_title(
+        fontSize=35,
+        font='Arial',
+        anchor='start',#center title
+        color='black'
+    ).configure_axis(
+        domainWidth=2,
+        domainColor='black',#domain is axis...axis width and color
+        labelFontSize=15,
+        titleFontSize=20,
+
+    ).properties(
+        title=age_title,
+        width = 1000, #width and height of bars
+        height = 500
+    ).interactive()
+    g_json=age_chart.to_json()
+    return g_json
+
+###################################### appointment ##########################################################################################
+def appointment_analysis(category,start_date,end_date):
+    alt.data_transformers.disable_max_rows()
+    if category=='Department':
+        h=500
+        dap=pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx",sheet_name='WithAppointmentOP',engine='openpyxl')
+        dap['Billing Time'] = pd.to_datetime(dap['Billing Time']).dt.date
+        dap["Billing Time2"] = pd.to_datetime(dap["Billing Time"]).dt.strftime("%Y-%m-%d")
+        
+        after_start_date =dap["Billing Time2"] >= start_date
+        before_end_date = dap["Billing Time2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dap = dap.loc[between_two_dates]
+
+
+        count=dap.groupby(['Speciality']).size().to_frame(name='Percentage').reset_index()
+        sum1=sum(count.Percentage)
+        for i,row in count.iterrows():
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1*100  
+        count=count.rename(columns={"Speciality": "Department"})
+        #print(count)
+
+    elif category=='Area':
+        category='District'
+        h=500
+        
+        dfa=pd.read_excel("mainpage/media/fileupload/DemographicAnalysis.xlsx",engine='openpyxl')
+        df=pd.DataFrame()
+        dap=pd.DataFrame()
+        df['UHID']=dfa['UHID']
+        df['AddedDate']=dfa['visitdate']
+        df['pincode']=dfa['pincode']
+        
+        da=pd.read_excel("mainpage/media/fileupload/kerala pin codes.xlsx",engine='openpyxl')
+        dapp = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx",sheet_name='WithAppointmentOP',engine='openpyxl')
+        dap['UHID']=dapp['UHID']
+        df2=pd.DataFrame()
+        df2['pincode']=da['pincode']
+        df2['District']=da['Districtname']
+        df2=df2.drop_duplicates(subset=['pincode'])
+
+        df['Date'] = pd.to_datetime(df['AddedDate']).dt.date
+        df["Date2"] = pd.to_datetime(df["Date"]).dt.strftime("%Y-%m-%d")
+        dap['Billing Time'] = pd.to_datetime(dapp['Billing Time']).dt.date
+        dap["Billing Time2"] = pd.to_datetime(dap["Billing Time"]).dt.strftime("%Y-%m-%d")
+
+        date_start = dap["Billing Time2"].min()
+        date_end = dap["Billing Time2"].max()
+        after_start_date =df["Date2"] >= date_start
+        before_end_date = df["Date2"] <= date_end
+        between_two_dates = after_start_date & before_end_date
+        df = df.loc[between_two_dates]
+
+        df=df.dropna()
+        dap=dap.dropna()
+        after_start_date =df["Date2"] >= start_date
+        before_end_date = df["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        df = df.loc[between_two_dates]
+
+        after_start_date =dap["Billing Time2"] >= start_date
+        before_end_date = dap["Billing Time2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dap = dap.loc[between_two_dates]
+
+
+        df = pd.merge(df, df2, how='inner',left_on = 'pincode', right_on = 'pincode')
+        dap= pd.merge(dap, df, how='right',left_on = 'UHID', right_on = 'UHID')
+
+        count=dap.groupby(['District']).size().to_frame(name='Percentage').reset_index()
+        sum1=sum(count.Percentage)
+        for i,row in count.iterrows():
+            count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1*100
+        
+        
+    appnt_title="Appointment Analysis ("+category+")"
+    appnt_chart=alt.Chart(count).mark_bar().encode(  
+        alt.X('Percentage:Q',axis=alt.Axis(title='Percentage inflow(%)')),                                          
+        alt.Y(category),
+        tooltip = [alt.Tooltip(category), 
+                   alt.Tooltip('Percentage:Q',title='Percentage inflow(%)')]
+
+    ).configure_title(
+        fontSize=35,
+        font='Arial',
+        anchor='middle',#center title
+        color='black'
+    ).configure_axis(
+        domainWidth=2,
+        domainColor='black',#domain is axis...axis width and color
+        labelFontSize=15,
+        titleFontSize=20,
+
+    ).properties(
+        title=appnt_title, 
+        width = 500, #width and height of bars
+        height = h
+    ).interactive()
+    g_json=appnt_chart.to_json()
+    return g_json
+
+############################################## WALKIN #########################################################################################33
+
+def walkin_analysis(category,start_date,end_date): 
+    alt.data_transformers.disable_max_rows()
+    if category=='Department':
+        h=500
+        dap=pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx",sheet_name='WalkInOPConsultationSep2020',engine='openpyxl')
+        
+        dap['Billing Time'] = pd.to_datetime(dap['Billing Time']).dt.date
+        dap["Billing Time2"] = pd.to_datetime(dap["Billing Time"]).dt.strftime("%Y-%m-%d")
+        
+        after_start_date =dap["Billing Time2"] >= start_date
+        before_end_date = dap["Billing Time2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dap = dap.loc[between_two_dates]
+
+        count=dap.groupby(['Speciality']).size().to_frame(name='Percentage').reset_index()
+        sum1=sum(count.Percentage)
+        for i,row in count.iterrows():
+
+                count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1*100  
+        count=count.rename(columns={"Speciality": "Department"})
+        
+    elif category=='Area':
+        category='District'
+        h=500
+        
+        dfa=pd.read_excel("mainpage/media/fileupload/DemographicAnalysis.xlsx",engine='openpyxl')
+        df=pd.DataFrame()
+        dap=pd.DataFrame()
+        df['UHID']=dfa['UHID']
+        df['AddedDate']=dfa['visitdate']
+        df['pincode']=dfa['pincode']
+        
+        da=pd.read_excel("mainpage/media/fileupload/kerala pin codes.xlsx",engine='openpyxl')
+        dapp = pd.read_excel('mainpage/media/fileupload/OPConsultation.xlsx', sheet_name='WalkInOPConsultationSep2020')
+        dap['UHID']=dapp['UHID']
+        df2=pd.DataFrame()
+        df2['pincode']=da['pincode']
+        df2['District']=da['Districtname']
+        df2=df2.drop_duplicates(subset=['pincode'])
+
+        df['Date'] = pd.to_datetime(df['AddedDate']).dt.date
+        df["Date2"] = pd.to_datetime(df["Date"]).dt.strftime("%Y-%m-%d")
+        dap['Billing Time'] = pd.to_datetime(dapp['Billing Time']).dt.date
+        dap["Billing Time2"] = pd.to_datetime(dap["Billing Time"]).dt.strftime("%Y-%m-%d")
+
+        date_start = dap["Billing Time2"].min()
+        date_end = dap["Billing Time2"].max()
+        after_start_date =df["Date2"] >= date_start #to match dates in opd with demographics table
+        before_end_date = df["Date2"] <= date_end
+        between_two_dates = after_start_date & before_end_date
+        df = df.loc[between_two_dates]
+
+        df=df.dropna()
+        dap=dap.dropna()
+        after_start_date =df["Date2"] >= start_date # date filter
+        before_end_date = df["Date2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        df = df.loc[between_two_dates]
+
+        after_start_date =dap["Billing Time2"] >= start_date
+        before_end_date = dap["Billing Time2"] <= end_date
+        between_two_dates = after_start_date & before_end_date
+        dap = dap.loc[between_two_dates]
+
+        df = pd.merge(df, df2, how='inner',left_on = 'pincode', right_on = 'pincode')
+        dw = pd.merge(dap, df, how='inner',left_on = 'UHID', right_on = 'UHID')
+        dw['Date'] = pd.to_datetime(dw['AddedDate']).dt.date
+        count=dw.groupby(['District']).size().to_frame(name='Percentage').reset_index()
+        sum1=sum(count.Percentage)
+        for i,row in count.iterrows():
+            count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1*100  
+     
+
+            
+    walkin_title="Walk-in Analysis ("+category+")"
+
+    walkin_chart=alt.Chart(count).mark_bar().encode(  
+
+        alt.X('Percentage:Q',axis=alt.Axis(title='Percentage inflow(%)')),                                          
+        alt.Y(category),
+        tooltip = [alt.Tooltip(category), 
+                    alt.Tooltip('Percentage:Q',title='Percentage inflow(%)')]
+
+     ).configure_title(
+        fontSize=35,
+        font='Arial',
+        anchor='middle',#center title
+        color='black'
+    ).configure_axis(
+        domainWidth=2,
+        domainColor='black',#domain is axis...axis width and color
+        labelFontSize=15,
+        titleFontSize=20,
+
+    ).properties(
+        title=walkin_title,
+        width = 500, #width and height of bars
+        height = h
+    ).interactive()
+    g_json=walkin_chart.to_json()
+    return g_json
+
+
+###########################################################AREA ##############################################################################
+
+def area_analysis(department,start_date,end_date):
+    alt.data_transformers.disable_max_rows()
+    h=300
+    category=department
+    df=pd.read_excel("mainpage/media/fileupload/DemographicAnalysis.xlsx",engine='openpyxl')
+    df = df.drop_duplicates(subset= ["UHID","Department"])
+
+    da=pd.read_excel("mainpage/media/fileupload/kerala pin codes.xlsx",engine='openpyxl')
+    ar=pd.DataFrame()
+    df2=pd.DataFrame()
+    df2['pincode']=da['pincode']
+    df2['District']=da['Districtname']
+    df2=df2.drop_duplicates(subset=['pincode'])
+    df2=df2.drop_duplicates("pincode")    
+
+    df['visitdate'] = pd.to_datetime(df['visitdate']).dt.date
+    df["Date2"] = pd.to_datetime(df["visitdate"]).dt.strftime("%Y-%m-%d")
+         
+    df=df.dropna()
+        
+    after_start_date =df["Date2"] >= start_date
+    before_end_date = df["Date2"] <= end_date
+    between_two_dates = after_start_date & before_end_date
+    df = df.loc[between_two_dates]
+
+    if category=='OVERALL':
+        for i,row in df.iterrows():
+            ar.loc[i,'pincode']=df.at[i,'pincode']
+            ar.loc[i,'visitdate']=df.at[i,'visitdate']
+            ar.loc[i,'UHID']=df.at[i,'UHID']
+    else:
+        for i,row in df.iterrows():
+            if df.loc[i,'Department']==category:
+                ar.loc[i,'pincode']=df.at[i,'pincode']
+                ar.loc[i,'visitdate']=df.at[i,'visitdate']
+                ar.loc[i,'UHID']=df.at[i,'UHID']
+
+    
+    dfa=pd.DataFrame()
+    dfa = pd.merge(ar, df2, how='inner',left_on = 'pincode', right_on = 'pincode')
+
+
+    
+    count=dfa.groupby(['District']).size().to_frame(name='Percentage').reset_index()
+    totw=sum(count.Percentage)
+    for i,row in count.iterrows():
+        count.loc[i,'Percentage']=count.at[i,'Percentage']/totw   
+
+    area_title="Area-wise Analysis ("+category+")"
+    area_chart=alt.Chart(count).mark_bar().encode( 
+        alt.X('Percentage:Q',axis=alt.Axis(title='Percentage inflow(%)')),                                          
+        alt.Y('District:O'),
+        tooltip = [alt.Tooltip('District:O'),
+                   alt.Tooltip('Percentage:Q',title='Percentage inflow(%)')]
+    
+    ).configure_title(
+        fontSize=35,
+        font='Arial',
+        anchor='middle',#center title
+        color='black'
+    ).configure_axis(
+        domainWidth=2,
+        domainColor='black',#domain is axis...axis width and color
+        labelFontSize=15,
+        titleFontSize=20,
+
+    ).properties(
+        title=area_title,
+        width = 500, #width and height of bars
+        height = h
+    ).interactive()
+    g_json=area_chart.to_json()
+    return g_json
+

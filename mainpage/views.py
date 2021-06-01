@@ -558,6 +558,227 @@ def surgerydept(request):
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
+##########################################################################################
+
+def demographic(request):
+   
+    return render(request,'demographic.html')
+
+
+def insuranceFilter(request):
+    return render(request,"insurancefilter.html")
+
+def insurancedepartment(request):
+    category='Department'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=insurance_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+def insuranceward(request):
+    category='Ward'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=insurance_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+def insurancearea(request):
+    category='Area'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=insurance_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+
+
+
+def genderFilter(request):
+    return render(request,"genderfilter.html")
+
+
+def genderdepartment(request):
+    category='Department'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=gender_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+def genderward(request):
+    category='Ward'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=gender_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+def genderarea(request):
+    category='Area'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=gender_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+    
+
+
+
+
+    
+def ageFilter(request):
+    return render(request,"agefilter.html")
+
+def agedepartment(request):
+    category='Department'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=age_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+def ageward(request):
+    category='Ward'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=age_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+def agearea(request):
+    category='Area'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=age_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+    
+def appointmentFilter(request):
+    return render(request,"appointmentfilter.html")
+
+def appointmentdepartment(request):
+    category='Department'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=appointment_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+
+
+def appointmentarea(request):
+    category='Area'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=appointment_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+    
+def walkinFilter(request):
+    return render(request,"walkinfilter.html")
+
+def walkindepartment(request):
+    category='Department'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=walkin_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+
+
+def walkinarea(request):
+    category='Area'
+    form=datefilter()
+    if request.method=="POST":
+        form=datefilter(request.POST)
+        if form.is_valid():
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=walkin_analysis(category,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
+
+
+    
+
+def areaFilter(request): 
+    form=areaform()
+    if request.method=="POST":
+        form=areaform(request.POST)
+        if form.is_valid():
+            department=request.POST['department']
+            start_date=request.POST['start_date']
+            end_date=request.POST['end_date']
+            g_json=area_analysis(department,start_date,end_date)
+            return render(request,'embed.html',{'g':g_json})
+    else:
+        return render(request,'FilterForm.html', {'form':form})
 
 
 
