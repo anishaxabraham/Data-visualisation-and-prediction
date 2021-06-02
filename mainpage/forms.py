@@ -23,7 +23,7 @@ class WaitingTimeFilter(forms.Form):
     category = forms.ChoiceField(choices = [  ("Docwise-Walkins", "Docwise-Walkins"),("Deptwise-Walkins","Deptwise-Walkins"),("Docwise-Appointments", "Docwise-Appointments"),("Deptwise-Appointments","Deptwise-Appointments")])
 
 class Form3(forms.Form):
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     df=df.drop_duplicates(subset=['Ward Name'])
     df1=pd.DataFrame()
     df1['Ward Name']=df['Ward Name']
@@ -36,7 +36,7 @@ class Form3(forms.Form):
    
 
 class Form4(forms.Form):
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     df=df.drop_duplicates(subset=['Primary doctor Specialty'])
     df1=pd.DataFrame()
     df1['Primary doctor Specialty']=df['Primary doctor Specialty']
@@ -48,7 +48,7 @@ class Form4(forms.Form):
     specialty = forms.ChoiceField(choices = Choice4)
 
 class Form5(forms.Form):
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     df=df.drop_duplicates(subset=['Primary doctor'])
     df1=pd.DataFrame()
     df1['Primary doctor']=df['Primary doctor']
@@ -65,7 +65,7 @@ class Form5(forms.Form):
 
 
 class Form6(forms.Form):
-    df=pd.read_excel("mainpage/static/fileupload/Radiology.xlsx",usecols=['RegistrationNo','sex', 'Age','Item Name',"Bill Datetime"],engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/Radiology.xlsx",usecols=['RegistrationNo','sex', 'Age','Item Name',"Bill Datetime"],engine='openpyxl')
     df=df.dropna()
     options=df['Item Name'].unique()
     Choice6=[]
