@@ -6,7 +6,7 @@ from altair import datum
 from django.shortcuts import render
 
 def handle_file(f,filename):
-    with open('mainpage/static/fileupload/'+filename,'wb+') as destination:
+    with open('mainpage/media/fileupload/'+filename,'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
 
@@ -24,7 +24,8 @@ def waitingtime_analysis(category, start_date, end_date):
             
         alt.data_transformers.disable_max_rows()
 
-        df = pd.read_excel("mainpage/static/fileupload/OPConsultation.xlsx", sheet_name='Walkins June 2020', engine='openpyxl')
+        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WalkInOPConsultationSep2020', engine='openpyxl')
+        df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":"'Bill Time","Consultation start Date/Time":"Consult IN"})
         df['date']=pd.to_datetime(df['Consult IN']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
@@ -102,7 +103,7 @@ def waitingtime_analysis(category, start_date, end_date):
         from math import radians, degrees
         alt.data_transformers.disable_max_rows()
             
-        df = pd.read_excel("mainpage/static/fileupload/OPConsultation.xlsx", sheet_name='Walkins June 2020', engine='openpyxl')
+        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='Walkins June 2020', engine='openpyxl')
         df['date']=pd.to_datetime(df['Consult IN']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
@@ -181,7 +182,9 @@ def waitingtime_analysis(category, start_date, end_date):
         from math import radians, degrees
         alt.data_transformers.disable_max_rows()
             
-        df = pd.read_excel("mainpage/static/fileupload/OPConsultation.xlsx", sheet_name='Appts June 2020', engine='openpyxl')
+        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='Appts June 2020', engine='openpyxl'        df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":"'Bill Time","Consultation start Date/Time":"Consult IN"})
+)
+        
         df['date']=pd.to_datetime(df['Consultation start Date/Time']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
@@ -262,7 +265,7 @@ def waitingtime_analysis(category, start_date, end_date):
         from math import radians, degrees
             
         alt.data_transformers.disable_max_rows()
-        df = pd.read_excel("mainpage/static/fileupload/OPConsultation.xlsx", sheet_name='Appts June 2020', engine='openpyxl')
+        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='Appts June 2020', engine='openpyxl')
         df['date']=pd.to_datetime(df['Consultation start Date/Time']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
@@ -335,7 +338,7 @@ def mlc_analysis(category):
     import pandas as pd
     import altair as alt
     alt.data_transformers.disable_max_rows()
-    df = pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df = pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     w=pd.Series(df['Is MLC'].value_counts())
     if category=="MLCSpecialty":
         
@@ -416,7 +419,7 @@ def mlc_analysis(category):
 def discharges_analysis(category,start_date,end_date):
     alt.data_transformers.disable_max_rows()
     if category=='EachWard':
-        df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+        df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         data = [df['Discharge Date & Time '], df['Ward Name']]
 
         headers = ['Discharge','Wardname']
@@ -459,7 +462,7 @@ def discharges_analysis(category,start_date,end_date):
         g_json=area_chart.to_json()
         return g_json
     elif category=='EachWardBed':
-        df1=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+        df1=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         #alt.data_transformers.disable_max_rows()
         df1["date2"] = pd.to_datetime(df1['Discharge Date & Time ']).dt.strftime("%Y-%m-%d") #string to date format
         df1=df1.loc[(df1["date2"]>=start_date) & (df1["date2"]<=end_date)]     #selecting data frame rows in the desired date range
@@ -497,7 +500,7 @@ def discharges_analysis(category,start_date,end_date):
         g_json=area_chart.to_json()
         return g_json
     elif category=='AllWardBed':
-        df1=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+        df1=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         alt.data_transformers.disable_max_rows()
         df1["date2"] = pd.to_datetime(df1['Discharge Date & Time ']).dt.strftime("%Y-%m-%d") #string to date format
         df1=df1.loc[(df1["date2"]>=start_date) & (df1["date2"]<=end_date)]     #selecting data frame rows in the desired date range
@@ -535,7 +538,7 @@ def discharges_analysis(category,start_date,end_date):
         g_json=bars.to_json()
         return g_json
     elif category=='EachSpec':
-        df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+        df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         alt.data_transformers.disable_max_rows()
         data = [df['Discharge Date & Time '], df['Primary doctor Specialty']]
 
@@ -579,7 +582,7 @@ def discharges_analysis(category,start_date,end_date):
         return g_json
     elif category=='EachDoc':
         
-        df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+        df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         alt.data_transformers.disable_max_rows()
         data = [df['Discharge Date & Time '], df['Primary doctor']]
 
@@ -627,7 +630,7 @@ def discharges_analysis(category,start_date,end_date):
         return g_json
 
     elif category=='BedEachWard':
-        df1=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+        df1=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         alt.data_transformers.disable_max_rows() #to allow more than 5000 rows in display
         df1["date2"] = pd.to_datetime(df1['Discharge Date & Time ']).dt.strftime("%Y-%m-%d") #string to date format
         
@@ -674,7 +677,7 @@ def discharges_analysis(category,start_date,end_date):
         return g_json
 
     elif category=='BedAllWard':
-        df1=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+        df1=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         alt.data_transformers.disable_max_rows() #to allow more than 5000 rows in display
         df1["date2"] = pd.to_datetime(df1['Discharge Date & Time ']).dt.strftime("%Y-%m-%d") #string to date format
         df=df1.loc[(df1["date2"]>=start_date) & (df1["date2"]<=end_date)]
@@ -706,7 +709,7 @@ def discharges_analysis(category,start_date,end_date):
         return g_json
 def spec_ward_day(wardname):
     category=wardname
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     alt.data_transformers.disable_max_rows()
     data = [df['Discharge Date & Time '], df['Ward Name']]
     headers = ['Discharge','Wardname']
@@ -748,7 +751,7 @@ def spec_ward_day(wardname):
 def spec_doc_and_spec(doctor,specialty,start_date,end_date):
     category1=specialty
     category2=doctor
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     alt.data_transformers.disable_max_rows()
     data = [df['Discharge Date & Time '], df['Billable Bed Type'], df['Primary doctor Specialty'], df['Primary doctor']]
 
@@ -792,7 +795,7 @@ def spec_doc_and_spec(doctor,specialty,start_date,end_date):
 
 def specific_spec_bed(specialty,start_date,end_date):
     category=specialty
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     alt.data_transformers.disable_max_rows()
     data = [df['Discharge Date & Time '], df['Ward Name'], df['Billable Bed Type'], df['Primary doctor Specialty']]
 
@@ -838,7 +841,7 @@ def specific_spec_bed(specialty,start_date,end_date):
 
 def specific_discharge_analysis(wardname,start_date,end_date):
     category=wardname
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     alt.data_transformers.disable_max_rows()
     data = [df['Discharge Date & Time '], df['Ward Name'], df['Billable Bed Type']]
 
@@ -883,7 +886,7 @@ def specific_discharge_analysis(wardname,start_date,end_date):
 
 def spec_doc_bed(doctor, start_date, end_date):
     category=doctor
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     alt.data_transformers.disable_max_rows()
     data = [df['Discharge Date & Time '], df['Primary doctor'], df['Billable Bed Type']]
     headers = ['Discharge','Primary doctor', 'BedType']
@@ -931,7 +934,7 @@ def spec_ward_and_spec_and_doc(wardname, specialty, doctor,start_date,end_date):
     category1=wardname
     category2=specialty
     category3=doctor
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     alt.data_transformers.disable_max_rows()
     data = [df['Discharge Date & Time '], df['Ward Name'], df['Billable Bed Type'], df['Primary doctor Specialty'], df['Primary doctor']]
     headers = ['Discharge','Wardname', 'BedType', 'Speciality', 'Doctor']
@@ -978,7 +981,7 @@ def spec_ward_and_spec_and_doc(wardname, specialty, doctor,start_date,end_date):
 def spec_ward_and_spec(wardname, specialty,start_date,end_date):
     category1=wardname
     category2=specialty
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
     alt.data_transformers.disable_max_rows()
     data = [df['Discharge Date & Time '], df['Ward Name'], df['Billable Bed Type'], df['Primary doctor Specialty']]
 
@@ -1025,7 +1028,7 @@ def spec_ward_and_spec(wardname, specialty,start_date,end_date):
 
 def payments_analysis():
     import matplotlib.pyplot as plt
-    df=pd.read_excel("mainpage/static/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
 
     a=df['PaymentType'].str.count("Cash").sum()
     b=df['PaymentType'].str.count("Credit").sum()
@@ -1046,7 +1049,7 @@ def payments_analysis():
 
 def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
     alt.data_transformers.disable_max_rows()
-    dip=pd.read_excel("mainpage/static/fileupload/Pharmacy.xlsx",usecols=['OrderId','OrderDateTime','UHId','OrderingStation','PriorityName'],engine='openpyxl')    #create dataframe
+    dip=pd.read_excel("mainpage/media/fileupload/Pharmacy.xlsx",usecols=['OrderId','OrderDateTime','UHId','OrderingStation','PriorityName'],engine='openpyxl')    #create dataframe
     dip["OrderDate"] = pd.to_datetime(dip["OrderDateTime"]).dt.strftime("%Y-%m-%d") #string to date format
 
     dip=dip.dropna()
@@ -1082,7 +1085,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
 
         elif category=='OrderingStation':
             #Pharmacy Orders From Each Nursing Stations- ORDERING STATION              
-            data = pd.read_excel('mainpage/static/fileupload/Pharmacy.xlsx',usecols=['OrderDateTime','OrderId','OrderingStation','PriorityName'])
+            data = pd.read_excel('mainpage/media/fileupload/Pharmacy.xlsx',usecols=['OrderDateTime','OrderId','OrderingStation','PriorityName'])
             data["OrderDate"] = pd.to_datetime(data["OrderDateTime"]).dt.strftime("%Y-%m-%d") #convert to desired date format
             data=data.loc[(data["OrderDate"]>=start_date) & (data["OrderDate"]<=end_date)]
             data.drop("OrderDateTime",axis=1,inplace=True)
@@ -1157,7 +1160,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
 
 def pharmacyorders_per_patient_analysis(start_date,end_date):
     alt.data_transformers.disable_max_rows()
-    df=pd.read_excel("mainpage/static/fileupload/Pharmacy.xlsx",usecols=['OrderDateTime','UHId'],engine='openpyxl')    #create dataframe
+    df=pd.read_excel("mainpage/media/fileupload/Pharmacy.xlsx",usecols=['OrderDateTime','UHId'],engine='openpyxl')    #create dataframe
     df["date2"] = pd.to_datetime(df["OrderDateTime"]).dt.strftime("%Y-%m-%d") #string to date format
     #------------creating a dataframe with columns- date, patientcount, ordercount---------
 
@@ -1196,7 +1199,7 @@ def pharmacyorders_per_patient_analysis(start_date,end_date):
 
 def topmedicines_analysis(category,start_date,end_date):
     alt.data_transformers.disable_max_rows()
-    df=pd.read_excel("mainpage/static/fileupload/Top100Medicines.xlsx",usecols=['ItemName', 'Quantity','Unit', 'ItemCatagory','Station','BillDateTime'],engine='openpyxl')    #create dataframe
+    df=pd.read_excel("mainpage/media/fileupload/Top100Medicines.xlsx",usecols=['ItemName', 'Quantity','Unit', 'ItemCatagory','Station','BillDateTime'],engine='openpyxl')    #create dataframe
     df["Date"] = pd.to_datetime(df["BillDateTime"]).dt.strftime("%Y-%m-%d") # to desired date format
     df=df.dropna()
     df=df.loc[(df["Date"]>=start_date) & (df["Date"]<=end_date)]
@@ -1252,7 +1255,7 @@ def topmedicines_analysis(category,start_date,end_date):
 
 def drugstock_analysis(category,start_date,end_date):
     alt.data_transformers.disable_max_rows()
-    df=pd.read_excel("mainpage/static/fileupload/Top100Medicines.xlsx",usecols=['ItemName', 'Quantity','Unit', 'ItemCatagory','Station','BillDateTime'],engine='openpyxl')    #create dataframe
+    df=pd.read_excel("mainpage/media/fileupload/Top100Medicines.xlsx",usecols=['ItemName', 'Quantity','Unit', 'ItemCatagory','Station','BillDateTime'],engine='openpyxl')    #create dataframe
     df["Date"] = pd.to_datetime(df["BillDateTime"]).dt.strftime("%Y-%m-%d") # to desired date format
     df=df.dropna()
     df=df.loc[(df["Date"]>=start_date) & (df["Date"]<=end_date)]
@@ -1304,7 +1307,7 @@ def drugstock_analysis(category,start_date,end_date):
 
 def radiology_analysis(test,start_date,end_date):
     alt.data_transformers.disable_max_rows()
-    df=pd.read_excel("mainpage/static/fileupload/Radiology.xlsx",usecols=['RegistrationNo','sex', 'Age','Item Name',"Bill Datetime"],engine='openpyxl')
+    df=pd.read_excel("mainpage/media/fileupload/Radiology.xlsx",usecols=['RegistrationNo','sex', 'Age','Item Name',"Bill Datetime"],engine='openpyxl')
     df=df.loc[df['Item Name'] == test]
 
     df=df.dropna()
@@ -1349,8 +1352,8 @@ def radiology_analysis(test,start_date,end_date):
 
 def surgery_analysis(category,start_date,end_date):
     alt.data_transformers.disable_max_rows()
-    df1 = pd.read_excel("mainpage/static/fileupload/SurgeryAnalysis.xlsx",usecols=["UHID","SurgeryName","Surgery Department","Date Of Surgery"],engine='openpyxl')
-    df2 = pd.read_excel("mainpage/static/fileupload/DemographicAnalysis.xlsx",usecols=["UHID","AgeYears","Sex"],engine='openpyxl')
+    df1 = pd.read_excel("mainpage/media/fileupload/SurgeryAnalysis.xlsx",usecols=["UHID","SurgeryName","Surgery Department","Date Of Surgery"],engine='openpyxl')
+    df2 = pd.read_excel("mainpage/media/fileupload/DemographicAnalysis.xlsx",usecols=["UHID","AgeYears","Sex"],engine='openpyxl')
     df2 = df2.drop_duplicates('UHID')
     df=pd.merge(df1,df2,on='UHID') # join tables using UHID field
     df=df.dropna()
