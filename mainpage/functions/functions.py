@@ -103,7 +103,9 @@ def waitingtime_analysis(category, start_date, end_date):
         from math import radians, degrees
         alt.data_transformers.disable_max_rows()
             
-        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='Walkins June 2020', engine='openpyxl')
+        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WalkInOPConsultationSep2020', engine='openpyxl')
+        df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":"'Bill Time","Consultation start Date/Time":"Consult IN","Speciality":"Dept Name"})
+        
         df['date']=pd.to_datetime(df['Consult IN']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
@@ -182,8 +184,8 @@ def waitingtime_analysis(category, start_date, end_date):
         from math import radians, degrees
         alt.data_transformers.disable_max_rows()
             
-        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='Appts June 2020', engine='openpyxl'        df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":"'Bill Time","Consultation start Date/Time":"Consult IN"})
-)
+        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WithAppointmentOP', engine='openpyxl' )
+        #df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":"'Bill Time","Consultation start Date/Time":"Consult IN"})
         
         df['date']=pd.to_datetime(df['Consultation start Date/Time']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
@@ -265,7 +267,9 @@ def waitingtime_analysis(category, start_date, end_date):
         from math import radians, degrees
             
         alt.data_transformers.disable_max_rows()
-        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='Appts June 2020', engine='openpyxl')
+        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WithAppointmentOP', engine='openpyxl')
+        df=df.rename(columns={"Speciality":"Dept Name"})
+        
         df['date']=pd.to_datetime(df['Consultation start Date/Time']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
