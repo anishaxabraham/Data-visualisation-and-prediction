@@ -4,6 +4,8 @@ from altair.vegalite.v4.schema.core import JsonDataFormat
 import pandas as pd
 from altair import datum
 from django.shortcuts import render
+import re
+import numpy as np
 
 def handle_file(f,filename):
     with open('mainpage/media/fileupload/'+filename,'wb+') as destination:
