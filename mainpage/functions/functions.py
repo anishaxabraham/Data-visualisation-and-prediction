@@ -1531,13 +1531,14 @@ def insurance_analysis(category,start_date,end_date):
         sum1=sum(count['Percentage inflow'])
         for i,row in count.iterrows():
             count.loc[i,'Percentage inflow']=count.at[i,'Percentage inflow']/sum1*100            
-
+    
+    count=count.sort_values([category],ascending=False)
     insu_title="Insurance Analysis ("+category+")"
 
     insu_chart=alt.Chart(count).mark_bar().encode(  
 
         alt.X('Percentage inflow:Q',axis=alt.Axis(title='Percentage inflow(%)')),                                          
-        alt.Y(category),
+        alt.Y(category,sort=None),
         tooltip = [alt.Tooltip(category), #hover info
                    alt.Tooltip('Percentage inflow:Q',title='Percentage inflow(%)')]
 
@@ -1847,7 +1848,7 @@ def age_analysis(category,start_date,end_date):
         count=count.rename(columns={"district":"District"})
             
     
-    age_title="Age-wise anaysis("+category+")"
+    age_title="Age-wise analysis("+category+")"
 
     age_chart=alt.Chart(count).mark_bar().encode(
         alt.Y(category,title=category), #y-axis
