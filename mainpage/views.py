@@ -91,6 +91,8 @@ def PharmObjectives(request):
 def OPObjectives(request):
     return render(request,'OPObjectives.html')
 
+############## Anisha's team   ##########################################################################################
+
 def DischargeObjectives(request):
     return render(request,'DischargeObjectives.html')
 
@@ -117,21 +119,6 @@ def WalkInObjectives(request):
 
 def WardObjectives(request):
     return render(request,'WardObjectives.html')
-
-
-
-
-def NursingStationObjectives(request):
-    return render(request,'NursingStationObjectives.html')
-
-def TopMovableObjectives(request):
-    return render(request,'TopMovableObjectives.html')
-    
-def DrugStockObjectives(request):
-    return render(request,'DrugStockObjectives.html')
-
-def SurgeryObjectives(request):
-    return render(request,'SurgeryObjectives.html')
 
 
 
@@ -401,8 +388,22 @@ def DocW(request):
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
-        ##########################################################################
+        
 
+############## Amala's team   ##########################################################################################
+
+
+def NursingStationObjectives(request):
+    return render(request,'NursingStationObjectives.html')
+
+def TopMovableObjectives(request):
+    return render(request,'TopMovableObjectives.html')
+    
+def DrugStockObjectives(request):
+    return render(request,'DrugStockObjectives.html')
+
+def SurgeryObjectives(request):
+    return render(request,'SurgeryObjectives.html')
 
 
 def pharm_priority(request):
@@ -558,7 +559,7 @@ def surgerydept(request):
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
-##########################################################################################
+############## Varsha's team   ##########################################################################################
 
 #def demographic(request):   
 #    return render(request,'demographic.html')

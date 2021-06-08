@@ -44,7 +44,8 @@ urlpatterns=[
     path('Login',views.Login,name='Login'),
     path('Logout',views.Logout,name='Logout'),
 
-    #urls for Anisha's visualisations
+    #urls for Anisha's visualisations ########################################################################
+
     path('EachWardBed',views.EachWardBed,name='EachWardBed'),
     path('AllWardBed',views.AllWardBed,name='AllWardBed'),
     path('SpecificWardBed',views.SpecificWardBed,name='SpecificWardBed'),
@@ -70,7 +71,7 @@ urlpatterns=[
 
 
 
-    #urls for Amala's visualisations
+    #urls for Amala's visualisations ##########################################################################
 
     path('PharmacyNursingStation_priority', views.pharm_priority,name='PharmacyNursingStation_priority'), 
     path('PharmacyNursingStation_station', views.pharm_station,name='PharmacyNursingStation_station'), 
@@ -86,7 +87,7 @@ urlpatterns=[
     path('Surgery_surgerydept', views.surgerydept,name='Surgery_surgerydept'),
 
 
-    #all urls for varsha team
+    #all urls for varsha team ###################################################################################
 
     path('insurancedepartment',views.insurancedepartment,name='insurancedepartment'),
     path('insuranceward',views.insuranceward,name='insuranceward'),

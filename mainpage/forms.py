@@ -63,8 +63,7 @@ class Form5(forms.Form):
 
 
 
-
-class Form6(forms.Form):
+class Form6(forms.Form):                #For radiology analysis objective
     df=pd.read_excel("mainpage/media/fileupload/Radiology.xlsx",usecols=['RegistrationNo','sex', 'Age','Item Name',"Bill Datetime"],engine='openpyxl')
     df=df.dropna()
     options=df['Item Name'].unique()
@@ -73,6 +72,9 @@ class Form6(forms.Form):
         Choice6.append((c,c))
     Choice6.sort()
     selected_test= forms.ChoiceField(choices = Choice6)
+
+
+
 
 
 
