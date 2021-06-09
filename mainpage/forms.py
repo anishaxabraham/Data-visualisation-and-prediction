@@ -25,41 +25,47 @@ class WaitingTimeFilter(forms.Form):
     category = forms.ChoiceField(choices = [  ("Docwise-Walkins", "Docwise-Walkins"),("Deptwise-Walkins","Deptwise-Walkins"),("Docwise-Appointments", "Docwise-Appointments"),("Deptwise-Appointments","Deptwise-Appointments")])
 
 class Form3(forms.Form):
-    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
-    df=df.drop_duplicates(subset=['Ward Name'])
-    df1=pd.DataFrame()
-    df1['Ward Name']=df['Ward Name']
-    Choice3=[]
-    for i,row in df1.iterrows():
-        s=df1.loc[i,'Ward Name']
-        Choice3.append((s,s))
-    Choice3.sort()
-    wardname = forms.ChoiceField(choices = Choice3)
+    if ((os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx"))==True): # check if file present
+        
+        df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+        df=df.drop_duplicates(subset=['Ward Name'])
+        df1=pd.DataFrame()
+        df1['Ward Name']=df['Ward Name']
+        Choice3=[]
+        for i,row in df1.iterrows():
+            s=df1.loc[i,'Ward Name']
+            Choice3.append((s,s))
+        Choice3.sort()
+        wardname = forms.ChoiceField(choices = Choice3)
    
 
 class Form4(forms.Form):
-    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
-    df=df.drop_duplicates(subset=['Primary doctor Specialty'])
-    df1=pd.DataFrame()
-    df1['Primary doctor Specialty']=df['Primary doctor Specialty']
-    Choice4=[]
-    for i,row in df1.iterrows():
-        s=df1.loc[i,'Primary doctor Specialty']
-        Choice4.append((s,s))
-    Choice4.sort()
-    specialty = forms.ChoiceField(choices = Choice4)
+    if ((os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx"))==True): # check if file present
+        
+        df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+        df=df.drop_duplicates(subset=['Primary doctor Specialty'])
+        df1=pd.DataFrame()
+        df1['Primary doctor Specialty']=df['Primary doctor Specialty']
+        Choice4=[]
+        for i,row in df1.iterrows():
+            s=df1.loc[i,'Primary doctor Specialty']
+            Choice4.append((s,s))
+        Choice4.sort()
+        specialty = forms.ChoiceField(choices = Choice4)
 
 class Form5(forms.Form):
-    df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
-    df=df.drop_duplicates(subset=['Primary doctor'])
-    df1=pd.DataFrame()
-    df1['Primary doctor']=df['Primary doctor']
-    Choice5=[]
-    for i,row in df1.iterrows():
-        s=df1.loc[i,'Primary doctor']
-        Choice5.append((s,s))
-    Choice5.sort()
-    doctor = forms.ChoiceField(choices = Choice5)
+    if ((os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx"))==True): # check if file present
+        
+        df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
+        df=df.drop_duplicates(subset=['Primary doctor'])
+        df1=pd.DataFrame()
+        df1['Primary doctor']=df['Primary doctor']
+        Choice5=[]
+        for i,row in df1.iterrows():
+            s=df1.loc[i,'Primary doctor']
+            Choice5.append((s,s))
+        Choice5.sort()
+        doctor = forms.ChoiceField(choices = Choice5)
     
 
 

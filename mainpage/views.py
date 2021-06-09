@@ -96,6 +96,8 @@ def OPObjectives(request):
 ############## Anisha's team   ##########################################################################################
 
 def DischargeObjectives(request):
+    if (os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx")==False ):
+        return render(request,'FileUpload.html', {'message':'Discharge Analysis File NOT present ! Please upload the file first. '})
     return render(request,'DischargeObjectives.html')
 
 def ApptObjectives(request):
@@ -108,12 +110,18 @@ def DocObjectives(request):
     return render(request,'DocObjectives.html')
 
 def MLCObjectives(request):
+    if (os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx")==False ):
+        return render(request,'FileUpload.html', {'message':'Discharge Analysis File NOT present ! Please upload the file first. '})
     return render(request,'MLCObjectives.html')
 
 def SpecObjectives(request):
+    if (os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx")==False ):
+        return render(request,'FileUpload.html', {'message':'Discharge Analysis File NOT present ! Please upload the file first. '})
     return render(request,'SpecObjectives.html')
 
 def WaitObjectives(request):
+    if (os.path.isfile("mainpage/media/fileupload/OPConsultation.xlsx")==False ):
+        return render(request,'FileUpload.html', {'message':'OP Consultation File NOT present ! Please upload the file first. '})
     return render(request,'WaitObjectives.html')
 
 def WalkInObjectives(request):
@@ -318,7 +326,9 @@ def SpecificWardDay(request):
         return render(request,'FilterFormOpt.html', {'form':form})
 
 def paymentsFilter(request):
-    #form=PaymentsFilter()
+    if (os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx")==False ):
+        return render(request,'FileUpload.html', {'message':'Discharge Analysis File NOT present ! Please upload the file first. '})
+
     payments_analysis()
     return render(request,'OPObjectives.html')
 
