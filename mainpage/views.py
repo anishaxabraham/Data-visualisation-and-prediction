@@ -8,6 +8,8 @@ from django.contrib.auth.models import User, auth
 import altair as alt
 import pandas as pd
 
+import os.path
+
 
 
 from mainpage.forms import *
@@ -394,15 +396,23 @@ def DocW(request):
 
 
 def NursingStationObjectives(request):
+    if (os.path.isfile("mainpage/media/fileupload/Pharmacy.xlsx")==False ):
+        return render(request,'FileUpload.html', {'message':'Pharmacy File NOT present ! Please upload the file first. '})
     return render(request,'NursingStationObjectives.html')
 
 def TopMovableObjectives(request):
+    if (os.path.isfile("mainpage/media/fileupload/Top100Medicines.xlsx")==False ):
+        return render(request,'FileUpload.html', {'message':'TopMovableMedicines File NOT present ! Please upload the file first. '})
     return render(request,'TopMovableObjectives.html')
     
 def DrugStockObjectives(request):
+    if (os.path.isfile("mainpage/media/fileupload/Top100Medicines.xlsx")==False ):
+        return render(request,'FileUpload.html', {'message':'TopMovableMedicines File NOT present ! Please upload the file first. '})
     return render(request,'DrugStockObjectives.html')
 
 def SurgeryObjectives(request):
+    if ((os.path.isfile("mainpage/media/fileupload/SurgeryAnalysis.xlsx")) or (os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx"))==False ):
+        return render(request,'FileUpload.html', {'message':'Surgery File OR/AND Demographics File NOT present ! Please upload the files first. '})
     return render(request,'SurgeryObjectives.html')
 
 
@@ -448,6 +458,8 @@ def pharm_overall(request):
         return render(request,'FilterFormOpt.html', {'form':form})
 
 def OrdersPerPatient(request):
+    if (os.path.isfile("mainpage/media/fileupload/Pharmacy.xlsx")==False ):
+        return render(request,'FileUpload.html', {'message':'Pharmacy File NOT present ! Please upload the file first. '})
     form=DateFilter()
     if request.method=="POST":
         form=DateFilter(request.POST)
@@ -517,6 +529,8 @@ def drugstock_overall(request):
         return render(request,'FilterFormOpt.html', {'form':form})
 
 def Radiology(request):
+    if (os.path.isfile("mainpage/media/fileupload/Radiology.xlsx")==False ):
+        return render(request,'FileUpload.html', {'message':'Radiology File NOT present ! Please upload the file first. '})
     form1=Form6()
     form2=DateFilter()
     if request.method=="POST":
