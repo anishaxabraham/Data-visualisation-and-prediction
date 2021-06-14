@@ -28,57 +28,58 @@ def waitingtime_analysis(category, start_date, end_date):
         alt.data_transformers.disable_max_rows()
 
         df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WalkInOPConsultationSep2020', engine='openpyxl')
-        df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":"'Bill Time","Consultation start Date/Time":"Consult IN"})
+        df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":'Bill Time',"Consultation start Date/Time":"Consult IN"})
         df['date']=pd.to_datetime(df['Consult IN']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
+        if(len(df)!=0):
+            docList= df['DoctorName'].values.tolist()
+            billList= df['Bill Time'].values.tolist()
+            inList= df['Consult IN'].values.tolist()
 
-        docList= df['DoctorName'].values.tolist()
-        billList= df['Bill Time'].values.tolist()
-        inList= df['Consult IN'].values.tolist()
-
-        #time difference list
-        df['diff_seconds'] =df['Consult IN']-df['Bill Time']
-        df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
-        diffList=df['diff_seconds'].values.tolist()
-        #print(diffList)
+            #time difference list
+            df['diff_seconds'] =df['Consult IN']-df['Bill Time']
+            df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
+            diffList=df['diff_seconds'].values.tolist()
+            #print(diffList)
 
 
-        #getting unique values for dept
-        unique_doc = []
-        for x in docList:
+            #getting unique values for dept
+            unique_doc = []
+            for x in docList:
                 # check if exists in unique_list or not
                 if x not in unique_doc:
                     unique_doc.append(x)
                 
-        # making dept time total
-        counter=0;
-        DAvgList=[]
-        a=0
-
-        for i in range(len(unique_doc)):
-            counter=0
+            # making dept time total
+            counter=0;
+            DAvgList=[]
             a=0
-            for j in range(len(docList)):
-                if(unique_doc[i]==docList[j]):
-                    a=a+diffList[j]
-                    counter=counter+1
-                    #print("Nice")
-            DAvgList.append((a/counter)/3600)
+
+            for i in range(len(unique_doc)):
+                counter=0
+                a=0
+                for j in range(len(docList)):
+                    if(unique_doc[i]==docList[j]):
+                        a=a+diffList[j]
+                        counter=counter+1
+                        #print("Nice")
+                DAvgList.append((a/counter)/3600)
 
 
 
-        df2 = pd.DataFrame(list(zip(unique_doc, DAvgList)),
+            df2 = pd.DataFrame(list(zip(unique_doc, DAvgList)),
                     columns =['DName', 'AVG'])
-        df2
+       
 
-        bars=alt.Chart(df2,title="Average Waiting time for Each Department(Walkins)").mark_bar().encode(
+            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Walkins)", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
             x=alt.X('AVG', axis=alt.Axis( title='Average Time in Hours')),
             y=alt.Y('DName', axis=alt.Axis( title='Department Name')),
+            color=alt.value('#5B9AA0'),
             tooltip = [alt.Tooltip('DName'),
                     alt.Tooltip('AVG')]
         
-        ).configure_title(
+            ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -88,12 +89,12 @@ def waitingtime_analysis(category, start_date, end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Waiting time for Walk-Ins", width=400,height=1500
+            ).properties(title="Waiting time for Walk-Ins", width=400,height=1500
 
             ).interactive()
 
-        g_json=bars.to_json()
-        return g_json
+            g_json=bars.to_json()
+            return g_json
 
     elif category=="DeptW":
         import altair as alt
@@ -107,58 +108,59 @@ def waitingtime_analysis(category, start_date, end_date):
         alt.data_transformers.disable_max_rows()
             
         df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WalkInOPConsultationSep2020', engine='openpyxl')
-        df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":"'Bill Time","Consultation start Date/Time":"Consult IN","Speciality":"Dept Name"})
+        df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":'Bill Time',"Consultation start Date/Time":"Consult IN","Speciality":"Dept Name"})
         
         df['date']=pd.to_datetime(df['Consult IN']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
+        if(len(df)!=0):
+            deptList= df['Dept Name'].values.tolist()
+            billList= df['Bill Time'].values.tolist()
+            inList= df['Consult IN'].values.tolist()
 
-        deptList= df['Dept Name'].values.tolist()
-        billList= df['Bill Time'].values.tolist()
-        inList= df['Consult IN'].values.tolist()
-
-        #time difference list
-        df['diff_seconds'] =df['Consult IN']-df['Bill Time']
-        df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
-        diffList=df['diff_seconds'].values.tolist()
-        #print(diffList)
+            #time difference list
+            df['diff_seconds'] =df['Consult IN']-df['Bill Time']
+            df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
+            diffList=df['diff_seconds'].values.tolist()
+            #print(diffList)
 
 
-        #getting unique values for dept
-        unique_dept = []
-        for x in deptList:
+            #getting unique values for dept
+            unique_dept = []
+            for x in deptList:
                 # check if exists in unique_list or not
                 if x not in unique_dept:
                     unique_dept.append(x)
                 
-        # making dept time total
-        counter=0;
-        DAvgList=[]
-        a=0
-
-        for i in range(len(unique_dept)):
-            counter=0
+            # making dept time total
+            counter=0;
+            DAvgList=[]
             a=0
-            for j in range(len(deptList)):
-                if(unique_dept[i]==deptList[j]):
-                    a=a+diffList[j]
-                    counter=counter+1
-                    #print("Nice")
-            DAvgList.append((a/counter)/3600)
+
+            for i in range(len(unique_dept)):
+                counter=0
+                a=0
+                for j in range(len(deptList)):
+                    if(unique_dept[i]==deptList[j]):
+                        a=a+diffList[j]
+                        counter=counter+1
+                        #print("Nice")
+                DAvgList.append((a/counter)/3600)
 
         
 
-        df2 = pd.DataFrame(list(zip(unique_dept, DAvgList)),
+            df2 = pd.DataFrame(list(zip(unique_dept, DAvgList)),
                     columns =['DName', 'AVG'])
-        df2
+        
 
-        bars=alt.Chart(df2,title="Average Waiting time for Each Department(Walkins)").mark_bar().encode(
+            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Walkins)", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
             x=alt.X('AVG', axis=alt.Axis( title='Average Time in Hours')),
             y=alt.Y('DName', axis=alt.Axis(title='Department Name')),
+            color=alt.value('#E06377'),
             tooltip = [alt.Tooltip('DName'),
                     alt.Tooltip('AVG')]
         
-        ).configure_title(
+            ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -168,12 +170,12 @@ def waitingtime_analysis(category, start_date, end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Waiting time for Walk-Ins", width=400,height=800
+            ).properties(title="Waiting time for Walk-Ins", width=400,height=800
 
             ).interactive()
         
-        g_json=bars.to_json()
-        return g_json
+            g_json=bars.to_json()
+            return g_json
 
 
     elif category=="DocAppt":
@@ -194,54 +196,55 @@ def waitingtime_analysis(category, start_date, end_date):
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
 
+        if(len(df)!=0):
+
+            docList= df['Doctor Name'].values.tolist()
+            billList= df['Billing Time'].values.tolist()
+            inList= df['Consultation start Date/Time'].values.tolist()
+
+            #time difference list
+            df['diff_seconds'] =df['Consultation start Date/Time']-df['Billing Time']
+            df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
+            diffList=df['diff_seconds'].values.tolist()
+            #print(diffList)
 
 
-        docList= df['Doctor Name'].values.tolist()
-        billList= df['Billing Time'].values.tolist()
-        inList= df['Consultation start Date/Time'].values.tolist()
-
-        #time difference list
-        df['diff_seconds'] =df['Consultation start Date/Time']-df['Billing Time']
-        df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
-        diffList=df['diff_seconds'].values.tolist()
-        #print(diffList)
-
-
-        #getting unique values for dept
-        unique_doc = []
-        for x in docList:
+            #getting unique values for dept
+            unique_doc = []
+            for x in docList:
                 # check if exists in unique_list or not
                 if x not in unique_doc:
                     unique_doc.append(x)
                 
-        # making dept time total
-        counter=0;
-        DAvgList=[]
-        a=0
-
-        for i in range(len(unique_doc)):
-            counter=0
+            # making dept time total
+            counter=0;
+            DAvgList=[]
             a=0
-            for j in range(len(docList)):
-                if(unique_doc[i]==docList[j]):
-                    a=a+diffList[j]
-                    counter=counter+1
-                    #print("Nice")
-            DAvgList.append((a/counter)/3600)
+
+            for i in range(len(unique_doc)):
+                counter=0
+                a=0
+                for j in range(len(docList)):
+                    if(unique_doc[i]==docList[j]):
+                        a=a+diffList[j]
+                        counter=counter+1
+                        #print("Nice")
+                DAvgList.append((a/counter)/3600)
 
 
 
-        df2 = pd.DataFrame(list(zip(unique_doc, DAvgList)),
+            df2 = pd.DataFrame(list(zip(unique_doc, DAvgList)),
                     columns =['DName', 'AVG'])
 
 
-        bars=alt.Chart(df2,title="Average Waiting time for Each Department(Appointments)").mark_bar().encode(
+            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Appointments)", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
             x=alt.X('AVG', axis=alt.Axis( title='Average Time in Hours')),
             y=alt.Y('DName', axis=alt.Axis( title='Department Name')),
+            color=alt.value('#FF6361'),
             tooltip = [alt.Tooltip('DName'),
                     alt.Tooltip('AVG')]
         
-        ).configure_title(
+            ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -251,11 +254,11 @@ def waitingtime_analysis(category, start_date, end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Waiting time for Appointments", width=400,height=1500
+            ).properties(title="Waiting time for Appointments", width=400,height=1500
 
             ).interactive()
-        g_json=bars.to_json()
-        return g_json
+            g_json=bars.to_json()
+            return g_json
    
     else:
         
@@ -277,53 +280,54 @@ def waitingtime_analysis(category, start_date, end_date):
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
 
+        if(len(df)!=0):
+            deptList= df['Dept Name'].values.tolist()
+            billList= df['Billing Time'].values.tolist()
+            inList= df['Consultation start Date/Time'].values.tolist()
 
-        deptList= df['Dept Name'].values.tolist()
-        billList= df['Billing Time'].values.tolist()
-        inList= df['Consultation start Date/Time'].values.tolist()
-
-        #time difference list
-        df['diff_seconds'] =df['Consultation start Date/Time']-df['Billing Time']
-        df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
-        diffList=df['diff_seconds'].values.tolist()
-        #print(diffList)
+            #time difference list
+            df['diff_seconds'] =df['Consultation start Date/Time']-df['Billing Time']
+            df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
+            diffList=df['diff_seconds'].values.tolist()
+            #print(diffList)
 
 
-        #getting unique values for dept
-        unique_dept = []
-        for x in deptList:
+            #getting unique values for dept
+            unique_dept = []
+            for x in deptList:
                 # check if exists in unique_list or not
                 if x not in unique_dept:
                     unique_dept.append(x)
                 
-        # making dept time total
-        counter=0;
-        DAvgList=[]
-        a=0
-
-        for i in range(len(unique_dept)):
-            counter=0
+            # making dept time total
+            counter=0;
+            DAvgList=[]
             a=0
-            for j in range(len(deptList)):
-                if(unique_dept[i]==deptList[j]):
-                    a=a+diffList[j]
-                    counter=counter+1
-                    #print("Nice")
-            DAvgList.append((a/counter)/3600)
+
+            for i in range(len(unique_dept)):
+                counter=0
+                a=0
+                for j in range(len(deptList)):
+                    if(unique_dept[i]==deptList[j]):
+                        a=a+diffList[j]
+                        counter=counter+1
+                        #print("Nice")
+                DAvgList.append((a/counter)/3600)
 
         
 
-        df2 = pd.DataFrame(list(zip(unique_dept, DAvgList)),
+            df2 = pd.DataFrame(list(zip(unique_dept, DAvgList)),
                     columns =['DName', 'AVG'])
     
 
-        bars=alt.Chart(df2,title="Average Waiting time for Each Department(Appointments)").mark_bar().encode(
+            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Appointments)", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
             x=alt.X('AVG', axis=alt.Axis( title='Average Time in Hours')),
             y=alt.Y('DName', axis=alt.Axis( title='Department Name')),
+            color=alt.value('#FFA600'),
             tooltip = [alt.Tooltip('DName'),
                     alt.Tooltip('AVG')]
         
-        ).configure_title(
+            ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -333,12 +337,12 @@ def waitingtime_analysis(category, start_date, end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Waiting time for Appointments", width=400,height=800
+            ).properties(title="Waiting time for Appointments", width=400,height=800
 
             ).interactive()
    
-        g_json=bars.to_json()
-        return g_json
+            g_json=bars.to_json()
+            return g_json
 
         
 def mlc_analysis(category):
@@ -346,15 +350,17 @@ def mlc_analysis(category):
     import altair as alt
     alt.data_transformers.disable_max_rows()
     df = pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
-    w=pd.Series(df['Is MLC'].value_counts())
-    if category=="MLCSpecialty":
+    if(len(df)!=0):
+        w=pd.Series(df['Is MLC'].value_counts())
+        if category=="MLCSpecialty":
         
-        input_dropdown = alt.binding_select(options=df['Primary doctor Specialty'].unique(), name="Specialty Name")  # creates drop-down menu of unique department names
-        selection = alt.selection_single(fields=['Primary doctor Specialty'], bind=input_dropdown, name='Select')
-        area_chart=alt.Chart(df, title="Number of MLC's").mark_bar().transform_filter(selection
+            input_dropdown = alt.binding_select(options=df['Primary doctor Specialty'].unique(), name="Specialty Name")  # creates drop-down menu of unique department names
+            selection = alt.selection_single(fields=['Primary doctor Specialty'], bind=input_dropdown, name='Select')
+            area_chart=alt.Chart(df, title="Number of MLC's", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().transform_filter(selection
                     ).encode(
                     alt.X('Is MLC:N'),
                     alt.Y('count(Is MLC):Q'),
+                    color=alt.value('#E985F0'),
                     tooltip = [alt.Tooltip('Is MLC:N'),
                             alt.Tooltip('count(Is MLC):Q'),
                             alt.Tooltip('Primary doctor Specialty')
@@ -364,34 +370,35 @@ def mlc_analysis(category):
                 #).interactive(# zoom
                 ).add_selection(selection
                     ).interactive(
-        ).configure_axis(grid=False #interior grid off
-        ).configure_view(strokeWidth=0 #exterior grid off
-        ).properties(
+            ).configure_axis(grid=False #interior grid off
+            ).configure_view(strokeWidth=0 #exterior grid off
+            ).properties(
                 width =100, #width and height of bars
-            height =300,
+                height =300,
         
-        ).configure_title(
-            fontSize=15,
-            font='Arial',
-            anchor='middle',#center title
-            color='black'
-        ).configure_axis(
-            domainWidth=2,
-            domainColor='black',#domain is axis...axis width and color
-            labelFontSize=15,
-            titleFontSize=15,
+            ).configure_title(
+                fontSize=15,
+                font='Arial',
+                anchor='middle',#center title
+                color='black'
+            ).configure_axis(
+                domainWidth=2,
+                domainColor='black',#domain is axis...axis width and color
+                labelFontSize=15,
+                titleFontSize=15,
 
-        )
-        g_json=area_chart.to_json()
-        return g_json
+            )
+            g_json=area_chart.to_json()
+            return g_json
 
-    else:
-        input_dropdown = alt.binding_select(options=df['Ward Name'].unique(),name="Ward Name")  # creates drop-down menu of unique department names
-        selection = alt.selection_single(fields=['Ward Name'], bind=input_dropdown, name='Select')
-        area_chart=alt.Chart(df, title="Number of MLC's").mark_bar().transform_filter(selection
+        else:
+            input_dropdown = alt.binding_select(options=df['Ward Name'].unique(),name="Ward Name")  # creates drop-down menu of unique department names
+            selection = alt.selection_single(fields=['Ward Name'], bind=input_dropdown, name='Select')
+            area_chart=alt.Chart(df, title="Number of MLC's", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().transform_filter(selection
                     ).encode(
                     alt.X('Is MLC:N'),
                     alt.Y('count(Is MLC):Q'),
+                    color=alt.value('#85F095'),
                     tooltip = [alt.Tooltip('Is MLC:N'),
                             alt.Tooltip('count(Is MLC):Q'),
                             alt.Tooltip('Ward Name')
@@ -400,26 +407,26 @@ def mlc_analysis(category):
                 #).interactive(# zoom
                 ).add_selection(selection
                     ).interactive(
-        ).configure_axis(grid=False #interior grid off
-        ).configure_view(strokeWidth=0 #exterior grid off
-        ).properties(
-                width =100, #width and height of bars
-            height =300,
+                ).configure_axis(grid=False #interior grid off
+                ).configure_view(strokeWidth=0 #exterior grid off
+                ).properties(
+                    width =100, #width and height of bars
+                    height =300,
         
-        ).configure_title(
-            fontSize=15,
-            font='Arial',
-            anchor='middle',#center title
-            color='black'
-        ).configure_axis(
-            domainWidth=2,
-            domainColor='black',#domain is axis...axis width and color
-            labelFontSize=15,
-            titleFontSize=15,
+            ).configure_title(
+                fontSize=15,
+                font='Arial',
+                anchor='middle',#center title
+                color='black'
+            ).configure_axis(
+                domainWidth=2,
+                domainColor='black',#domain is axis...axis width and color
+                labelFontSize=15,
+                titleFontSize=15,
         
-        )
-        g_json=area_chart.to_json()
-        return g_json
+            )
+            g_json=area_chart.to_json()
+            return g_json
         
 
 
@@ -434,13 +441,16 @@ def discharges_analysis(category,start_date,end_date):
         df2 = pd.concat(data, axis=1, keys=headers)
         df2['date']=pd.to_datetime(df2['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
         df2=df2.loc[(df2["date"]>=start_date) & (df2["date"]<=end_date)]
-        gk=df2.groupby(by=['Wardname']).count().reset_index()
+        if(len(df2)!=0):
+            gk=df2.groupby(by=['Wardname']).count().reset_index()
 
-        gk=gk.rename(columns={'Discharge':'Count'})
+            gk=gk.rename(columns={'Discharge':'Count'})
 
-        area_chart=alt.Chart(gk).mark_bar().encode(alt.X('Count:Q',title='Number of Discharges'),
+            area_chart=alt.Chart(gk, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('Count:Q',title='Number of Discharges'),
 
             alt.Y('Wardname:N',axis=alt.Axis(title=None)),
+            color=alt.value('#6056E3'),
+            
             tooltip = [
 
                     alt.Tooltip('Count'),
@@ -449,7 +459,7 @@ def discharges_analysis(category,start_date,end_date):
 
                     ]
 
-        ).configure_title(
+            ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -459,22 +469,22 @@ def discharges_analysis(category,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Number of discharges from each ward",
+            ).properties(title="Number of discharges from each ward",
             width = 400, #width and height of bars
             height = 400
 
             ).interactive()
 
 
-        g_json=area_chart.to_json()
-        return g_json
+            g_json=area_chart.to_json()
+            return g_json
     elif category=='EachWardBed':
         df1=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         #alt.data_transformers.disable_max_rows()
         df1["date2"] = pd.to_datetime(df1['Discharge Date & Time ']).dt.strftime("%Y-%m-%d") #string to date format
         df1=df1.loc[(df1["date2"]>=start_date) & (df1["date2"]<=end_date)]     #selecting data frame rows in the desired date range
-
-        area_chart=alt.Chart(df1).mark_bar(size=15).encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
+        if(len(df1)!=0):
+            area_chart=alt.Chart(df1).mark_bar(size=15).encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
 
             alt.Y('Billable Bed Type:N',axis=alt.Axis(title=None)),
 
@@ -488,10 +498,10 @@ def discharges_analysis(category,start_date,end_date):
 
                     ]
 
-        ).facet(row=alt.Row('Ward Name:N', header=alt.Header(title='Ward Name',labelOrient='top',labelAngle=0)) #categorize orders based on ordering station
+            ).facet(row=alt.Row('Ward Name:N', header=alt.Header(title='Ward Name',labelOrient='top',labelAngle=0)) #categorize orders based on ordering station
 
         
-        ).configure_title(
+            ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -501,22 +511,23 @@ def discharges_analysis(category,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Number of discharges from each ward: Bed-wise"
+            ).properties(title="Number of discharges from each ward: Bed-wise"
             ).interactive()
 
-        g_json=area_chart.to_json()
-        return g_json
+            g_json=area_chart.to_json()
+            return g_json
     elif category=='AllWardBed':
         df1=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         alt.data_transformers.disable_max_rows()
         df1["date2"] = pd.to_datetime(df1['Discharge Date & Time ']).dt.strftime("%Y-%m-%d") #string to date format
         df1=df1.loc[(df1["date2"]>=start_date) & (df1["date2"]<=end_date)]     #selecting data frame rows in the desired date range
-
-        bars=alt.Chart(df1, title='Number of discharges from all wards: Bed-wise').mark_bar(size=15).encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
+        if(len(df1)!=0):
+            bars=alt.Chart(df1, title='Number of discharges from all wards: Bed-wise', padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=15).encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
 
             alt.Y('Billable Bed Type:N',axis=alt.Axis(title=None)),
 
             alt.Color('Billable Bed Type', legend=alt.Legend(title="Billable Bed Type")),
+        
 
             tooltip = [
 
@@ -527,7 +538,7 @@ def discharges_analysis(category,start_date,end_date):
                     ]
 
 
-        ).configure_title(
+            ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -537,13 +548,13 @@ def discharges_analysis(category,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Number of discharges",width=300,height=300
+            ).properties(title="Number of discharges",width=300,height=300
 
             ).interactive()
 
        
-        g_json=bars.to_json()
-        return g_json
+            g_json=bars.to_json()
+            return g_json
     elif category=='EachSpec':
         df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         alt.data_transformers.disable_max_rows()
@@ -557,14 +568,15 @@ def discharges_analysis(category,start_date,end_date):
 
 
         df2=df2.loc[(df2["date"]>=start_date) & (df2["date"]<=end_date)]
+        if(len(df2)!=0):
+            gk=df2.groupby(by=['Specialty']).count().reset_index()
 
-        gk=df2.groupby(by=['Specialty']).count().reset_index()
+            gk=gk.rename(columns={'Discharge':'Count'})
 
-        gk=gk.rename(columns={'Discharge':'Count'})
-
-        area_chart=alt.Chart(gk).mark_bar().encode(alt.X('Count:Q',title='Number of Discharges'),
+            area_chart=alt.Chart(gk, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('Count:Q',title='Number of Discharges'),
 
             alt.Y('Specialty:N',axis=alt.Axis(title=None)),
+            color=alt.value('#82DC1C'),
             tooltip = [
 
                     alt.Tooltip('Count'),
@@ -573,7 +585,7 @@ def discharges_analysis(category,start_date,end_date):
 
                     ]
 
-        ).configure_title(
+            ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -583,10 +595,10 @@ def discharges_analysis(category,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Number of discharges from each ward",width=400,height=600
-        ).interactive()
-        g_json=area_chart.to_json()
-        return g_json
+            ).properties(title="Number of discharges from each ward",width=400,height=600
+            ).interactive()
+            g_json=area_chart.to_json()
+            return g_json
     elif category=='EachDoc':
         
         df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
@@ -601,14 +613,15 @@ def discharges_analysis(category,start_date,end_date):
 
 
         df2=df2.loc[(df2["date"]>=start_date) & (df2["date"]<=end_date)]
+        if(len(df2)!=0):
+            gk=df2.groupby(by=['Doctor']).count().reset_index()
 
-        gk=df2.groupby(by=['Doctor']).count().reset_index()
+            gk=gk.rename(columns={'Discharge':'Count'})
 
-        gk=gk.rename(columns={'Discharge':'Count'})
-
-        area_chart=alt.Chart(gk).mark_bar(size=15).encode(alt.X('Count:Q',title='Number of Discharges'),
+            area_chart=alt.Chart(gk,padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=15).encode(alt.X('Count:Q',title='Number of Discharges'),
 
             alt.Y('Doctor:N',axis=alt.Axis(title=None)),
+            color=alt.value('#EF5F8A'),
             tooltip = [
 
                     alt.Tooltip('Count'),
@@ -617,7 +630,7 @@ def discharges_analysis(category,start_date,end_date):
 
                     ]
 
-        ).configure_title(
+            ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -627,14 +640,14 @@ def discharges_analysis(category,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Number of discharges",width=400,height=1000
+            ).properties(title="Number of discharges",width=400,height=1000
 
             ).interactive()
 
         
 
-        g_json=area_chart.to_json()
-        return g_json
+            g_json=area_chart.to_json()
+            return g_json
 
     elif category=='BedEachWard':
         df1=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
@@ -642,12 +655,13 @@ def discharges_analysis(category,start_date,end_date):
         df1["date2"] = pd.to_datetime(df1['Discharge Date & Time ']).dt.strftime("%Y-%m-%d") #string to date format
         
         df1=df1.loc[(df1["date2"]>=start_date) & (df1["date2"]<=end_date)]
-
-        area_chart=alt.Chart(df1).mark_bar().encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
+        if(len(df1)!=0):
+            area_chart=alt.Chart(df1, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
 
             alt.Y('Billable Bed Type:N',axis=alt.Axis(title=None)),
 
             alt.Color('Billable Bed Type', legend=alt.Legend(title="Billable Bed Type")),
+            
 
             tooltip = [
 
@@ -657,43 +671,44 @@ def discharges_analysis(category,start_date,end_date):
 
                     ]
 
-        ).facet(row=alt.Row('Ward Name:N', header=alt.Header(title='Ward Name',labelOrient='top',labelAngle=0)) #categorize orders based on ordering station
+            ).facet(row=alt.Row('Ward Name:N', header=alt.Header(title='Ward Name',labelOrient='top',labelAngle=0)) #categorize orders based on ordering station
 
             ).properties(title='Number of discharges from each ward: Bed-wise'
 
             ).interactive(
-        ).configure_axis(grid=False #interior grid off
-        ).configure_view(strokeWidth=0 #exterior grid off
-        ).properties(
+            ).configure_axis(grid=False #interior grid off
+            ).configure_view(strokeWidth=0 #exterior grid off
+            ).properties(
                 width =200, #width and height of bars
-            height =700,
+                height =700,
         
-        ).configure_title(
-            fontSize=15,
-            font='Arial',
-            anchor='middle',#center title
-            color='black'
-        ).configure_axis(
-            domainWidth=2,
-            domainColor='black',#domain is axis...axis width and color
-            labelFontSize=10,
-            titleFontSize=10,
+            ).configure_title(
+                fontSize=15,
+                font='Arial',
+                anchor='middle',#center title
+                color='black'
+            ).configure_axis(
+                domainWidth=2,
+                domainColor='black',#domain is axis...axis width and color
+                labelFontSize=10,
+                titleFontSize=10,
         
-        )
-        g_json=area_chart.to_json()
-        return g_json
+            )
+            g_json=area_chart.to_json()
+            return g_json
 
     elif category=='BedAllWard':
         df1=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         alt.data_transformers.disable_max_rows() #to allow more than 5000 rows in display
         df1["date2"] = pd.to_datetime(df1['Discharge Date & Time ']).dt.strftime("%Y-%m-%d") #string to date format
         df=df1.loc[(df1["date2"]>=start_date) & (df1["date2"]<=end_date)]
-
-        bars=alt.Chart(df1, title='Number of discharges from all wards: Bed-wise').mark_bar().encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
+        if(len(df)!=0):
+            bars=alt.Chart(df1, title='Number of discharges from all wards: Bed-wise', padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
 
             alt.Y('Billable Bed Type:N',axis=alt.Axis(title=None)),
 
             alt.Color('Billable Bed Type', legend=alt.Legend(title="Billable Bed Type")),
+            
 
             tooltip = [
 
@@ -704,16 +719,16 @@ def discharges_analysis(category,start_date,end_date):
                     ]
 
 
-        )
-        text=alt.Chart().mark_text(align='center', baseline='middle', dx=9).encode(
+            )
+            text=alt.Chart().mark_text(align='center', baseline='middle', dx=9).encode(
             y=alt.Y('Billable Bed Type', title=None),
             x='count(Billable Bed Type)',
             text='count(Billable Bed Type)')
 
 
-        area_chart=alt.layer(bars, text, data=df1)
-        g_json=area_chart.to_json()
-        return g_json
+            area_chart=alt.layer(bars, text, data=df1)
+            g_json=area_chart.to_json()
+            return g_json
 def spec_ward_day(wardname):
     category=wardname
     df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
@@ -722,23 +737,25 @@ def spec_ward_day(wardname):
     headers = ['Discharge','Wardname']
     df2 = pd.concat(data, axis=1, keys=headers)
     df3= df2[(df2['Wardname']==category)]
-    df3['date']=pd.to_datetime(df3['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
+    if(len(df3)!=0):
+        df3['date']=pd.to_datetime(df3['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     
     
-    t1=pd.Series(df3['date'].value_counts())
-    pdf1=t1.to_frame()
-    pdf1=pdf1.reset_index()
-    pdf1=pdf1.rename(columns={"index":"date", "date":"count"})
-    print(sum(pdf1['count']))
-    area_chart=alt.Chart(pdf1, title="Number of patients discharged from ("+category+")").mark_bar().encode(
+        t1=pd.Series(df3['date'].value_counts())
+        pdf1=t1.to_frame()
+        pdf1=pdf1.reset_index()
+        pdf1=pdf1.rename(columns={"index":"date", "date":"count"})
+        print(sum(pdf1['count']))
+        area_chart=alt.Chart(pdf1, title="Number of patients discharged from ("+category+")", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
         alt.X('count'),
         alt.Y('date'),
+        color=alt.value('#935FEF'),
         tooltip = [alt.Tooltip('count'),
                 alt.Tooltip('date')
                 ]
                 
-    #).interactive(# zoom
-    ).configure_title(
+        #).interactive(# zoom
+        ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -748,12 +765,12 @@ def spec_ward_day(wardname):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(width=300,height=300
+        ).properties(width=300,height=600
 
             ).interactive()
     
-    g_json=area_chart.to_json()
-    return g_json
+        g_json=area_chart.to_json()
+        return g_json
 
 def spec_doc_and_spec(doctor,specialty,start_date,end_date):
     category1=specialty
@@ -769,11 +786,13 @@ def spec_doc_and_spec(doctor,specialty,start_date,end_date):
     gk=df3.groupby(by=['BedType', 'Discharge']).count().reset_index()
     gk['date']=pd.to_datetime(gk['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
-    area_chart=alt.Chart(gk).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+    if(len(gk)!=0):
+        area_chart=alt.Chart(gk, padding={"left": 180, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
+        color=alt.value('#8DEF5F'),
 
-        #alt.Color('Billable Bed Type', legend=alt.Legend(title="Billable Bed Type")),
+        
 
         tooltip = [
 
@@ -783,7 +802,7 @@ def spec_doc_and_spec(doctor,specialty,start_date,end_date):
 
                 ]
 
-    ).configure_title(
+        ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -797,8 +816,8 @@ def spec_doc_and_spec(doctor,specialty,start_date,end_date):
 
             ).interactive()
 
-    g_json=area_chart.to_json()
-    return g_json
+        g_json=area_chart.to_json()
+        return g_json
 
 def specific_spec_bed(specialty,start_date,end_date):
     category=specialty
@@ -813,12 +832,12 @@ def specific_spec_bed(specialty,start_date,end_date):
     gk=df3.groupby(by=['BedType', 'Discharge']).count().reset_index()
     gk['date']=pd.to_datetime(gk['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
+    if(len(gk)!=0):
 
-
-    area_chart=alt.Chart(gk).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+        area_chart=alt.Chart(gk, padding={"left": 150, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
-
+        color=alt.value('#EF935F'),
         #alt.Color('Billable Bed Type', legend=alt.Legend(title="Billable Bed Type")),
 
         tooltip = [
@@ -829,7 +848,7 @@ def specific_spec_bed(specialty,start_date,end_date):
 
                 ]
 
-    ).configure_title(
+        ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -843,8 +862,8 @@ def specific_spec_bed(specialty,start_date,end_date):
 
             ).interactive()
     
-    g_json=area_chart.to_json()
-    return g_json
+        g_json=area_chart.to_json()
+        return g_json
 
 def specific_discharge_analysis(wardname,start_date,end_date):
     category=wardname
@@ -860,10 +879,11 @@ def specific_discharge_analysis(wardname,start_date,end_date):
     gk=df3.groupby(by=['BedType', 'Discharge']).count().reset_index()
     gk['date']=pd.to_datetime(gk['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
-
-    area_chart=alt.Chart(gk).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+    if(len(gk)!=0):
+        area_chart=alt.Chart(gk, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
+        color=alt.value('#8971A3'),
         tooltip = [
 
                 alt.Tooltip('count(BedType)'),
@@ -872,7 +892,7 @@ def specific_discharge_analysis(wardname,start_date,end_date):
 
                 ]
 
-    ).configure_title(
+        ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -888,8 +908,8 @@ def specific_discharge_analysis(wardname,start_date,end_date):
         ).interactive()
 
     
-    g_json=area_chart.to_json()
-    return g_json
+        g_json=area_chart.to_json()
+        return g_json
 
 def spec_doc_bed(doctor, start_date, end_date):
     category=doctor
@@ -902,10 +922,11 @@ def spec_doc_bed(doctor, start_date, end_date):
     gk=df3.groupby(by=['BedType', 'Discharge']).count().reset_index()
     gk['date']=pd.to_datetime(gk['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
-
-    area_chart=alt.Chart(gk).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+    if(len(gk)!=0):
+        area_chart=alt.Chart(gk, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
+        color=alt.value('#D265B1'),
 
         #alt.Color('Billable Bed Type', legend=alt.Legend(title="Billable Bed Type")),
 
@@ -917,7 +938,7 @@ def spec_doc_bed(doctor, start_date, end_date):
 
                 ]
 
-    ).configure_title(
+        ).configure_title(
                         fontSize=25,
                         font='Arial',
                         anchor='middle',#center title
@@ -931,8 +952,8 @@ def spec_doc_bed(doctor, start_date, end_date):
 
             ).interactive()
 
-    g_json=area_chart.to_json()
-    return g_json
+        g_json=area_chart.to_json()
+        return g_json
 
 
 
@@ -951,11 +972,11 @@ def spec_ward_and_spec_and_doc(wardname, specialty, doctor,start_date,end_date):
     gk['date']=pd.to_datetime(gk['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
 
-
-    area_chart=alt.Chart(gk).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+    if(len(gk)!=0):
+        area_chart=alt.Chart(gk, padding={"left": 150, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
-
+        color=alt.value('#3D95AF'),
         #alt.Color('Billable Bed Type', legend=alt.Legend(title="Billable Bed Type")),
 
         tooltip = [
@@ -966,7 +987,7 @@ def spec_ward_and_spec_and_doc(wardname, specialty, doctor,start_date,end_date):
 
                 ]
 
-    ).configure_title(
+        ).configure_title(
                         fontSize=20,
                         font='Arial',
                         anchor='middle',#center title
@@ -981,8 +1002,8 @@ def spec_ward_and_spec_and_doc(wardname, specialty, doctor,start_date,end_date):
             ).interactive()
 
 
-    g_json=area_chart.to_json()
-    return g_json
+        g_json=area_chart.to_json()
+        return g_json
 
 
 def spec_ward_and_spec(wardname, specialty,start_date,end_date):
@@ -999,11 +1020,11 @@ def spec_ward_and_spec(wardname, specialty,start_date,end_date):
     gk=df3.groupby(by=['BedType', 'Discharge']).count().reset_index()
     gk['date']=pd.to_datetime(gk['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
-
-    area_chart=alt.Chart(gk).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+    if(len(gk)!=0):
+        area_chart=alt.Chart(gk, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
-
+        color=alt.value('#7FB47D'),
         #alt.Color('Billable Bed Type', legend=alt.Legend(title="Billable Bed Type")),
 
         tooltip = [
@@ -1014,7 +1035,7 @@ def spec_ward_and_spec(wardname, specialty,start_date,end_date):
 
                 ]
 
-    ).configure_title(
+        ).configure_title(
                         fontSize=20,
                         font='Arial',
                         anchor='middle',#center title
@@ -1028,8 +1049,8 @@ def spec_ward_and_spec(wardname, specialty,start_date,end_date):
 
             ).interactive()
             
-    g_json=area_chart.to_json()
-    return g_json
+        g_json=area_chart.to_json()
+        return g_json
 
 
 
@@ -1046,11 +1067,12 @@ def payments_analysis():
     fig1, ax1 = plt.subplots()
     ax1.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=True,explode=explodeTuple)
     ax1.axis('equal')
-    ax1.set_title("payment type")
+    ax1.set_title("Payment type")
+    ax1.text(-1.5, 0.7, a, bbox=dict(facecolor='blue', alpha=0.5))
+    ax1.text(-2.0, 0.7, "Cash" )
+    ax1.text(-1.5, 0.5, b, bbox=dict(facecolor='orange', alpha=1))
+    ax1.text(-2.0, 0.5, "Credit" )
     plt.show()
-    print ("Total number of patients paying by cash or credit.")
-    print (a)
-    print(b)
 
 ################################## amala's team  #########################################################################################################
 

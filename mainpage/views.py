@@ -97,7 +97,42 @@ def OPObjectives(request):
 
 def DischargeObjectives(request):
     if (os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx")==False ):
-        return render(request,'FileUpload.html', {'message':'Discharge Analysis File NOT present ! Please upload the file first. '})
+        message='Discharge Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     return render(request,'DischargeObjectives.html')
 
 def ApptObjectives(request):
@@ -111,17 +146,122 @@ def DocObjectives(request):
 
 def MLCObjectives(request):
     if (os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx")==False ):
-        return render(request,'FileUpload.html', {'message':'Discharge Analysis File NOT present ! Please upload the file first. '})
+        message='Discharge Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     return render(request,'MLCObjectives.html')
 
 def SpecObjectives(request):
     if (os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx")==False ):
-        return render(request,'FileUpload.html', {'message':'Discharge Analysis File NOT present ! Please upload the file first. '})
+        message='Discharge Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     return render(request,'SpecObjectives.html')
 
 def WaitObjectives(request):
     if (os.path.isfile("mainpage/media/fileupload/OPConsultation.xlsx")==False ):
-        return render(request,'FileUpload.html', {'message':'OP Consultation File NOT present ! Please upload the file first. '})
+        message='OP Consultation File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     return render(request,'WaitObjectives.html')
 
 def WalkInObjectives(request):
@@ -129,8 +269,6 @@ def WalkInObjectives(request):
 
 def WardObjectives(request):
     return render(request,'WardObjectives.html')
-
-
 
 
 def EachWardBed(request):
@@ -142,8 +280,13 @@ def EachWardBed(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=discharges_analysis(category,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=discharges_analysis(category,from_date,to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else:
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -151,13 +294,19 @@ def AllWardBed(request):
     category='AllWardBed'
     form=DateFilter()
     if request.method=="POST":
+        
         form=DateFilter(request.POST)
         
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=discharges_analysis(category,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=discharges_analysis(category,from_date,to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else:
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -165,14 +314,21 @@ def SpecificWardBed(request):
     form1=Form3()
     form2=DateFilter()
     if request.method=="POST":
+        
         form1=Form3(request.POST)
         form2=DateFilter(request.POST)
         if form1.is_valid() and form2.is_valid():
             wardname=request.POST['wardname']
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=specific_discharge_analysis(wardname,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=specific_discharge_analysis(wardname,from_date,to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else:
+                return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2, 'message':message})
+
+            
     else:
         return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2})
 
@@ -180,15 +336,24 @@ def SpecificWardBed(request):
 def SpecDocBed(request):
     form1=Form5()
     form2=DateFilter()
+    
     if request.method=="POST":
+        
         form1=Form5(request.POST)
         form2=DateFilter(request.POST)
+        
         if form1.is_valid() and form2.is_valid():
             doctor=request.POST['doctor']
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=spec_doc_bed(doctor,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):                
+                g_json=spec_doc_bed(doctor,from_date,to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else: 
+                
+                return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2, 'message':message})
+            
     else:
         return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2})
 
@@ -202,8 +367,12 @@ def EachDoc(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=discharges_analysis(category,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=discharges_analysis(category,from_date,to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else:
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -216,8 +385,12 @@ def EachSpec(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=discharges_analysis(category,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=discharges_analysis(category,from_date,to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else:
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -231,8 +404,13 @@ def SpecificSpecBed(request):
             specialty=request.POST['specialty']
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=specific_spec_bed(specialty,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=specific_spec_bed(specialty,from_date,to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else:
+                return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2, 'message':message})
+            
     else:
         return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2})
 
@@ -250,8 +428,13 @@ def SpecificDocSpecificSpec(request):
             specialty=request.POST['specialty']
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=spec_doc_and_spec(doctor, specialty, from_date, to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=spec_doc_and_spec(doctor, specialty, from_date, to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else:
+                return render(request,'FilterFormThree.html', {'form1':form1, 'form2':form2, 'form3':form3, 'message':message})
+            
     else:
         return render(request,'FilterFormThree.html', {'form1':form1, 'form2':form2, 'form3':form3})
 
@@ -266,8 +449,12 @@ def EachWard(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=discharges_analysis(category,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=discharges_analysis(category,from_date,to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else:
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -285,8 +472,13 @@ def SpecificWardSpecificSpec(request):
             specialty=request.POST['specialty']
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=spec_ward_and_spec(wardname,specialty,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=spec_ward_and_spec(wardname,specialty,from_date,to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else:
+                return render(request,'FilterFormThree.html', {'form1':form1, 'form2':form2, 'form3':form3, 'message':message})
+            
     else:
         return render(request,'FilterFormThree.html', {'form1':form1, 'form2':form2, 'form3':form3})
 
@@ -307,8 +499,12 @@ def SpecWardSpecSpecSpecDoc(request):
             doctor=request.POST['doctor']
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=spec_ward_and_spec_and_doc(wardname,specialty,doctor,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=spec_ward_and_spec_and_doc(wardname,specialty,doctor,from_date,to_date)
+                return render(request,'embed.html',{'g':g_json, 'message':message})
+            else:
+                return render(request,'FilterFormFour.html', {'form1':form1, 'form2':form2, 'form3':form3,'form4':form4, 'message':message})
     else:
         return render(request,'FilterFormFour.html', {'form1':form1, 'form2':form2, 'form3':form3,'form4':form4})
 
@@ -327,8 +523,44 @@ def SpecificWardDay(request):
 
 def paymentsFilter(request):
     if (os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx")==False ):
-        return render(request,'FileUpload.html', {'message':'Discharge Analysis File NOT present ! Please upload the file first. '})
-
+        
+        message='Discharge Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
+    
     payments_analysis()
     return render(request,'OPObjectives.html')
 
@@ -350,9 +582,12 @@ def DeptAppt(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=waitingtime_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
-    
+            message=""
+            if (from_date < to_date):
+                g_json=waitingtime_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})           
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -364,8 +599,13 @@ def DeptW(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=waitingtime_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=waitingtime_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
     
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
@@ -379,8 +619,13 @@ def DocAppt(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=waitingtime_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=waitingtime_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+            
     
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
@@ -394,8 +639,13 @@ def DocW(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=waitingtime_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=waitingtime_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+
     
     else:
         return render(request,'FilterFormOpt.html', {'form':form})

@@ -40,7 +40,7 @@ class Form3(forms.Form):
    
 
 class Form4(forms.Form):
-    if ((os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx"))==True): # check if file present
+    if ((os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx"))==True): # check if file present
         
         df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         df=df.drop_duplicates(subset=['Primary doctor Specialty'])
@@ -54,7 +54,7 @@ class Form4(forms.Form):
         specialty = forms.ChoiceField(choices = Choice4)
 
 class Form5(forms.Form):
-    if ((os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx"))==True): # check if file present
+    if ((os.path.isfile("mainpage/media/fileupload/DischargeAnalysis.xlsx"))==True): # check if file present
         
         df=pd.read_excel("mainpage/media/fileupload/DischargeAnalysis.xlsx",engine='openpyxl')
         df=df.drop_duplicates(subset=['Primary doctor'])
