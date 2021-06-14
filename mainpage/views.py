@@ -285,6 +285,7 @@ def EachWardBed(request):
                 g_json=discharges_analysis(category,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
 
     else:
@@ -298,14 +299,16 @@ def AllWardBed(request):
         form=DateFilter(request.POST)
         
         if form.is_valid():
+            
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date > to_date):
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+            else:               
                 g_json=discharges_analysis(category,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
-            else:
-                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
 
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
@@ -326,6 +329,7 @@ def SpecificWardBed(request):
                 g_json=specific_discharge_analysis(wardname,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2, 'message':message})
 
             
@@ -351,7 +355,7 @@ def SpecDocBed(request):
                 g_json=spec_doc_bed(doctor,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else: 
-                
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2, 'message':message})
             
     else:
@@ -372,6 +376,7 @@ def EachDoc(request):
                 g_json=discharges_analysis(category,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
@@ -390,6 +395,7 @@ def EachSpec(request):
                 g_json=discharges_analysis(category,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
@@ -409,6 +415,7 @@ def SpecificSpecBed(request):
                 g_json=specific_spec_bed(specialty,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2, 'message':message})
             
     else:
@@ -433,6 +440,7 @@ def SpecificDocSpecificSpec(request):
                 g_json=spec_doc_and_spec(doctor, specialty, from_date, to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormThree.html', {'form1':form1, 'form2':form2, 'form3':form3, 'message':message})
             
     else:
@@ -454,6 +462,7 @@ def EachWard(request):
                 g_json=discharges_analysis(category,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
@@ -477,6 +486,7 @@ def SpecificWardSpecificSpec(request):
                 g_json=spec_ward_and_spec(wardname,specialty,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormThree.html', {'form1':form1, 'form2':form2, 'form3':form3, 'message':message})
             
     else:
@@ -504,6 +514,7 @@ def SpecWardSpecSpecSpecDoc(request):
                 g_json=spec_ward_and_spec_and_doc(wardname,specialty,doctor,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormFour.html', {'form1':form1, 'form2':form2, 'form3':form3,'form4':form4, 'message':message})
     else:
         return render(request,'FilterFormFour.html', {'form1':form1, 'form2':form2, 'form3':form3,'form4':form4})
@@ -587,6 +598,7 @@ def DeptAppt(request):
                 g_json=waitingtime_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormOpt.html', {'form':form, 'message':message})           
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
@@ -604,6 +616,7 @@ def DeptW(request):
                 g_json=waitingtime_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
            
     
@@ -624,6 +637,7 @@ def DocAppt(request):
                 g_json=waitingtime_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
             
     
@@ -644,13 +658,13 @@ def DocW(request):
                 g_json=waitingtime_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
+                message="Please ensure from-date falls before to-date."
                 return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
 
     
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
-        
 
 ############## Amala's team   ##########################################################################################
 
