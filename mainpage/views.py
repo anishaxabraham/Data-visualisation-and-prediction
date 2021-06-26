@@ -854,6 +854,43 @@ def surgerydept(request):
 
 
 def InsuranceObjectives(request):
+    if (os.path.isfile("mainpage/media/fileupload/AdmissionAnalysis.xlsx")==False ):
+        message='Admission Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     return render(request,"InsuranceObjectives.html")
 
 def insurancedepartment(request):
@@ -903,6 +940,43 @@ def GenderObjectives(request):
 
 
 def genderdepartment(request):
+    if (os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx")==False ):
+        message='Demographic Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     category='Department'
     form=datefilter()
     if request.method=="POST":
@@ -916,6 +990,43 @@ def genderdepartment(request):
         return render(request,'FilterFormOpt.html', {'form':form})
 
 def genderward(request):
+    if (os.path.isfile("mainpage/media/fileupload/AdmissionAnalysis.xlsx")==False ):
+        message='Admission Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     category='Ward'
     form=datefilter()
     if request.method=="POST":
@@ -929,6 +1040,43 @@ def genderward(request):
         return render(request,'FilterFormOpt.html', {'form':form})
 
 def genderarea(request):
+    if (os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx")==False ):
+        message='Demographic Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     category='Area'
     form=datefilter()
     if request.method=="POST":
@@ -950,6 +1098,43 @@ def AgeObjectives(request):
     return render(request,"AgeObjectives.html")
 
 def agedepartment(request):
+    if (os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx")==False ):
+        message='Demographic Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     category='Department'
     form=datefilter()
     if request.method=="POST":
@@ -963,6 +1148,43 @@ def agedepartment(request):
         return render(request,'FilterFormOpt.html', {'form':form})
 
 def ageward(request):
+    if (os.path.isfile("mainpage/media/fileupload/AdmissionAnalysis.xlsx")==False ):
+        message='Admission Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     category='Ward'
     form=datefilter()
     if request.method=="POST":
@@ -976,6 +1198,43 @@ def ageward(request):
         return render(request,'FilterFormOpt.html', {'form':form})
 
 def agearea(request):
+    if (os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx")==False ):
+        message='Demographic Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     category='Area'
     form=datefilter()
     if request.method=="POST":
@@ -993,6 +1252,43 @@ def ApptDemoObjectives(request):
     return render(request,"ApptDemoObjectives.html")
 
 def appointmentdepartment(request):
+    if (os.path.isfile("mainpage/media/fileupload/OPConsultation.xlsx")==False ):
+        message='OPConsultation File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     category='Department'
     form=datefilter()
     if request.method=="POST":
@@ -1008,6 +1304,43 @@ def appointmentdepartment(request):
 
 
 def appointmentarea(request):
+    if ((os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx")==False) or (os.path.isfile("mainpage/media/fileupload/OPConsultation.xlsx")==False)) :
+        message=' Please upload the Demographic Analysis file and OPConsultation file for the required time period. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     category='Area'
     form=datefilter()
     if request.method=="POST":
@@ -1025,6 +1358,43 @@ def WalkinDemoObjectives(request):
     return render(request,"WalkinDemoObjectives.html")
 
 def walkindepartment(request):
+    if (os.path.isfile("mainpage/media/fileupload/OPConsultation.xlsx")==False ):
+        message='OPConsultation File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     category='Department'
     form=datefilter()
     if request.method=="POST":
@@ -1040,6 +1410,43 @@ def walkindepartment(request):
 
 
 def walkinarea(request):
+    if ((os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx")==False) or (os.path.isfile("mainpage/media/fileupload/OPConsultation.xlsx")==False) ):
+        message='Please upload the Demographic Analysis file and OPConsultation file for the required time period.'
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     category='Area'
     form=datefilter()
     if request.method=="POST":
@@ -1056,6 +1463,43 @@ def walkinarea(request):
     
 
 def AreaObjectives(request): 
+    if (os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx")==False ):
+        message='Demographic Analysis File NOT present ! Please upload the file first. '
+        mesg=""
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+        
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     form=areaform()
     if request.method=="POST":
         form=areaform(request.POST)
