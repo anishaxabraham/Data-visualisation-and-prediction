@@ -791,8 +791,9 @@ def DrugStockObjectives(request):
     return render(request,'DrugStockObjectives.html')
 
 def SurgeryObjectives(request):
-    if (os.path.isfile("mainpage/media/fileupload/SurgeryAnalysis.xlsx")==False):
-        if (os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx")==False ):
+    if ((os.path.isfile("mainpage/media/fileupload/SurgeryAnalysis.xlsx") and (os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx")))==True):
+        return render(request,'SurgeryObjectives.html')
+    else:
             mesg=""
             message='Surgery or/and Demographic File NOT present ! Please upload the file first.'
             file_names=[]
@@ -829,7 +830,7 @@ def SurgeryObjectives(request):
                 else:
                     mesg='Files were not uploaded'
             return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
-    return render(request,'SurgeryObjectives.html')
+    
 
 
 def pharm_priority(request):
