@@ -668,25 +668,167 @@ def DocW(request):
 
 ############## Amala's team   ##########################################################################################
 
-
 def NursingStationObjectives(request):
     if (os.path.isfile("mainpage/media/fileupload/Pharmacy.xlsx")==False ):
-        return render(request,'FileUpload.html', {'message':'Pharmacy File NOT present ! Please upload the file first. '})
+        mesg=""
+        message='Pharmacy File NOT present ! Please upload the file first.'
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+            
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
+        
     return render(request,'NursingStationObjectives.html')
 
 def TopMovableObjectives(request):
     if (os.path.isfile("mainpage/media/fileupload/Top100Medicines.xlsx")==False ):
-        return render(request,'FileUpload.html', {'message':'TopMovableMedicines File NOT present ! Please upload the file first. '})
+        mesg=""
+        message='Top Movable File NOT present ! Please upload the file first.'
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+            
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
+        
     return render(request,'TopMovableObjectives.html')
     
 def DrugStockObjectives(request):
     if (os.path.isfile("mainpage/media/fileupload/Top100Medicines.xlsx")==False ):
-        return render(request,'FileUpload.html', {'message':'TopMovableMedicines File NOT present ! Please upload the file first. '})
+        mesg=""
+        message='Drugstock File NOT present ! Please upload the file first.'
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+            
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     return render(request,'DrugStockObjectives.html')
 
 def SurgeryObjectives(request):
-    if ((os.path.isfile("mainpage/media/fileupload/SurgeryAnalysis.xlsx")) or (os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx"))==False ):
-        return render(request,'FileUpload.html', {'message':'Surgery File OR/AND Demographics File NOT present ! Please upload the files first. '})
+    if (os.path.isfile("mainpage/media/fileupload/SurgeryAnalysis.xlsx")==False):
+        if (os.path.isfile("mainpage/media/fileupload/DemographicAnalysis.xlsx")==False ):
+            mesg=""
+            message='Surgery or/and Demographic File NOT present ! Please upload the file first.'
+            file_names=[]
+            form=UploadFileForm()
+            if request.method=="POST":
+                message=""
+                if "OP Consultation" in request.POST:
+                    filename="OPConsultation.xlsx"
+                elif "Discharge TAT" in request.POST:
+                    filename="DischargeTAT.xlsx"
+                elif "Discharge Analysis" in request.POST:
+                    filename="DischargeAnalysis.xlsx"
+                elif "Doctorwise" in request.POST:
+                    filename="Doctorwise.xlsx"
+                elif "Admission Analysis" in request.POST:
+                    filename="AdmissionAnalysis.xlsx"
+                elif "Pharmacy" in request.POST:
+                    filename="Pharmacy.xlsx"
+                elif "Surgery Analysis" in request.POST:
+                    filename="SurgeryAnalysis.xlsx"
+                elif "Demographic Analysis" in request.POST:
+                    filename="DemographicAnalysis.xlsx"     
+                elif "Radiology" in request.POST:
+                    filename="Radiology.xlsx"  
+                elif "Top 100 Medicines" in request.POST:
+                    filename="Top100Medicines.xlsx"  
+                
+                form=UploadFileForm(request.POST,request.FILES)
+                if form.is_valid():
+                    for x in request.FILES.getlist("file"):
+                        handle_file(x,filename)
+                        file_names.append(x.name)
+                    mesg='Files uploaded successfully'
+                else:
+                    mesg='Files were not uploaded'
+            return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     return render(request,'SurgeryObjectives.html')
 
 
@@ -698,10 +840,17 @@ def pharm_priority(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=pharmacyorders_from_nursing_stations_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=pharmacyorders_from_nursing_stations_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
+
+        
 
 def pharm_station(request):
     category='OrderingStation'
@@ -711,9 +860,13 @@ def pharm_station(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=pharmacyorders_from_nursing_stations_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
-    
+            message=""
+            if (from_date < to_date):
+                g_json=pharmacyorders_from_nursing_stations_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -725,15 +878,55 @@ def pharm_overall(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=pharmacyorders_from_nursing_stations_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=pharmacyorders_from_nursing_stations_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
 def OrdersPerPatient(request):
     if (os.path.isfile("mainpage/media/fileupload/Pharmacy.xlsx")==False ):
-        return render(request,'FileUpload.html', {'message':'Pharmacy File NOT present ! Please upload the file first. '})
+        mesg=""
+        message='Pharmacy File NOT present ! Please upload the file first.'
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+            
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     form=DateFilter()
     if request.method=="POST":
         form=DateFilter(request.POST)
@@ -754,9 +947,13 @@ def topmovable_station(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=topmedicines_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
-    
+            message=""
+            if (from_date < to_date):
+                g_json=topmedicines_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -768,9 +965,13 @@ def topmovable_overall(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=topmedicines_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
-    
+            message=""
+            if (from_date < to_date):
+                g_json=topmedicines_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -782,9 +983,13 @@ def drugstock_itemcat(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=drugstock_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
-    
+            message=""
+            if (from_date < to_date):
+                g_json=drugstock_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -795,29 +1000,75 @@ def drugstock_overall(request):
         form=DateFilter(request.POST)
         if form.is_valid():
             from_date=request.POST['from_date']
-            to_date=request.POST['to_date']
-            g_json=drugstock_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
+            to_date=request.POST['to_date'] 
+            message=""
+            if (from_date < to_date):
+                g_json=drugstock_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
 def Radiology(request):
     if (os.path.isfile("mainpage/media/fileupload/Radiology.xlsx")==False ):
-        return render(request,'FileUpload.html', {'message':'Radiology File NOT present ! Please upload the file first. '})
-    form1=Form6()
-    form2=DateFilter()
-    if request.method=="POST":
-        form1=Form6(request.POST)
-        form2=DateFilter(request.POST)
-        if form1.is_valid() and form2.is_valid():
-            test=request.POST['selected_test']
-            from_date=request.POST['from_date']
-            to_date=request.POST['to_date']
-            g_json=radiology_analysis(test,from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+        mesg=""
+        message='Radiology File NOT present ! Please upload the file first.'
+        file_names=[]
+        form=UploadFileForm()
+        if request.method=="POST":
+            message=""
+            if "OP Consultation" in request.POST:
+                filename="OPConsultation.xlsx"
+            elif "Discharge TAT" in request.POST:
+                filename="DischargeTAT.xlsx"
+            elif "Discharge Analysis" in request.POST:
+                filename="DischargeAnalysis.xlsx"
+            elif "Doctorwise" in request.POST:
+                filename="Doctorwise.xlsx"
+            elif "Admission Analysis" in request.POST:
+                filename="AdmissionAnalysis.xlsx"
+            elif "Pharmacy" in request.POST:
+                filename="Pharmacy.xlsx"
+            elif "Surgery Analysis" in request.POST:
+                filename="SurgeryAnalysis.xlsx"
+            elif "Demographic Analysis" in request.POST:
+                filename="DemographicAnalysis.xlsx"     
+            elif "Radiology" in request.POST:
+                filename="Radiology.xlsx"  
+            elif "Top 100 Medicines" in request.POST:
+                filename="Top100Medicines.xlsx"  
+            
+            form=UploadFileForm(request.POST,request.FILES)
+            if form.is_valid():
+                for x in request.FILES.getlist("file"):
+                    handle_file(x,filename)
+                    file_names.append(x.name)
+                mesg='Files uploaded successfully'
+            else:
+                mesg='Files were not uploaded'
+        return render(request,'FileUpload.html', {'form':form,'mesg':mesg,'fname':file_names,'message':message})
     else:
-        return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2})
+        form1=Form6()
+        form2=DateFilter()
+        if request.method=="POST":
+            form1=Form6(request.POST)
+            form2=DateFilter(request.POST)
+            if form1.is_valid() and form2.is_valid():
+                test=request.POST['selected_test']
+                from_date=request.POST['from_date']
+                to_date=request.POST['to_date']
+                message=""
+                if (from_date < to_date):
+                    g_json=radiology_analysis(test,from_date,to_date)
+                    return render(request, 'embed.html', {'g' : g_json, 'message':message})
+                else:
+                    message="Please ensure from-date falls before to-date."
+                    return render(request,'FilterFormTwo.html', {'form1':form1,'form2':form2,'message':message})
+        else:
+            return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2})
 
 def surgeryname(request):
     category= 'Surgery'
@@ -827,9 +1078,13 @@ def surgeryname(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=surgery_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
-    
+            message=""
+            if (from_date < to_date):
+                g_json=surgery_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -841,11 +1096,17 @@ def surgerydept(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=surgery_analysis(category,from_date,to_date)
-            return render(request, 'embed.html', {'g' : g_json})
+            message=""
+            if (from_date < to_date):
+                g_json=surgery_analysis(category,from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
     
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
+
 
 ############## Varsha's team   ##########################################################################################
 
