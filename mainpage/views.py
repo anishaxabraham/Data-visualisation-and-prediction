@@ -1163,8 +1163,14 @@ def insurancedepartment(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=insurance_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1176,8 +1182,15 @@ def insuranceward(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=insurance_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+           
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1189,8 +1202,15 @@ def insurancearea(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=insurance_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+            
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1246,8 +1266,15 @@ def genderdepartment(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=gender_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+            
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1296,8 +1323,15 @@ def genderward(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=gender_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+            
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1346,8 +1380,15 @@ def genderarea(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=gender_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+            
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
     
@@ -1404,8 +1445,15 @@ def agedepartment(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=age_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+           
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1454,8 +1502,15 @@ def ageward(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=age_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+            
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1504,8 +1559,15 @@ def agearea(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=age_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+            
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1558,8 +1620,15 @@ def appointmentdepartment(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=appointment_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+           
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1610,8 +1679,15 @@ def appointmentarea(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=appointment_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+            
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1664,8 +1740,15 @@ def walkindepartment(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=walkin_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+            
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1716,8 +1799,15 @@ def walkinarea(request):
         if form.is_valid():
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=walkin_analysis(category,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(category,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+           
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 
@@ -1769,8 +1859,15 @@ def AreaObjectives(request):
             department=request.POST['department']
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
-            g_json=area_analysis(department,start_date,end_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (start_date < end_date):
+                g_json=insurance_analysis(department,start_date,end_date)
+                return render(request,'embed.html',{'g':g_json})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+           
+           
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
 

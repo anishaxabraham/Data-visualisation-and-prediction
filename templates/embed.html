@@ -8,13 +8,15 @@
 <head>
     <style>
         #altair{
+            
             font-weight: normal;
             font-style: normal;
             
-            
+                       
             
         }
         .vega-bind {
+            
             text-align: start;
             
             
@@ -36,11 +38,12 @@
 </head>
 
 <body>
+    
     <div id="altair"></div>
-    </div>
+    
     <!-- Placeholder for the tooltip -->
     <div id="vis-tooltip" class="vg-tooltip"></div>
-    </div>
+    
     <!-- Render Charts -->
     <script type="text/javascript">
     function parse(url, div) {
@@ -56,7 +59,8 @@
     //g is json graph
     parse({{ g | safe }}, "altair")
 
-</script>  
+</script>
+
 </body>
 </html>
 {% endblock %}
