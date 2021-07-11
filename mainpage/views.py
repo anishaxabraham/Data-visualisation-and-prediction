@@ -281,7 +281,7 @@ def EachWardBed(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=discharges_analysis(category,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
@@ -325,7 +325,7 @@ def SpecificWardBed(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=specific_discharge_analysis(wardname,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
@@ -351,7 +351,7 @@ def SpecDocBed(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):                
+            if (from_date <= to_date):                
                 g_json=spec_doc_bed(doctor,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else: 
@@ -372,7 +372,7 @@ def EachDoc(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=discharges_analysis(category,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
@@ -391,7 +391,7 @@ def EachSpec(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=discharges_analysis(category,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
@@ -411,7 +411,7 @@ def SpecificSpecBed(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=specific_spec_bed(specialty,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
@@ -436,7 +436,7 @@ def SpecificDocSpecificSpec(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=spec_doc_and_spec(doctor, specialty, from_date, to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
@@ -458,7 +458,7 @@ def EachWard(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=discharges_analysis(category,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
@@ -482,7 +482,7 @@ def SpecificWardSpecificSpec(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=spec_ward_and_spec(wardname,specialty,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
@@ -510,7 +510,7 @@ def SpecWardSpecSpecSpecDoc(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=spec_ward_and_spec_and_doc(wardname,specialty,doctor,from_date,to_date)
                 return render(request,'embed.html',{'g':g_json, 'message':message})
             else:
@@ -594,7 +594,7 @@ def DeptAppt(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=waitingtime_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -612,7 +612,7 @@ def DeptW(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=waitingtime_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -633,7 +633,7 @@ def DocAppt(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=waitingtime_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -654,7 +654,7 @@ def DocW(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=waitingtime_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -842,7 +842,7 @@ def pharm_priority(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=pharmacyorders_from_nursing_stations_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -862,7 +862,7 @@ def pharm_station(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=pharmacyorders_from_nursing_stations_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -880,7 +880,7 @@ def pharm_overall(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=pharmacyorders_from_nursing_stations_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -949,7 +949,7 @@ def topmovable_station(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=topmedicines_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -967,7 +967,7 @@ def topmovable_overall(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=topmedicines_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -985,7 +985,7 @@ def drugstock_itemcat(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=drugstock_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -1003,7 +1003,7 @@ def drugstock_overall(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date'] 
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=drugstock_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -1062,7 +1062,7 @@ def Radiology(request):
                 from_date=request.POST['from_date']
                 to_date=request.POST['to_date']
                 message=""
-                if (from_date < to_date):
+                if (from_date <= to_date):
                     g_json=radiology_analysis(test,from_date,to_date)
                     return render(request, 'embed.html', {'g' : g_json, 'message':message})
                 else:
@@ -1080,7 +1080,7 @@ def surgeryname(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=surgery_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -1098,7 +1098,7 @@ def surgerydept(request):
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
-            if (from_date < to_date):
+            if (from_date <= to_date):
                 g_json=surgery_analysis(category,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
@@ -1164,7 +1164,7 @@ def insurancedepartment(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1183,7 +1183,7 @@ def insuranceward(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1203,7 +1203,7 @@ def insurancearea(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1267,7 +1267,7 @@ def genderdepartment(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1324,7 +1324,7 @@ def genderward(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1381,7 +1381,7 @@ def genderarea(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1446,7 +1446,7 @@ def agedepartment(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1503,7 +1503,7 @@ def ageward(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1560,7 +1560,7 @@ def agearea(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1621,7 +1621,7 @@ def appointmentdepartment(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1680,7 +1680,7 @@ def appointmentarea(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1741,7 +1741,7 @@ def walkindepartment(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1800,7 +1800,7 @@ def walkinarea(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
@@ -1860,7 +1860,7 @@ def AreaObjectives(request):
             start_date=request.POST['start_date']
             end_date=request.POST['end_date']
             message=""
-            if (start_date < end_date):
+            if (start_date <= end_date):
                 g_json=insurance_analysis(department,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
