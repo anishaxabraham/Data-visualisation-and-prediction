@@ -27,8 +27,8 @@ def waitingtime_analysis(category, start_date, end_date):
             
         alt.data_transformers.disable_max_rows()
 
-        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WalkInOPConsultationSep2020', engine='openpyxl')
-        df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":'Bill Time',"Consultation start Date/Time":"Consult IN"})
+        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WalkInOPConsultation', engine='openpyxl')
+        df=df.rename(columns={"Doctor Name": "DoctorName","BillingTime":'Bill Time',"Consultation start Date/Time":"Consult IN"})
         df['date']=pd.to_datetime(df['Consult IN']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
@@ -107,8 +107,8 @@ def waitingtime_analysis(category, start_date, end_date):
         from math import radians, degrees
         alt.data_transformers.disable_max_rows()
             
-        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WalkInOPConsultationSep2020', engine='openpyxl')
-        df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":'Bill Time',"Consultation start Date/Time":"Consult IN","Speciality":"Dept Name"})
+        df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WalkInOPConsultation', engine='openpyxl')
+        df=df.rename(columns={"Doctor Name": "DoctorName","BillingTime":'Bill Time',"Consultation start Date/Time":"Consult IN","Speciality":"Dept Name"})
         
         df['date']=pd.to_datetime(df['Consult IN']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
@@ -199,11 +199,11 @@ def waitingtime_analysis(category, start_date, end_date):
         if(len(df)!=0):
 
             docList= df['Doctor Name'].values.tolist()
-            billList= df['Billing Time'].values.tolist()
+            billList= df['BillingTime'].values.tolist()
             inList= df['Consultation start Date/Time'].values.tolist()
 
             #time difference list
-            df['diff_seconds'] =df['Consultation start Date/Time']-df['Billing Time']
+            df['diff_seconds'] =df['Consultation start Date/Time']-df['BillingTime']
             df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
             diffList=df['diff_seconds'].values.tolist()
             #print(diffList)
@@ -282,11 +282,11 @@ def waitingtime_analysis(category, start_date, end_date):
 
         if(len(df)!=0):
             deptList= df['Dept Name'].values.tolist()
-            billList= df['Billing Time'].values.tolist()
+            billList= df['BillingTime'].values.tolist()
             inList= df['Consultation start Date/Time'].values.tolist()
 
             #time difference list
-            df['diff_seconds'] =df['Consultation start Date/Time']-df['Billing Time']
+            df['diff_seconds'] =df['Consultation start Date/Time']-df['BillingTime']
             df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
             diffList=df['diff_seconds'].values.tolist()
             #print(diffList)
@@ -1905,7 +1905,7 @@ def appointment_analysis(category,start_date,end_date):
     if category=='Department':
         h=500
         dap=pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx",sheet_name='WithAppointmentOP',engine='openpyxl')
-        dap['Billing Time'] = pd.to_datetime(dap['Billing Time']).dt.date
+        dap['Billing Time'] = pd.to_datetime(dap['BillingTime']).dt.date
         dap["Billing Time2"] = pd.to_datetime(dap["Billing Time"]).dt.strftime("%Y-%m-%d")
         
         after_start_date =dap["Billing Time2"] >= start_date
@@ -1942,7 +1942,7 @@ def appointment_analysis(category,start_date,end_date):
 
         df['Date'] = pd.to_datetime(df['AddedDate']).dt.date
         df["Date2"] = pd.to_datetime(df["Date"]).dt.strftime("%Y-%m-%d")
-        dap['Billing Time'] = pd.to_datetime(dapp['Billing Time']).dt.date
+        dap['Billing Time'] = pd.to_datetime(dapp['BillingTime']).dt.date
         dap["Billing Time2"] = pd.to_datetime(dap["Billing Time"]).dt.strftime("%Y-%m-%d")
 
         date_start = dap["Billing Time2"].min()
@@ -2006,9 +2006,9 @@ def walkin_analysis(category,start_date,end_date):
     alt.data_transformers.disable_max_rows()
     if category=='Department':
         h=500
-        dap=pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx",sheet_name='WalkInOPConsultationSep2020',engine='openpyxl')
+        dap=pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx",sheet_name='WalkInOPConsultation',engine='openpyxl')
         
-        dap['Billing Time'] = pd.to_datetime(dap['Billing Time']).dt.date
+        dap['Billing Time'] = pd.to_datetime(dap['BillingTime']).dt.date
         dap["Billing Time2"] = pd.to_datetime(dap["Billing Time"]).dt.strftime("%Y-%m-%d")
         
         after_start_date =dap["Billing Time2"] >= start_date
@@ -2035,7 +2035,7 @@ def walkin_analysis(category,start_date,end_date):
         df['pincode']=dfa['pincode']
         
         da=pd.read_excel("mainpage/media/fileupload/kerala pin codes.xlsx",engine='openpyxl')
-        dapp = pd.read_excel('mainpage/media/fileupload/OPConsultation.xlsx', sheet_name='WalkInOPConsultationSep2020')
+        dapp = pd.read_excel('mainpage/media/fileupload/OPConsultation.xlsx', sheet_name='WalkInOPConsultation')
         dap['UHID']=dapp['UHID']
         df2=pd.DataFrame()
         df2['pincode']=da['pincode']
@@ -2044,7 +2044,7 @@ def walkin_analysis(category,start_date,end_date):
 
         df['Date'] = pd.to_datetime(df['AddedDate']).dt.date
         df["Date2"] = pd.to_datetime(df["Date"]).dt.strftime("%Y-%m-%d")
-        dap['Billing Time'] = pd.to_datetime(dapp['Billing Time']).dt.date
+        dap['Billing Time'] = pd.to_datetime(dapp['BillingTime']).dt.date
         dap["Billing Time2"] = pd.to_datetime(dap["Billing Time"]).dt.strftime("%Y-%m-%d")
 
         date_start = dap["Billing Time2"].min()

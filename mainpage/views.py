@@ -1268,7 +1268,7 @@ def genderdepartment(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(category,start_date,end_date)
+                g_json=gender_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
@@ -1325,7 +1325,7 @@ def genderward(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(category,start_date,end_date)
+                g_json=gender_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
@@ -1382,7 +1382,7 @@ def genderarea(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(category,start_date,end_date)
+                g_json=gender_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
@@ -1447,7 +1447,7 @@ def agedepartment(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(category,start_date,end_date)
+                g_json=age_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
@@ -1504,7 +1504,7 @@ def ageward(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(category,start_date,end_date)
+                g_json=age_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
@@ -1561,7 +1561,7 @@ def agearea(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(category,start_date,end_date)
+                g_json=age_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
@@ -1622,7 +1622,7 @@ def appointmentdepartment(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(category,start_date,end_date)
+                g_json=appointment_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
@@ -1681,7 +1681,7 @@ def appointmentarea(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(category,start_date,end_date)
+                g_json=appointment_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
@@ -1742,7 +1742,7 @@ def walkindepartment(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(category,start_date,end_date)
+                g_json=walkin_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
@@ -1801,7 +1801,7 @@ def walkinarea(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(category,start_date,end_date)
+                g_json=walkin_analysis(category,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
@@ -1861,7 +1861,7 @@ def AreaObjectives(request):
             end_date=request.POST['end_date']
             message=""
             if (start_date <= end_date):
-                g_json=insurance_analysis(department,start_date,end_date)
+                g_json=area_analysis(department,start_date,end_date)
                 return render(request,'embed.html',{'g':g_json})
             else:
                 message="Please ensure from-date falls before to-date."
