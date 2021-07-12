@@ -1102,7 +1102,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
             domainColor='black',#domain is axis...axis width and color
             labelFontSize=15, titleFontSize=20,
             ).configure_legend(titleFontSize=15,labelFontSize=15
-            ).properties(title='Pharmacy Orders From Each Nursing Station: Priority-wise'
+            ).properties(title='Pharmacy Orders From Each Nursing Station: Priority-wise : '+start_date+" to "+ end_date
             )
             g_json=pharmacy1_chart.to_json()
             return g_json
@@ -1155,7 +1155,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
                     labelFontSize=15, titleFontSize=20,
                     ).configure_legend(titleFontSize=15,labelFontSize=15
                     ).properties(
-                title="Pharmacy Orders From Each Nursing Station and Priority-wise"
+                title="Pharmacy Orders From Each Nursing Station and Priority-wise: "+start_date+" to "+ end_date
             )
             g_json=pharmacy2_chart.to_json()
             return g_json
@@ -1177,7 +1177,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
             domainColor='black',#domain is axis...axis width and color
             labelFontSize=15, titleFontSize=20,
             ).configure_legend(titleFontSize=15,labelFontSize=15
-            ).properties(title='Pharmacy Orders From Each Nursing Station: All Priorities'
+            ).properties(title='Pharmacy Orders From Each Nursing Station: All Priorities: '+start_date+" to "+ end_date
             )
             g_json=pharmacy3_chart.to_json()
             return g_json
@@ -1217,7 +1217,7 @@ def pharmacyorders_per_patient_analysis(start_date,end_date):
         domainColor='black',#domain is axis...axis width and color
         labelFontSize=10, titleFontSize=15,
         ).configure_legend(titleFontSize=15,labelFontSize=15
-        ).properties(title='Pharmacy Orders - Number of Orders per Patient per Day',width=300,height=300)
+        ).properties(title='Pharmacy Orders - Number of Orders per Patient per Day: '+start_date+" to "+ end_date,width=300,height=300)
         g_json=orderperpatient_chart.to_json()
         return g_json
 
@@ -1247,10 +1247,10 @@ def topmedicines_analysis(category,start_date,end_date):
                     )
 
             topmedicines_chart1 = alt.vconcat()
-
+            
             for station in stations:
-                topmedicines_chart1 &= base.transform_filter(datum.Station == station).properties(title=station)
-            topmedicines_chart1.properties(title='Top Movable Medicines in Each Station',width=2000,height=500)
+                topmedicines_chart1 &= base.transform_filter(datum.Station == station).properties(title="Top Movable Medicines in "+station+" : "+start_date+" to "+end_date)
+            topmedicines_chart1.properties(width=2000,height=500)
             g_json=topmedicines_chart1.to_json()
             return g_json
 
@@ -1272,7 +1272,7 @@ def topmedicines_analysis(category,start_date,end_date):
             domainColor='black',#domain is axis...axis width and color
             labelFontSize=10, titleFontSize=15,
             ).configure_legend(titleFontSize=15,labelFontSize=15
-            ).properties(title='Top 100 Movable Medicines in Hospital',width=800,height=2000)
+            ).properties(title='Top 100 Movable Medicines in Hospital: '+start_date+" to "+ end_date,width=800,height=2000)
             g_json=topmedicines_chart2.to_json()
             return g_json
             
@@ -1303,8 +1303,7 @@ def drugstock_analysis(category,start_date,end_date):
             drug_chart1 = alt.vconcat()
 
             for category in categories:
-                drug_chart1 &= base.transform_filter(datum.ItemCatagory == category).properties(title=category)
-            drug_chart1.properties(title='Drug Stock Analysis')
+                drug_chart1 &= base.transform_filter(datum.ItemCatagory == category).properties(title='Drug Stock Analysis: '+category+" : "+start_date+" to "+ end_date)
             g_json=drug_chart1.to_json()
             return g_json
 
@@ -1324,7 +1323,7 @@ def drugstock_analysis(category,start_date,end_date):
             domainColor='black',#domain is axis...axis width and color
             labelFontSize=10, titleFontSize=15,
             ).configure_legend(titleFontSize=15,labelFontSize=15
-            ).properties(title='Drug Stock Analysis',width=600)
+            ).properties(title='Drug Stock Analysis: '+start_date+" to "+ end_date,width=600)
             g_json=drug_chart2.to_json()
             return g_json
 
@@ -1350,7 +1349,7 @@ def radiology_analysis(test,start_date,end_date):
         df.loc[((df.Age >= 70)&(df.Age < 80)),  'Age_Group'] = '70-80'
         df.loc[(df.Age >= 80),  'Age_Group'] = '80+'
 
-        title='Radiology  (Test wise Analysis) : '+test
+        title='Radiology  (Test wise Analysis) : '+test+' : ' +start_date+' to '+ end_date
         radio_chart = alt.Chart(df,padding={"left": 300, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=15).encode(
                 alt.X('sex',title=None), #x-axis
                 alt.Y('count(RegistrationNo)',title='Count'), #y-axis
@@ -1417,7 +1416,7 @@ def surgery_analysis(category,start_date,end_date):
             domainColor='black',#domain is axis...axis width and color
             labelFontSize=12, titleFontSize=15,
             ).configure_legend(titleFontSize=15,labelFontSize=15
-                ).properties(title='Surgery - Surgery Name wise analysis',height=300,width=200
+                ).properties(title='Surgery - Surgery Name wise analysis: '+start_date+" to "+ end_date,height=300,width=200
             )
             g_json=surgery_chart1.to_json()
             return g_json
@@ -1443,7 +1442,7 @@ def surgery_analysis(category,start_date,end_date):
             domainColor='black',#domain is axis...axis width and color
             labelFontSize=12, titleFontSize=15,
             ).configure_legend(titleFontSize=15,labelFontSize=15
-            ).properties(title='Surgery - Department wise analysis',height=300,width=200
+            ).properties(title='Surgery - Department wise analysis : '+start_date+" to "+ end_date,height=300,width=200
             )
             g_json=surgery_chart2.to_json()
             return g_json
