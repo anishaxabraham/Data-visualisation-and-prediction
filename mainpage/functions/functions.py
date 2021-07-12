@@ -1551,7 +1551,7 @@ def insurance_analysis(category,start_date,end_date):
             count.loc[i,'Percentage inflow']=count.at[i,'Percentage inflow']/sum1*100            
     
     count=count.sort_values([category],ascending=False)
-    insu_title="Insurance Analysis ("+category+")"
+    insu_title="Insurance Analysis ("+category+")"+": "+start_date+" to "+end_date
 
     insu_chart=alt.Chart(count).mark_bar().encode(  
 
@@ -1670,7 +1670,7 @@ def gender_analysis(category,start_date,end_date):
                 count.loc[i,'Percentage']=count.at[i,'Percentage']/tot[1]*100
         count=count.rename(columns={"Gender": "Gender","Percentage":"Percentage inflow"})    
         
-    gender_title="Gender-wise Analysis ("+category+")"
+    gender_title="Gender-wise Analysis ("+category+")"+": "+start_date+" to "+end_date
     gender_chart=alt.Chart(count).mark_bar().encode(
         alt.Column(category,header=alt.Header(titleFontSize=20,labelFontSize=13,labelAngle=-90,labelLimit=100,labelAlign='left')),#header for gouped chart -col and row title, label
 
@@ -1866,7 +1866,7 @@ def age_analysis(category,start_date,end_date):
         count=count.rename(columns={"district":"District"})
             
     
-    age_title="Age-wise analysis("+category+")"
+    age_title="Age-wise analysis("+category+")"+": "+start_date+" to "+end_date
 
     age_chart=alt.Chart(count).mark_bar().encode(
         alt.Y(category,title=category), #y-axis
@@ -1969,7 +1969,7 @@ def appointment_analysis(category,start_date,end_date):
             count.loc[i,'Percentage']=count.at[i,'Percentage']/sum1*100
         
         
-    appnt_title="Appointment Analysis ("+category+")"
+    appnt_title="Appointment Analysis ("+category+")"+": "+start_date+" to "+end_date
     appnt_chart=alt.Chart(count).mark_bar().encode(  
         alt.X('Percentage:Q',axis=alt.Axis(title='Percentage inflow(%)')),                                          
         alt.Y(category),
@@ -2071,7 +2071,7 @@ def walkin_analysis(category,start_date,end_date):
      
 
             
-    walkin_title="Walk-in Analysis ("+category+")"
+    walkin_title="Walk-in Analysis ("+category+")"+": "+start_date+" to "+end_date
 
     walkin_chart=alt.Chart(count).mark_bar().encode(  
 
