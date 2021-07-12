@@ -91,7 +91,7 @@ def waitingtime_analysis(category, start_date, end_date):
                         titleFontSize=15,    
             ).properties(title="Waiting time for Walk-Ins", width=400,height=1500
 
-            ).interactive()
+            )
 
             g_json=bars.to_json()
             return g_json
@@ -172,7 +172,7 @@ def waitingtime_analysis(category, start_date, end_date):
                         titleFontSize=15,    
             ).properties(title="Waiting time for Walk-Ins", width=400,height=800
 
-            ).interactive()
+            )
         
             g_json=bars.to_json()
             return g_json
@@ -256,7 +256,7 @@ def waitingtime_analysis(category, start_date, end_date):
                         titleFontSize=15,    
             ).properties(title="Waiting time for Appointments", width=400,height=1500
 
-            ).interactive()
+            )
             g_json=bars.to_json()
             return g_json
    
@@ -339,7 +339,7 @@ def waitingtime_analysis(category, start_date, end_date):
                         titleFontSize=15,    
             ).properties(title="Waiting time for Appointments", width=400,height=800
 
-            ).interactive()
+            )
    
             g_json=bars.to_json()
             return g_json
@@ -369,8 +369,7 @@ def mlc_analysis(category):
                         
                 #).interactive(# zoom
                 ).add_selection(selection
-                    ).interactive(
-            ).configure_axis(grid=False #interior grid off
+                    ).configure_axis(grid=False #interior grid off
             ).configure_view(strokeWidth=0 #exterior grid off
             ).properties(
                 width =100, #width and height of bars
@@ -406,8 +405,7 @@ def mlc_analysis(category):
                         
                 #).interactive(# zoom
                 ).add_selection(selection
-                    ).interactive(
-                ).configure_axis(grid=False #interior grid off
+                    ).configure_axis(grid=False #interior grid off
                 ).configure_view(strokeWidth=0 #exterior grid off
                 ).properties(
                     width =100, #width and height of bars
@@ -473,7 +471,7 @@ def discharges_analysis(category,start_date,end_date):
             width = 400, #width and height of bars
             height = 400
 
-            ).interactive()
+            )
 
 
             g_json=area_chart.to_json()
@@ -512,7 +510,7 @@ def discharges_analysis(category,start_date,end_date):
                         labelFontSize=10,
                         titleFontSize=15,    
             ).properties(title="Number of discharges from each ward: Bed-wise"
-            ).interactive()
+            )
 
             g_json=area_chart.to_json()
             return g_json
@@ -550,7 +548,7 @@ def discharges_analysis(category,start_date,end_date):
                         titleFontSize=15,    
             ).properties(title="Number of discharges",width=300,height=300
 
-            ).interactive()
+            )
 
        
             g_json=bars.to_json()
@@ -596,7 +594,7 @@ def discharges_analysis(category,start_date,end_date):
                         labelFontSize=10,
                         titleFontSize=15,    
             ).properties(title="Number of discharges from each ward",width=400,height=600
-            ).interactive()
+            )
             g_json=area_chart.to_json()
             return g_json
     elif category=='EachDoc':
@@ -642,7 +640,7 @@ def discharges_analysis(category,start_date,end_date):
                         titleFontSize=15,    
             ).properties(title="Number of discharges",width=400,height=1000
 
-            ).interactive()
+            )
 
         
 
@@ -675,7 +673,6 @@ def discharges_analysis(category,start_date,end_date):
 
             ).properties(title='Number of discharges from each ward: Bed-wise'
 
-            ).interactive(
             ).configure_axis(grid=False #interior grid off
             ).configure_view(strokeWidth=0 #exterior grid off
             ).properties(
@@ -767,7 +764,7 @@ def spec_ward_day(wardname):
                         titleFontSize=15,    
         ).properties(width=300,height=600
 
-            ).interactive()
+            )
     
         g_json=area_chart.to_json()
         return g_json
@@ -814,7 +811,7 @@ def spec_doc_and_spec(doctor,specialty,start_date,end_date):
                         titleFontSize=15,    
         ).properties(title="("+category1+") speciality: Doctor ("+category2+")",width=300,height=300
 
-            ).interactive()
+            )
 
         g_json=area_chart.to_json()
         return g_json
@@ -860,7 +857,7 @@ def specific_spec_bed(specialty,start_date,end_date):
                         titleFontSize=15,    
         ).properties(title="Number of discharges from ("+category+"): Bed-wise", width=300,height=300
 
-            ).interactive()
+            )
     
         g_json=area_chart.to_json()
         return g_json
@@ -905,8 +902,7 @@ def specific_discharge_analysis(wardname,start_date,end_date):
         ).properties(title="Number of discharges from ("+category+"): Bed-wise",
             width=300,height=300
 
-        ).interactive()
-
+        )
     
         g_json=area_chart.to_json()
         return g_json
@@ -950,8 +946,7 @@ def spec_doc_bed(doctor, start_date, end_date):
                         titleFontSize=15,    
         ).properties(title="Number of discharges by ("+category+"): Bed-wise",width=300,height=300
 
-            ).interactive()
-
+            )
         g_json=area_chart.to_json()
         return g_json
 
@@ -999,7 +994,7 @@ def spec_ward_and_spec_and_doc(wardname, specialty, doctor,start_date,end_date):
                         titleFontSize=15,    
         ).properties(title="("+category1+") ward: ("+category2+") speciality: Doctor ("+category3+")",width=300,height=300
 
-            ).interactive()
+            )
 
 
         g_json=area_chart.to_json()
@@ -1047,7 +1042,7 @@ def spec_ward_and_spec(wardname, specialty,start_date,end_date):
                         titleFontSize=15,    
         ).properties(title="("+category1+") ward: ("+category2+") speciality",width=300,height=300
 
-            ).interactive()
+            )
             
         g_json=area_chart.to_json()
         return g_json
@@ -1108,7 +1103,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
             labelFontSize=15, titleFontSize=20,
             ).configure_legend(titleFontSize=15,labelFontSize=15
             ).properties(title='Pharmacy Orders From Each Nursing Station: Priority-wise'
-            ).interactive()
+            )
             g_json=pharmacy1_chart.to_json()
             return g_json
 
@@ -1139,7 +1134,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
                             alt.Tooltip('OrderCount',title='Number of Orders'),
                             alt.Tooltip('Station',title='Ordering Station'),
                             ]
-            ).add_selection(select_station).interactive()    #so that we can select a station
+            ).add_selection(select_station)   #so that we can select a station
 
 
             priority_chart = alt.Chart(df1).mark_bar(size=30).encode(
@@ -1150,7 +1145,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
                         alt.Tooltip('PriorityName',title='Priority Name'),
                         alt.Tooltip('Counts',title='Number of Orders'),
                         ]
-                ).transform_filter(select_station).properties(width=100).interactive()   #apply filter
+                ).transform_filter(select_station).properties(width=100)  #apply filter
 
 
 
@@ -1183,7 +1178,7 @@ def pharmacyorders_from_nursing_stations_analysis(category,start_date,end_date):
             labelFontSize=15, titleFontSize=20,
             ).configure_legend(titleFontSize=15,labelFontSize=15
             ).properties(title='Pharmacy Orders From Each Nursing Station: All Priorities'
-            ).interactive()
+            )
             g_json=pharmacy3_chart.to_json()
             return g_json
 
@@ -1222,7 +1217,7 @@ def pharmacyorders_per_patient_analysis(start_date,end_date):
         domainColor='black',#domain is axis...axis width and color
         labelFontSize=10, titleFontSize=15,
         ).configure_legend(titleFontSize=15,labelFontSize=15
-        ).properties(title='Pharmacy Orders - Number of Orders per Patient per Day',width=300,height=300).interactive()
+        ).properties(title='Pharmacy Orders - Number of Orders per Patient per Day',width=300,height=300)
         g_json=orderperpatient_chart.to_json()
         return g_json
 
@@ -1249,7 +1244,7 @@ def topmedicines_analysis(category,start_date,end_date):
                         alt.Tooltip('ItemName'),
                         alt.Tooltip('Station'),
                         ]
-                    ).interactive()
+                    )
 
             topmedicines_chart1 = alt.vconcat()
 
@@ -1277,7 +1272,7 @@ def topmedicines_analysis(category,start_date,end_date):
             domainColor='black',#domain is axis...axis width and color
             labelFontSize=10, titleFontSize=15,
             ).configure_legend(titleFontSize=15,labelFontSize=15
-            ).properties(title='Top 100 Movable Medicines in Hospital',width=800,height=2000).interactive()
+            ).properties(title='Top 100 Movable Medicines in Hospital',width=800,height=2000)
             g_json=topmedicines_chart2.to_json()
             return g_json
             
@@ -1303,7 +1298,7 @@ def drugstock_analysis(category,start_date,end_date):
                         alt.Tooltip('ItemName'),
                         alt.Tooltip('ItemCatagory'),
                         ]
-                    ).interactive()
+                    )
 
             drug_chart1 = alt.vconcat()
 
@@ -1329,7 +1324,7 @@ def drugstock_analysis(category,start_date,end_date):
             domainColor='black',#domain is axis...axis width and color
             labelFontSize=10, titleFontSize=15,
             ).configure_legend(titleFontSize=15,labelFontSize=15
-            ).properties(title='Drug Stock Analysis',width=600).interactive()
+            ).properties(title='Drug Stock Analysis',width=600)
             g_json=drug_chart2.to_json()
             return g_json
 
@@ -1372,7 +1367,7 @@ def radiology_analysis(test,start_date,end_date):
                 domainColor='black',#domain is axis...axis width and color
                 labelFontSize=12, titleFontSize=20,
                 ).configure_legend(titleFontSize=15,labelFontSize=15
-                ).properties(title=title,height=300).interactive()
+                ).properties(title=title,height=300)
 
         g_json=radio_chart.to_json()
         return g_json
@@ -1423,7 +1418,7 @@ def surgery_analysis(category,start_date,end_date):
             labelFontSize=12, titleFontSize=15,
             ).configure_legend(titleFontSize=15,labelFontSize=15
                 ).properties(title='Surgery - Surgery Name wise analysis',height=300,width=200
-            ).interactive() # to zoom 
+            )
             g_json=surgery_chart1.to_json()
             return g_json
             
@@ -1449,7 +1444,7 @@ def surgery_analysis(category,start_date,end_date):
             labelFontSize=12, titleFontSize=15,
             ).configure_legend(titleFontSize=15,labelFontSize=15
             ).properties(title='Surgery - Department wise analysis',height=300,width=200
-            ).interactive() # to zoom 
+            )
             g_json=surgery_chart2.to_json()
             return g_json
 
@@ -1580,7 +1575,7 @@ def insurance_analysis(category,start_date,end_date):
         title=insu_title,
         width = 500, #width and height of bars
         height = h
-    ).interactive()
+    )
     g_json=insu_chart.to_json()
     return g_json
     
@@ -1700,7 +1695,7 @@ def gender_analysis(category,start_date,end_date):
         title=gender_title, 
         width = 30, #width and height of bars
         height = 400
-    ).interactive()
+    )
     g_json=gender_chart.to_json()
     return g_json
 
@@ -1895,7 +1890,7 @@ def age_analysis(category,start_date,end_date):
         title=age_title,
         width = 1000, #width and height of bars
         height = 500
-    ).interactive()
+    )
     g_json=age_chart.to_json()
     return g_json
 
@@ -1996,7 +1991,7 @@ def appointment_analysis(category,start_date,end_date):
         title=appnt_title, 
         width = 500, #width and height of bars
         height = h
-    ).interactive()
+    )
     g_json=appnt_chart.to_json()
     return g_json
 
@@ -2100,7 +2095,7 @@ def walkin_analysis(category,start_date,end_date):
         title=walkin_title,
         width = 500, #width and height of bars
         height = h
-    ).interactive()
+    )
     g_json=walkin_chart.to_json()
     return g_json
 
@@ -2177,7 +2172,7 @@ def area_analysis(department,start_date,end_date):
         title=area_title,
         width = 500, #width and height of bars
         height = h
-    ).interactive()
+    )
     g_json=area_chart.to_json()
     return g_json
 
