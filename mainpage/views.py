@@ -934,8 +934,13 @@ def OrdersPerPatient(request):
         if form.is_valid():
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
-            g_json=pharmacyorders_per_patient_analysis(from_date,to_date)
-            return render(request,'embed.html',{'g':g_json})
+            message=""
+            if (from_date <= to_date):
+                g_json=pharmacyorders_per_patient_analysis(from_date,to_date)
+                return render(request, 'embed.html', {'g' : g_json, 'message':message})
+            else:
+                message="Please ensure from-date falls before to-date."
+                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
 
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
