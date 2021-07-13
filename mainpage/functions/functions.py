@@ -2149,7 +2149,7 @@ def area_analysis(department,start_date,end_date):
     for i,row in count.iterrows():
         count.loc[i,'Percentage']=count.at[i,'Percentage']/totw   
 
-    area_title="Area-wise Analysis ("+category+")"
+    area_title="Area-wise Analysis ("+category+")"+": "+start_date+" to "+end_date
     area_chart=alt.Chart(count).mark_bar().encode( 
         alt.X('Percentage:Q',axis=alt.Axis(title='Percentage inflow(%)')),                                          
         alt.Y('District:O'),
