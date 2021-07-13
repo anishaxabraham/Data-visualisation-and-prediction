@@ -28,7 +28,7 @@ def waitingtime_analysis(category, start_date, end_date):
         alt.data_transformers.disable_max_rows()
 
         df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WalkInOPConsultation', engine='openpyxl')
-        df=df.rename(columns={"Doctor Name": "DoctorName","BillingTime":'Bill Time',"Consultation start Date/Time":"Consult IN"})
+        df=df.rename(columns={"DoctorName": "DoctorName","BillingTime":'Bill Time',"ConsultationStartTime":"Consult IN"})
         df['date']=pd.to_datetime(df['Consult IN']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
@@ -72,7 +72,7 @@ def waitingtime_analysis(category, start_date, end_date):
                     columns =['DName', 'AVG'])
        
 
-            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Walkins)", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
+            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Walkins)", padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
             x=alt.X('AVG', axis=alt.Axis( title='Average Time in Hours')),
             y=alt.Y('DName', axis=alt.Axis( title='Department Name')),
             color=alt.value('#5B9AA0'),
@@ -89,7 +89,7 @@ def waitingtime_analysis(category, start_date, end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-            ).properties(title="Waiting time for Walk-Ins", width=400,height=1500
+            ).properties(title="Waiting time for Walk-Ins: "+start_date+" to "+ end_date, width=400,height=1500
 
             )
 
@@ -108,7 +108,7 @@ def waitingtime_analysis(category, start_date, end_date):
         alt.data_transformers.disable_max_rows()
             
         df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WalkInOPConsultation', engine='openpyxl')
-        df=df.rename(columns={"Doctor Name": "DoctorName","BillingTime":'Bill Time',"Consultation start Date/Time":"Consult IN","Speciality":"Dept Name"})
+        df=df.rename(columns={"DoctorName": "DoctorName","BillingTime":'Bill Time',"ConsultationStartTime":"Consult IN","Speciality":"Dept Name"})
         
         df['date']=pd.to_datetime(df['Consult IN']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
@@ -153,7 +153,7 @@ def waitingtime_analysis(category, start_date, end_date):
                     columns =['DName', 'AVG'])
         
 
-            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Walkins)", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
+            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Walkins)", padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
             x=alt.X('AVG', axis=alt.Axis( title='Average Time in Hours')),
             y=alt.Y('DName', axis=alt.Axis(title='Department Name')),
             color=alt.value('#E06377'),
@@ -170,7 +170,7 @@ def waitingtime_analysis(category, start_date, end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-            ).properties(title="Waiting time for Walk-Ins", width=400,height=800
+            ).properties(title="Waiting time for Walk-Ins: "+start_date+" to "+ end_date, width=400,height=800
 
             )
         
@@ -190,20 +190,20 @@ def waitingtime_analysis(category, start_date, end_date):
         alt.data_transformers.disable_max_rows()
             
         df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WithAppointmentOP', engine='openpyxl' )
-        #df=df.rename(columns={"Doctor Name": "DoctorName","Billing Time":"'Bill Time","Consultation start Date/Time":"Consult IN"})
+        #df=df.rename(columns={"DoctorName": "DoctorName","Billing Time":"'Bill Time","ConsultationStartTime":"Consult IN"})
         
-        df['date']=pd.to_datetime(df['Consultation start Date/Time']).dt.strftime("%Y-%m-%d")
+        df['date']=pd.to_datetime(df['ConsultationStartTime']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
 
         if(len(df)!=0):
 
-            docList= df['Doctor Name'].values.tolist()
+            docList= df['DoctorName'].values.tolist()
             billList= df['BillingTime'].values.tolist()
-            inList= df['Consultation start Date/Time'].values.tolist()
+            inList= df['ConsultationStartTime'].values.tolist()
 
             #time difference list
-            df['diff_seconds'] =df['Consultation start Date/Time']-df['BillingTime']
+            df['diff_seconds'] =df['ConsultationStartTime']-df['BillingTime']
             df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
             diffList=df['diff_seconds'].values.tolist()
             #print(diffList)
@@ -237,7 +237,7 @@ def waitingtime_analysis(category, start_date, end_date):
                     columns =['DName', 'AVG'])
 
 
-            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Appointments)", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
+            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Appointments)", padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
             x=alt.X('AVG', axis=alt.Axis( title='Average Time in Hours')),
             y=alt.Y('DName', axis=alt.Axis( title='Department Name')),
             color=alt.value('#FF6361'),
@@ -254,7 +254,7 @@ def waitingtime_analysis(category, start_date, end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-            ).properties(title="Waiting time for Appointments", width=400,height=1500
+            ).properties(title="Waiting time for Appointments: "+start_date+" to "+ end_date, width=400,height=1500
 
             )
             g_json=bars.to_json()
@@ -276,17 +276,17 @@ def waitingtime_analysis(category, start_date, end_date):
         df = pd.read_excel("mainpage/media/fileupload/OPConsultation.xlsx", sheet_name='WithAppointmentOP', engine='openpyxl')
         df=df.rename(columns={"Speciality":"Dept Name"})
         
-        df['date']=pd.to_datetime(df['Consultation start Date/Time']).dt.strftime("%Y-%m-%d")
+        df['date']=pd.to_datetime(df['ConsultationStartTime']).dt.strftime("%Y-%m-%d")
         mask = (df['date'] >= start_date) & (df['date'] <= end_date)
         df = df.loc[mask]
 
         if(len(df)!=0):
             deptList= df['Dept Name'].values.tolist()
             billList= df['BillingTime'].values.tolist()
-            inList= df['Consultation start Date/Time'].values.tolist()
+            inList= df['ConsultationStartTime'].values.tolist()
 
             #time difference list
-            df['diff_seconds'] =df['Consultation start Date/Time']-df['BillingTime']
+            df['diff_seconds'] =df['ConsultationStartTime']-df['BillingTime']
             df['diff_seconds']=df['diff_seconds']/np.timedelta64(1,'s')
             diffList=df['diff_seconds'].values.tolist()
             #print(diffList)
@@ -320,7 +320,7 @@ def waitingtime_analysis(category, start_date, end_date):
                     columns =['DName', 'AVG'])
     
 
-            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Appointments)", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
+            bars=alt.Chart(df2,title="Average Waiting time for Each Department(Appointments)", padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
             x=alt.X('AVG', axis=alt.Axis( title='Average Time in Hours')),
             y=alt.Y('DName', axis=alt.Axis( title='Department Name')),
             color=alt.value('#FFA600'),
@@ -337,7 +337,7 @@ def waitingtime_analysis(category, start_date, end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-            ).properties(title="Waiting time for Appointments", width=400,height=800
+            ).properties(title="Waiting time for Appointments: "+start_date+" to "+ end_date, width=400,height=800
 
             )
    
@@ -356,7 +356,7 @@ def mlc_analysis(category):
         
             input_dropdown = alt.binding_select(options=df['Primary doctor Specialty'].unique(), name="Specialty Name")  # creates drop-down menu of unique department names
             selection = alt.selection_single(fields=['Primary doctor Specialty'], bind=input_dropdown, name='Select')
-            area_chart=alt.Chart(df, title="Number of MLC's", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().transform_filter(selection
+            area_chart=alt.Chart(df, title="Number of MLC's", padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().transform_filter(selection
                     ).encode(
                     alt.X('Is MLC:N'),
                     alt.Y('count(Is MLC):Q'),
@@ -393,7 +393,7 @@ def mlc_analysis(category):
         else:
             input_dropdown = alt.binding_select(options=df['Ward Name'].unique(),name="Ward Name")  # creates drop-down menu of unique department names
             selection = alt.selection_single(fields=['Ward Name'], bind=input_dropdown, name='Select')
-            area_chart=alt.Chart(df, title="Number of MLC's", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().transform_filter(selection
+            area_chart=alt.Chart(df, title="Number of MLC's", padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().transform_filter(selection
                     ).encode(
                     alt.X('Is MLC:N'),
                     alt.Y('count(Is MLC):Q'),
@@ -444,7 +444,7 @@ def discharges_analysis(category,start_date,end_date):
 
             gk=gk.rename(columns={'Discharge':'Count'})
 
-            area_chart=alt.Chart(gk, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('Count:Q',title='Number of Discharges'),
+            area_chart=alt.Chart(gk, padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('Count:Q',title='Number of Discharges'),
 
             alt.Y('Wardname:N',axis=alt.Axis(title=None)),
             color=alt.value('#6056E3'),
@@ -467,7 +467,7 @@ def discharges_analysis(category,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-            ).properties(title="Number of discharges from each ward",
+            ).properties(title="Discharges from each ward: "+start_date+" to "+ end_date,
             width = 400, #width and height of bars
             height = 400
 
@@ -509,7 +509,7 @@ def discharges_analysis(category,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-            ).properties(title="Number of discharges from each ward: Bed-wise"
+            ).properties(title="Discharges from each ward: Bed-wise: "+start_date+" to "+ end_date
             )
 
             g_json=area_chart.to_json()
@@ -520,7 +520,7 @@ def discharges_analysis(category,start_date,end_date):
         df1["date2"] = pd.to_datetime(df1['Discharge Date & Time ']).dt.strftime("%Y-%m-%d") #string to date format
         df1=df1.loc[(df1["date2"]>=start_date) & (df1["date2"]<=end_date)]     #selecting data frame rows in the desired date range
         if(len(df1)!=0):
-            bars=alt.Chart(df1, title='Number of discharges from all wards: Bed-wise', padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=15).encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
+            bars=alt.Chart(df1, title='Number of discharges from all wards: Bed-wise', padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=15).encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
 
             alt.Y('Billable Bed Type:N',axis=alt.Axis(title=None)),
 
@@ -546,7 +546,7 @@ def discharges_analysis(category,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-            ).properties(title="Number of discharges",width=300,height=300
+            ).properties(title="Number of discharges: "+start_date+" to "+ end_date,width=300,height=300
 
             )
 
@@ -571,7 +571,7 @@ def discharges_analysis(category,start_date,end_date):
 
             gk=gk.rename(columns={'Discharge':'Count'})
 
-            area_chart=alt.Chart(gk, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('Count:Q',title='Number of Discharges'),
+            area_chart=alt.Chart(gk, padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('Count:Q',title='Number of Discharges'),
 
             alt.Y('Specialty:N',axis=alt.Axis(title=None)),
             color=alt.value('#82DC1C'),
@@ -593,7 +593,7 @@ def discharges_analysis(category,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-            ).properties(title="Number of discharges from each ward",width=400,height=600
+            ).properties(title="Discharges from each ward: "+start_date+" to "+ end_date,width=400,height=600
             )
             g_json=area_chart.to_json()
             return g_json
@@ -616,7 +616,7 @@ def discharges_analysis(category,start_date,end_date):
 
             gk=gk.rename(columns={'Discharge':'Count'})
 
-            area_chart=alt.Chart(gk,padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=15).encode(alt.X('Count:Q',title='Number of Discharges'),
+            area_chart=alt.Chart(gk,padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=15).encode(alt.X('Count:Q',title='Number of Discharges'),
 
             alt.Y('Doctor:N',axis=alt.Axis(title=None)),
             color=alt.value('#EF5F8A'),
@@ -638,7 +638,7 @@ def discharges_analysis(category,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-            ).properties(title="Number of discharges",width=400,height=1000
+            ).properties(title="Number of discharges: "+start_date+" to "+ end_date,width=400,height=1000
 
             )
 
@@ -654,7 +654,7 @@ def discharges_analysis(category,start_date,end_date):
         
         df1=df1.loc[(df1["date2"]>=start_date) & (df1["date2"]<=end_date)]
         if(len(df1)!=0):
-            area_chart=alt.Chart(df1, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
+            area_chart=alt.Chart(df1, padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
 
             alt.Y('Billable Bed Type:N',axis=alt.Axis(title=None)),
 
@@ -671,7 +671,7 @@ def discharges_analysis(category,start_date,end_date):
 
             ).facet(row=alt.Row('Ward Name:N', header=alt.Header(title='Ward Name',labelOrient='top',labelAngle=0)) #categorize orders based on ordering station
 
-            ).properties(title='Number of discharges from each ward: Bed-wise'
+            ).properties(title='Discharges from each ward: Bed-wise: '+start_date+'to '+ end_date
 
             ).configure_axis(grid=False #interior grid off
             ).configure_view(strokeWidth=0 #exterior grid off
@@ -700,7 +700,7 @@ def discharges_analysis(category,start_date,end_date):
         df1["date2"] = pd.to_datetime(df1['Discharge Date & Time ']).dt.strftime("%Y-%m-%d") #string to date format
         df=df1.loc[(df1["date2"]>=start_date) & (df1["date2"]<=end_date)]
         if(len(df)!=0):
-            bars=alt.Chart(df1, title='Number of discharges from all wards: Bed-wise', padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
+            bars=alt.Chart(df1, title='Discharges from all wards: Bed-wise: '+start_date+' to '+ end_date, padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(alt.X('count(Billable Bed Type):Q',title='Number of Discharges'),
 
             alt.Y('Billable Bed Type:N',axis=alt.Axis(title=None)),
 
@@ -743,7 +743,7 @@ def spec_ward_day(wardname):
         pdf1=pdf1.reset_index()
         pdf1=pdf1.rename(columns={"index":"date", "date":"count"})
         print(sum(pdf1['count']))
-        area_chart=alt.Chart(pdf1, title="Number of patients discharged from ("+category+")", padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
+        area_chart=alt.Chart(pdf1, title="Number of patients discharged from ("+category+")", padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar().encode(
         alt.X('count'),
         alt.Y('date'),
         color=alt.value('#935FEF'),
@@ -784,7 +784,7 @@ def spec_doc_and_spec(doctor,specialty,start_date,end_date):
     gk['date']=pd.to_datetime(gk['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
     if(len(gk)!=0):
-        area_chart=alt.Chart(gk, padding={"left": 180, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+        area_chart=alt.Chart(gk, padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
         color=alt.value('#8DEF5F'),
@@ -809,7 +809,7 @@ def spec_doc_and_spec(doctor,specialty,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="("+category1+") speciality: Doctor ("+category2+")",width=300,height=300
+        ).properties(title=""+category1+" speciality: Doctor "+category2+": "+start_date+" to "+ end_date,width=300,height=300
 
             )
 
@@ -831,7 +831,7 @@ def specific_spec_bed(specialty,start_date,end_date):
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
     if(len(gk)!=0):
 
-        area_chart=alt.Chart(gk, padding={"left": 150, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+        area_chart=alt.Chart(gk, padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
         color=alt.value('#EF935F'),
@@ -855,7 +855,7 @@ def specific_spec_bed(specialty,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Number of discharges from ("+category+"): Bed-wise", width=300,height=300
+        ).properties(title=""+category+": Bed-wise: "+start_date+" to "+ end_date, width=300,height=300
 
             )
     
@@ -877,7 +877,7 @@ def specific_discharge_analysis(wardname,start_date,end_date):
     gk['date']=pd.to_datetime(gk['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
     if(len(gk)!=0):
-        area_chart=alt.Chart(gk, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+        area_chart=alt.Chart(gk, padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
         color=alt.value('#8971A3'),
@@ -899,7 +899,7 @@ def specific_discharge_analysis(wardname,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Number of discharges from ("+category+"): Bed-wise",
+        ).properties(title=""+category+": Bed-wise: "+start_date+" to "+ end_date,
             width=300,height=300
 
         )
@@ -919,7 +919,7 @@ def spec_doc_bed(doctor, start_date, end_date):
     gk['date']=pd.to_datetime(gk['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
     if(len(gk)!=0):
-        area_chart=alt.Chart(gk, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+        area_chart=alt.Chart(gk, padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
         color=alt.value('#D265B1'),
@@ -944,7 +944,7 @@ def spec_doc_bed(doctor, start_date, end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="Number of discharges by ("+category+"): Bed-wise",width=300,height=300
+        ).properties(title=""+category+": Bed-wise: "+start_date+" to "+ end_date,width=300,height=300
 
             )
         g_json=area_chart.to_json()
@@ -968,7 +968,7 @@ def spec_ward_and_spec_and_doc(wardname, specialty, doctor,start_date,end_date):
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
 
     if(len(gk)!=0):
-        area_chart=alt.Chart(gk, padding={"left": 150, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+        area_chart=alt.Chart(gk, padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
         color=alt.value('#3D95AF'),
@@ -992,7 +992,7 @@ def spec_ward_and_spec_and_doc(wardname, specialty, doctor,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="("+category1+") ward: ("+category2+") speciality: Doctor ("+category3+")",width=300,height=300
+        ).properties(title=""+category1+" ward: "+category2+" speciality: Doctor "+category3+": "+start_date+" to "+ end_date,width=300,height=300
 
             )
 
@@ -1016,7 +1016,7 @@ def spec_ward_and_spec(wardname, specialty,start_date,end_date):
     gk['date']=pd.to_datetime(gk['Discharge']).dt.strftime("%Y-%m-%d") #string to date format
     gk=gk.loc[(gk["date"]>=start_date) & (gk["date"]<=end_date)]     #selecting data frame rows in the desired date range
     if(len(gk)!=0):
-        area_chart=alt.Chart(gk, padding={"left": 200, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
+        area_chart=alt.Chart(gk, padding={"left": 100, "top": 10, "right": 10, "bottom": 10}).mark_bar(size=20).encode(alt.X('count(BedType):Q',title='Number of Discharges'),
 
         alt.Y('BedType:N',axis=alt.Axis(title=None)),
         color=alt.value('#7FB47D'),
@@ -1040,7 +1040,7 @@ def spec_ward_and_spec(wardname, specialty,start_date,end_date):
                         domainColor='black',#domain is axis...axis width and color
                         labelFontSize=10,
                         titleFontSize=15,    
-        ).properties(title="("+category1+") ward: ("+category2+") speciality",width=300,height=300
+        ).properties(title=""+category1+" ward: "+category2+" speciality: "+start_date+" to "+ end_date,width=300,height=300
 
             )
             
