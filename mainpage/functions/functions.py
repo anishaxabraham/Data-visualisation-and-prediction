@@ -548,7 +548,7 @@ def discharges_analysis(category,start_date,end_date):
                         titleFontSize=15,    
             ).properties(title="Number of discharges: "+start_date+" to "+ end_date,width=300,height=300
 
-            )
+            ).interactive()
 
        
             g_json=bars.to_json()
@@ -594,7 +594,7 @@ def discharges_analysis(category,start_date,end_date):
                         labelFontSize=10,
                         titleFontSize=15,    
             ).properties(title="Discharges from each ward: "+start_date+" to "+ end_date,width=400,height=600
-            )
+            ).interactive()
             g_json=area_chart.to_json()
             return g_json
     elif category=='EachDoc':
@@ -640,7 +640,7 @@ def discharges_analysis(category,start_date,end_date):
                         titleFontSize=15,    
             ).properties(title="Number of discharges: "+start_date+" to "+ end_date,width=400,height=1000
 
-            )
+            ).interactive()
 
         
 
@@ -673,7 +673,7 @@ def discharges_analysis(category,start_date,end_date):
 
             ).properties(title='Discharges from each ward: Bed-wise: '+start_date+'to '+ end_date
 
-            ).configure_axis(grid=False #interior grid off
+            ).interactive().configure_axis(grid=False #interior grid off
             ).configure_view(strokeWidth=0 #exterior grid off
             ).properties(
                 width =200, #width and height of bars
@@ -811,7 +811,7 @@ def spec_doc_and_spec(doctor,specialty,start_date,end_date):
                         titleFontSize=15,    
         ).properties(title=""+category1+" speciality: Doctor "+category2+": "+start_date+" to "+ end_date,width=300,height=300
 
-            )
+            ).interactive()
 
         g_json=area_chart.to_json()
         return g_json
@@ -857,7 +857,7 @@ def specific_spec_bed(specialty,start_date,end_date):
                         titleFontSize=15,    
         ).properties(title=""+category+": Bed-wise: "+start_date+" to "+ end_date, width=300,height=300
 
-            )
+            ).interactive()
     
         g_json=area_chart.to_json()
         return g_json
@@ -902,7 +902,7 @@ def specific_discharge_analysis(wardname,start_date,end_date):
         ).properties(title=""+category+": Bed-wise: "+start_date+" to "+ end_date,
             width=300,height=300
 
-        )
+        ).interactive()
     
         g_json=area_chart.to_json()
         return g_json
@@ -946,7 +946,7 @@ def spec_doc_bed(doctor, start_date, end_date):
                         titleFontSize=15,    
         ).properties(title=""+category+": Bed-wise: "+start_date+" to "+ end_date,width=300,height=300
 
-            )
+            ).interactive()
         g_json=area_chart.to_json()
         return g_json
 
@@ -994,7 +994,7 @@ def spec_ward_and_spec_and_doc(wardname, specialty, doctor,start_date,end_date):
                         titleFontSize=15,    
         ).properties(title=""+category1+" ward: "+category2+" speciality: Doctor "+category3+": "+start_date+" to "+ end_date,width=300,height=300
 
-            )
+            ).interactive()
 
 
         g_json=area_chart.to_json()
@@ -1042,7 +1042,7 @@ def spec_ward_and_spec(wardname, specialty,start_date,end_date):
                         titleFontSize=15,    
         ).properties(title=""+category1+" ward: "+category2+" speciality: "+start_date+" to "+ end_date,width=300,height=300
 
-            )
+            ).interactive()
             
         g_json=area_chart.to_json()
         return g_json
