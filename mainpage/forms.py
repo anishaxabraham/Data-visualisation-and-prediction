@@ -84,6 +84,16 @@ class Form6(forms.Form):                #For radiology analysis objective
 
 
 
+class Form7(forms.Form):                #For top movable station-wise analysis objective
+    if ((os.path.isfile("mainpage/media/fileupload/Top100Medicines.xlsx"))==True): # check if file present
+        df=pd.read_excel("mainpage/media/fileupload/Top100Medicines.xlsx",usecols=['ItemName', 'Quantity','Unit', 'ItemCatagory','Station','BillDateTime'],engine='openpyxl')
+        df=df.dropna()
+        options=df['Station'].unique()
+        Choice7=[]
+        for c in options:
+            Choice7.append((c,c))
+        Choice7.sort()
+        selected_station= forms.ChoiceField(choices = Choice7)
 
 
 

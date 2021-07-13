@@ -1221,7 +1221,7 @@ def pharmacyorders_per_patient_analysis(start_date,end_date):
         g_json=orderperpatient_chart.to_json()
         return g_json
 
-def topmedicines_analysis(category,start_date,end_date):
+def topmedicines_analysis(category,station,start_date,end_date):
     alt.data_transformers.disable_max_rows()
     df=pd.read_excel("mainpage/media/fileupload/Top100Medicines.xlsx",usecols=['ItemName', 'Quantity','Unit', 'ItemCatagory','Station','BillDateTime'],engine='openpyxl')    #create dataframe
     df["Date"] = pd.to_datetime(df["BillDateTime"]).dt.strftime("%Y-%m-%d") # to desired date format
@@ -1229,28 +1229,26 @@ def topmedicines_analysis(category,start_date,end_date):
     df=df.loc[(df["Date"]>=start_date) & (df["Date"]<=end_date)]
     if (len(df)!=0):
         if category=="Station":
-            groups=df.groupby(['Station','ItemName'])['Quantity'].sum().reset_index(name='TotalQty')  #index is Total Quantity now
-            groups=groups.sort_values(['Station','TotalQty'], ascending=False)
-            groups=groups.reset_index()
-            groups=groups.drop(columns=['index'])
-            stations=groups['Station'].unique()
+            df=df.loc[df['Station'] == station]
+            grouped_df=df.groupby(['ItemName'])['Quantity'].sum().reset_index(name='TotalQty')  #index is Total Quantity now
+            dop=grouped_df.sort_values(['TotalQty'], ascending=False)
+            dop=dop.reset_index()
+            dop=dop.drop(columns=['index'])
 
-            base=alt.Chart(groups).mark_bar(size=15).encode(
-                    alt.X('TotalQty',title='Number of units sold'), 
-                    alt.Y('ItemName',sort=None), #x-axis
-                    color=alt.Color('Station'),
-                    tooltip = [
-                        alt.Tooltip('TotalQty',title='Number of units sold'),
-                        alt.Tooltip('ItemName'),
-                        alt.Tooltip('Station'),
-                        ]
-                    )
-
-            topmedicines_chart1 = alt.vconcat()
-            
-            for station in stations:
-                topmedicines_chart1 &= base.transform_filter(datum.Station == station).properties(title="Top Movable Medicines in "+station+" : "+start_date+" to "+end_date)
-            topmedicines_chart1.properties(width=2000,height=500)
+            topmedicines_chart1=alt.Chart(dop).mark_bar().encode(
+            alt.X('TotalQty',title='Number of units sold'), 
+            alt.Y('ItemName', title='Item Name',sort=None), #x-axis
+            #color=alt.Color('TotalQty',title='Quantity'),
+            tooltip = [
+                alt.Tooltip('TotalQty',title='Number of units sold'),
+                alt.Tooltip('ItemName',title='Item Name'),
+                ]
+            ).configure_title(fontSize=25, font='Arial',dy=-25, anchor='middle', color='black'
+            ).configure_axis(domainWidth=2,
+            domainColor='black',#domain is axis...axis width and color
+            labelFontSize=10, titleFontSize=15,
+            ).configure_legend(titleFontSize=15,labelFontSize=15
+            ).properties(title='Top Movable Medicines in '+station+' : '+start_date+" to "+ end_date)
             g_json=topmedicines_chart1.to_json()
             return g_json
 

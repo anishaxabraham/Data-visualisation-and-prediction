@@ -944,24 +944,27 @@ def OrdersPerPatient(request):
 
     else:
         return render(request,'FilterFormOpt.html', {'form':form})
-
+        
 def topmovable_station(request):
     category='Station'
-    form=DateFilter()
+    form1=Form7()
+    form2=DateFilter()
     if request.method=="POST":
-        form=DateFilter(request.POST)
-        if form.is_valid():
+        form1=Form7(request.POST)
+        form2=DateFilter(request.POST)
+        if form1.is_valid() and form2.is_valid():
+            station=request.POST['selected_station']
             from_date=request.POST['from_date']
             to_date=request.POST['to_date']
             message=""
             if (from_date <= to_date):
-                g_json=topmedicines_analysis(category,from_date,to_date)
+                g_json=topmedicines_analysis(category,station,from_date,to_date)
                 return render(request, 'embed.html', {'g' : g_json, 'message':message})
             else:
                 message="Please ensure from-date falls before to-date."
-                return render(request,'FilterFormOpt.html', {'form':form, 'message':message})
+                return render(request,'FilterFormTwo.html', {'form1':form1,'form2':form2, 'message':message})
     else:
-        return render(request,'FilterFormOpt.html', {'form':form})
+        return render(request,'FilterFormTwo.html', {'form1':form1, 'form2':form2})
 
 def topmovable_overall(request):
     category='Overall'
