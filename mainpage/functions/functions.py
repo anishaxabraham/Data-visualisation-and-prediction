@@ -471,7 +471,7 @@ def discharges_analysis(category,start_date,end_date):
             width = 400, #width and height of bars
             height = 400
 
-            )
+            ).interactive()
 
 
             g_json=area_chart.to_json()
@@ -510,7 +510,7 @@ def discharges_analysis(category,start_date,end_date):
                         labelFontSize=10,
                         titleFontSize=15,    
             ).properties(title="Discharges from each ward: Bed-wise: "+start_date+" to "+ end_date
-            )
+            ).interactive()
 
             g_json=area_chart.to_json()
             return g_json
